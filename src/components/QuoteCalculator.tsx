@@ -42,13 +42,9 @@ export default function QuoteCalculator() {
       <p className="text-muted-foreground text-sm mb-6">Calcula cuánto recibirás en pesos</p>
 
       <div className="bg-primary-light rounded-lg p-4 mb-6">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm text-muted-foreground">Tipo de cambio hoy:</span>
-          <span className="text-lg font-bold text-primary">${exchangeRate}</span>
-        </div>
         <div className="flex justify-between items-center">
-          <span className="text-sm text-muted-foreground">Comisión:</span>
-          <span className="text-sm font-semibold text-secondary-foreground">{commission}%</span>
+          <span className="text-sm text-muted-foreground">Tipo de cambio referencial:</span>
+          <span className="text-lg font-bold text-primary">${exchangeRate}</span>
         </div>
       </div>
 
@@ -73,29 +69,27 @@ export default function QuoteCalculator() {
         <p className="text-xs text-muted-foreground mt-2">Mínimo: USD 200 - Máximo: USD 3.000</p>
       </div>
 
-      <div className="bg-secondary rounded-lg p-4 mb-6 space-y-2">
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Conversión USD a CLP:</span>
-          <span className="font-semibold text-foreground">{formatCurrency(result.clp)}</span>
-        </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-muted-foreground">Comisión ({commission}%):</span>
-          <span className="font-semibold text-destructive">-{formatCurrency(result.fee)}</span>
-        </div>
-        <div className="border-t border-border pt-3 mt-3">
-          <div className="flex justify-between items-center">
-            <span className="font-semibold text-foreground">Recibirás:</span>
-            <span className="text-2xl font-bold text-accent">{formatCurrency(result.net)}</span>
-          </div>
+      <div className="bg-secondary rounded-lg p-4 mb-6">
+        <div className="flex justify-between items-center">
+          <span className="font-semibold text-foreground">Recibirás aproximadamente:</span>
+          <span className="text-2xl font-bold text-accent">{formatCurrency(result.net)}</span>
         </div>
       </div>
+
+      <p className="text-xs text-muted-foreground text-center mb-4">
+        La cotización es referencial. El monto final se confirma con un ejecutivo antes de operar.
+      </p>
 
       <Button 
         className="w-full py-6 text-lg font-bold button-shadow"
         onClick={handleStartOperation}
       >
-        Iniciar operación
+        Solicitar cotización
       </Button>
+      
+      <p className="text-xs text-muted-foreground text-center mt-3">
+        Un ejecutivo de EnPesos te contactará para confirmar la cotización y validar los datos.
+      </p>
     </div>
   );
 }
