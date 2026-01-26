@@ -1,7 +1,7 @@
 import { DollarSign } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20una%20operaci%C3%B3n%20en%20USD%20y%20operar%20con%20acompa%C3%B1amiento.";
+const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n.";
 
 export default function Header() {
   const scrollToCalculator = () => {
