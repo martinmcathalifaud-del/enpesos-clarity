@@ -19,8 +19,7 @@ export default function Hero() {
       <div className="space-y-3 mb-8">
         {[
           'Transferencia en 24-48 hrs hábiles',
-          'Solo al titular - mismo RUT',
-          'Empresa registrada en EE.UU.'
+          'Solo al titular - mismo RUT'
         ].map((item, index) => (
           <div 
             key={index}

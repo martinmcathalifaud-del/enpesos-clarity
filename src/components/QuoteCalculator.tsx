@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20una%20operaci%C3%B3n%20en%20USD%20y%20operar%20con%20acompa%C3%B1amiento.";
+const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n.";
 
 export default function QuoteCalculator() {
   const [amount, setAmount] = useState('500');
-  const exchangeRate = 920;
+  const [exchangeRate, setExchangeRate] = useState(920);
   const commission = 3.5;
   const [result, setResult] = useState({ clp: 0, fee: 0, net: 0 });
 
@@ -42,10 +42,16 @@ export default function QuoteCalculator() {
       <p className="text-muted-foreground text-sm mb-6">Calcula cuánto recibirás en pesos</p>
 
       <div className="bg-primary-light rounded-lg p-4 mb-6">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mb-2">
           <span className="text-sm text-muted-foreground">Tipo de cambio referencial:</span>
-          <span className="text-lg font-bold text-primary">${exchangeRate}</span>
+          <Input
+            type="number"
+            value={exchangeRate}
+            onChange={(e) => setExchangeRate(parseFloat(e.target.value) || 0)}
+            className="w-24 text-right text-lg font-bold text-primary border-primary/30 h-8 px-2"
+          />
         </div>
+        <p className="text-xs text-muted-foreground">Tipo de cambio referencial, actualizado periódicamente.</p>
       </div>
 
       <div className="mb-6">
