@@ -16,6 +16,12 @@ export default function Footer() {
             © 2026 EnPesos. Todos los derechos reservados.
           </p>
           
+          <div className="flex items-center justify-center gap-4 mb-4 text-sm">
+            <a href="#" className="text-muted-foreground hover:text-background transition-colors underline underline-offset-2">Términos y Condiciones</a>
+            <span className="text-muted-foreground">·</span>
+            <a href="#" className="text-muted-foreground hover:text-background transition-colors underline underline-offset-2">Política de Privacidad</a>
+          </div>
+
           <div className="max-w-2xl space-y-2">
             <p className="text-sm text-muted-foreground">
               EnPesos no ofrece préstamos, adelantos de efectivo ni financiamiento.
