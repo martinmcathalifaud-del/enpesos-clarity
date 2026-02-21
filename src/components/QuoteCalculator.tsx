@@ -3,7 +3,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20solicitar%20una%20cotizaci%C3%B3n.";
+const buildWhatsAppUrl = (amount: string) => {
+  const msg = encodeURIComponent(`Hola EnPesos, quiero solicitar una cotización para USD ${amount}.`);
+  return `https://wa.me/56974483779?text=${msg}`;
+};
 
 export default function QuoteCalculator() {
   const [amount, setAmount] = useState('500');
@@ -33,7 +36,7 @@ export default function QuoteCalculator() {
   };
 
   const handleStartOperation = () => {
-    window.open(WHATSAPP_URL, '_blank');
+    window.open(buildWhatsAppUrl(amount), '_blank');
   };
 
   return (
