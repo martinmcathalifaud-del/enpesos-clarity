@@ -18,7 +18,9 @@ export default function Header() {
     <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center gap-4">
         <a href="#" className="flex items-center shrink-0" aria-label="EnPesos.cl">
-          <img src={logo} alt="EnPesos.cl" className="h-9 sm:h-10 w-auto" />
+          <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-primary">
+            EnPesos<span className="text-foreground">.cl</span>
+          </span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-7">
