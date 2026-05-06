@@ -1,6 +1,6 @@
 import { Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo-enpesos.png';
+import logo from '@/assets/logo-enpesos-completo.png';
 
 const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.";
 
@@ -23,8 +23,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="bg-background/95 rounded-lg p-3 inline-block mb-4">
-              <img src={logo} alt="EnPesos.cl" className="h-9 w-auto object-contain" />
+            <div className="bg-background rounded-lg p-3 inline-block mb-4">
+              <img src={logo} alt="EnPesos.cl - Más pesos en tu cuenta" className="h-14 w-auto object-contain" />
             </div>
             <p className="text-background font-semibold mb-2">Más pesos en tu cuenta.</p>
             <p className="text-sm text-background/70 leading-relaxed">

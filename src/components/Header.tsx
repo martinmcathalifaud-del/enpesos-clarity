@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo-enpesos.png';
+import logo from '@/assets/logo-enpesos-header.png';
 
 const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.";
 
@@ -22,7 +22,7 @@ export default function Header() {
           <img
             src={logo}
             alt="EnPesos.cl"
-            className="h-9 sm:h-10 w-auto object-contain"
+            className="w-[130px] max-h-9 sm:w-[160px] sm:max-h-11 object-contain"
             loading="eager"
             decoding="async"
           />
