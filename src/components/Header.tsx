@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo-enpesos.png';
 
 const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.";
 
 const navLinks = [
-  { label: 'Cómo funciona', href: '#calculator' },
+  { label: 'Cómo funciona', href: '#como-funciona' },
   { label: 'Seguridad', href: '#seguridad' },
   { label: 'Bancos', href: '#bancos' },
-  { label: 'Preguntas frecuentes', href: '#faq' },
+  { label: 'Preguntas frecuentes', href: '#preguntas-frecuentes' },
 ];
 
 export default function Header() {
