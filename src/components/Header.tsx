@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo-enpesos.png';
 
 const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.";
 
@@ -18,9 +19,13 @@ export default function Header() {
     <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center gap-4">
         <a href="#" className="flex items-center shrink-0" aria-label="EnPesos.cl">
-          <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-primary">
-            EnPesos<span className="text-foreground">.cl</span>
-          </span>
+          <img
+            src={logo}
+            alt="EnPesos.cl"
+            className="h-9 sm:h-10 w-auto object-contain"
+            loading="eager"
+            decoding="async"
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-7">
