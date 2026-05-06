@@ -6,6 +6,7 @@ const WHATSAPP_URL = "https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%
 export default function Hero() {
   const scrollToCalc = () => document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
 
+
   return (
     <div className="lg:pr-8">
       <div className="inline-block bg-accent-light text-accent px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-in">
@@ -45,8 +46,8 @@ export default function Hero() {
         >
           Cotizar por WhatsApp
         </Button>
-        <Button variant="outline" onClick={scrollToCalc}>
-          Ver cómo funciona
+        <Button variant="outline" asChild>
+          <a href="#como-funciona">Ver cómo funciona</a>
         </Button>
       </div>
       <p className="text-xs text-muted-foreground">
