@@ -46,8 +46,8 @@ export default function Hero() {
         >
           Cotizar por WhatsApp
         </Button>
-        <Button variant="outline" onClick={scrollToCalc}>
-          Ver cómo funciona
+        <Button variant="outline" asChild>
+          <a href="#como-funciona">Ver cómo funciona</a>
         </Button>
       </div>
       <p className="text-xs text-muted-foreground">
