@@ -45,7 +45,7 @@ export default function QuoteCalculator() {
         className="w-full py-6 text-lg font-bold button-shadow"
         onClick={handleStartOperation}
       >
-        Cotizar por WhatsApp
+        Solicitar esta cotización
       </Button>
 
       <p className="text-xs text-muted-foreground text-center mt-3">
