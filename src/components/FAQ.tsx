@@ -79,6 +79,15 @@ export default function FAQ() {
             </div>
           ))}
         </div>
+
+        <div className="text-center mt-8">
+          <a
+            href="/preguntas-frecuentes"
+            className="text-primary font-semibold hover:underline underline-offset-4"
+          >
+            Ver todas las preguntas frecuentes →
+          </a>
+        </div>
       </div>
     </section>
   );
