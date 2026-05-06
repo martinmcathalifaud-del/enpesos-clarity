@@ -17,12 +17,14 @@ export default function Header() {
 
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center gap-4">
         <a href="#" className="flex items-center shrink-0" aria-label="EnPesos.cl">
           <img
             src={logo}
             alt="EnPesos.cl"
-            className="w-[130px] max-h-9 sm:w-[160px] sm:max-h-11 object-contain"
+            width={180}
+            height={52}
+            className="w-[135px] h-10 sm:w-[170px] sm:h-12 object-contain object-left"
             loading="eager"
             decoding="async"
           />
