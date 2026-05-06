@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import QuoteCalculator from '@/components/QuoteCalculator';
 import TrustSection from '@/components/TrustSection';
+import CompatibleBanks from '@/components/CompatibleBanks';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -23,6 +24,7 @@ const Index = () => {
       </section>
 
       <TrustSection />
+      <CompatibleBanks />
       <Testimonials />
       <FAQ />
       <Footer />
