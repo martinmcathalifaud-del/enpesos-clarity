@@ -19,7 +19,7 @@ const WHATSAPP_URL =
 
 export default function CompatibleBanks() {
   return (
-    <section className="py-16 bg-background">
+    <section id="bancos" className="py-16 bg-background">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 max-w-3xl mx-auto">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-light mb-4">
@@ -60,7 +60,7 @@ export default function CompatibleBanks() {
               className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-3 rounded-lg button-shadow transition-all hover:scale-[1.02]"
             >
               <MessageCircle className="w-5 h-5" />
-              Consultar mi banco por WhatsApp
+              Cotizar por WhatsApp
             </a>
           </div>
         </div>

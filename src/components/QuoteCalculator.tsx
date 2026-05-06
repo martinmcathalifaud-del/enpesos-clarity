@@ -45,11 +45,14 @@ export default function QuoteCalculator() {
         className="w-full py-6 text-lg font-bold button-shadow"
         onClick={handleStartOperation}
       >
-        Solicitar cotización
+        Cotizar por WhatsApp
       </Button>
 
       <p className="text-xs text-muted-foreground text-center mt-3">
         La cotización se confirma por WhatsApp antes de operar.
+      </p>
+      <p className="text-xs text-muted-foreground text-center mt-1">
+        No pedimos claves bancarias ni CVV por WhatsApp.
       </p>
     </div>
   );
