@@ -9,24 +9,20 @@ export default function Hero() {
 
   return (
     <div className="lg:pr-8">
-      <div className="inline-block bg-accent-light text-accent px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-in">
-        No es préstamo · cotización antes de operar
-      </div>
-
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 leading-[1.1] tracking-tight animate-fade-in">
         Convierte tu cupo internacional en
         <span className="text-primary"> pesos chilenos</span>
       </h1>
 
-      <p className="text-lg sm:text-xl text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-        Usa el cupo en dólares de tu tarjeta mediante una operación internacional asistida. Cotiza, valida y recibe pesos chilenos en tu cuenta.
+      <p className="text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        Usa el cupo en dólares de tu tarjeta para recibir pesos chilenos en tu cuenta, mediante una operación internacional asistida, simple y con acompañamiento humano.
       </p>
 
-      <div className="space-y-3 mb-8">
+      <div className="space-y-4 mb-10">
         {[
-          'No pedimos claves ni CVV',
-          'Transferencia tras validación del pago',
-          'Solo al titular - mismo RUT',
+          'Transforma tu cupo USD en pesos chilenos',
+          'Sin solicitar un préstamo bancario',
+          'Proceso asistido de principio a fin',
         ].map((item, index) => (
           <div
             key={index}
