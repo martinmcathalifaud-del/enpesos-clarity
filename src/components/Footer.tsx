@@ -1,8 +1,7 @@
 import { CreditCard, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-completo.png';
-
-const WHATSAPP_URL = 'https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.';
 
 const navLinks = [
   { label: 'Cómo funciona', href: '#como-funciona' },
@@ -27,7 +26,7 @@ export default function Footer() {
               </h2>
               <Button
                 className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
-                onClick={() => window.open(WHATSAPP_URL, '_blank')}
+                onClick={() => openWhatsApp('footer_cta')}
               >
                 <MessageCircle className="w-5 h-5" />
                 Hablar por WhatsApp
