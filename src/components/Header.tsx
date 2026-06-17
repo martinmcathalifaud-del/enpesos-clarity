@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-header.png';
-
-const WHATSAPP_URL = 'https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.';
 
 const navLinks = [
   { label: 'Cómo funciona', href: '#como-funciona' },
@@ -45,7 +44,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Button
             className="hidden sm:inline-flex h-11 rounded-xl px-5 font-bold button-shadow"
-            onClick={() => window.open(WHATSAPP_URL, '_blank')}
+            onClick={() => openWhatsApp('header_desktop')}
           >
             Cotizar por WhatsApp
           </Button>
@@ -78,7 +77,7 @@ export default function Header() {
               className="sm:hidden mt-2 rounded-xl font-bold"
               onClick={() => {
                 setOpen(false);
-                window.open(WHATSAPP_URL, '_blank');
+                openWhatsApp('header_mobile');
               }}
             >
               Cotizar por WhatsApp
