@@ -1,7 +1,6 @@
 import { CheckCircle, MessageCircle, ClipboardList } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const WHATSAPP_URL = 'https://wa.me/56974483779?text=Hola%20EnPesos%2C%20quiero%20cotizar%20por%20WhatsApp.';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 const bullets = [
   'No es un préstamo nuevo',
@@ -37,7 +36,7 @@ export default function Hero() {
       <div className="flex flex-col sm:flex-row gap-3 mb-3">
         <Button
           className="h-12 rounded-xl px-6 text-base font-bold button-shadow"
-          onClick={() => window.open(WHATSAPP_URL, '_blank')}
+          onClick={() => openWhatsApp('hero_primary')}
         >
           <MessageCircle className="w-5 h-5" />
           Cotizar por WhatsApp
