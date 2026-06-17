@@ -61,7 +61,12 @@ function readStoredSource(): LeadSourceData | null {
 
 function writeStoredSource(data: LeadSourceData) {
   if (typeof window === 'undefined') return;
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {
+    // Si el navegador bloquea storage, igual dejamos funcionar el link de WhatsApp.
+  }
 }
 
 function sourceFromReferrer() {
