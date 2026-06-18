@@ -15,6 +15,14 @@
     {
       "source": "/vender-cupo-en-dolares-chile/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/cuanto-recibo-por-mi-cupo-en-dolares",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/cuanto-recibo-por-mi-cupo-en-dolares/",
+      "destination": "/index.html"
     }
   ]
 }
