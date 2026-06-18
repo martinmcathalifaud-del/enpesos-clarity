@@ -6,13 +6,6 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
-const requirements = [
-  'Tener una tarjeta de crédito emitida en Chile.',
-  'Contar con cupo internacional o cupo en dólares disponible.',
-  'Ser titular de la tarjeta y de la cuenta donde recibirías los pesos.',
-  'Solicitar una cotización antes de decidir si avanzar.',
-];
-
 const steps = [
   {
     title: 'Nos indicas el monto que quieres cotizar',
@@ -186,21 +179,47 @@ export default function CupoDolaresAPesos() {
                   ¿Qué puedes cotizar?
                 </h2>
                 <p className="text-secondary-foreground leading-relaxed mb-6">
-                  Una conversión de cupo internacional disponible a pesos chilenos, evaluada caso a caso. Antes de avanzar, te informamos cuánto recibirías y qué condiciones aplican.
+                  Puedes cotizar una operación usando el cupo en dólares de tu tarjeta de crédito. En simple: se evalúa una transacción por un monto en dólares y, si aceptas la cotización, recibes en tu cuenta bancaria el equivalente en pesos chilenos, descontando la comisión y los costos del proceso.
                 </p>
-                <div className="space-y-4">
-                  {requirements.map((item) => (
-                    <div key={item} className="flex gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                      <p className="text-sm sm:text-base text-foreground font-medium">{item}</p>
+
+                <div className="rounded-[2rem] border border-border bg-secondary p-3 sm:p-4">
+                  <div className="rounded-[1.5rem] bg-background overflow-hidden border border-border">
+                    <div className="bg-primary px-4 py-3 flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-primary-foreground/95 flex items-center justify-center">
+                        <MessageCircle className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-extrabold text-primary-foreground">EnPesos por WhatsApp</p>
+                        <p className="text-xs text-primary-foreground/80">Atención humana</p>
+                      </div>
                     </div>
-                  ))}
+
+                    <div className="p-4 space-y-3 bg-[linear-gradient(135deg,hsl(var(--secondary))_0%,hsl(var(--background))_100%)]">
+                      <div className="max-w-[86%] rounded-2xl rounded-tl-md bg-background px-4 py-3 border border-border shadow-sm">
+                        <p className="text-sm text-foreground">Hola, quiero cambiar mi cupo en dólares a pesos. ¿Cuánto recibiría por USD 1.000?</p>
+                      </div>
+                      <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-primary px-4 py-3 shadow-sm">
+                        <p className="text-sm text-primary-foreground">Hola, Martín. Lo cotizamos antes de avanzar: te decimos el monto neto en pesos, comisión y costos incluidos.</p>
+                      </div>
+                      <div className="max-w-[84%] rounded-2xl rounded-tl-md bg-background px-4 py-3 border border-border shadow-sm">
+                        <p className="text-sm text-foreground">Perfecto. La plata queda en mi cuenta para usarla después?</p>
+                      </div>
+                      <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-md bg-primary px-4 py-3 shadow-sm">
+                        <p className="text-sm text-primary-foreground">Sí, si la operación se completa, recibes pesos en tu cuenta bancaria para usarlos según tus necesidades.</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-7 rounded-2xl bg-secondary p-4">
-                  <p className="text-sm font-bold text-foreground mb-1">Mensaje inicial sugerido</p>
-                  <p className="text-sm text-muted-foreground">
-                    “Hola, quiero cotizar mi cupo internacional y saber cuánto recibiría en pesos.”
-                  </p>
+
+                <div className="mt-5 grid gap-3 text-sm">
+                  <div className="flex gap-2 text-secondary-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                    <span>La cotización no te obliga a operar.</span>
+                  </div>
+                  <div className="flex gap-2 text-secondary-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                    <span>Debes ser titular de la tarjeta y de la cuenta bancaria.</span>
+                  </div>
                 </div>
               </aside>
             </div>
