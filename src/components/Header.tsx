@@ -16,14 +16,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 shadow-sm backdrop-blur">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] sm:h-[84px] flex justify-between items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[76px] sm:h-[92px] flex justify-between items-center gap-4">
         <a href="#inicio" className="flex items-center shrink-0 py-1" aria-label="EnPesos.cl - Más pesos en tu cuenta">
           <img
             src={logo}
             alt="EnPesos.cl - Más pesos en tu cuenta"
-            width={200}
-            height={56}
-            className="w-[148px] h-[42px] sm:w-[184px] sm:h-[56px] object-contain object-left block"
+            width={260}
+            height={74}
+            className="w-[188px] h-[52px] sm:w-[244px] sm:h-[70px] object-contain object-left block"
             loading="eager"
             decoding="async"
           />
