@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowRight, BookOpen, Calculator, CreditCard, FileText, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, BookOpen, Calculator, CreditCard, FileText, Info, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -7,6 +7,13 @@ import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
 const guides = [
+  {
+    category: 'Fundamentos',
+    title: 'Qué es EnPesos.cl',
+    description: 'Definición oficial de EnPesos, qué hace, qué no hace y cómo funciona la cotización asistida por WhatsApp.',
+    href: '/que-es-enpesos',
+    icon: Info,
+  },
   {
     category: 'Funcionamiento',
     title: 'Cupo en dólares a pesos chilenos',
@@ -62,7 +69,7 @@ export default function Guias() {
   useEffect(() => {
     document.title = 'Guías EnPesos | Cupo internacional y cupo en dólares';
 
-    const description = 'Guías simples para entender el cupo internacional, vender cupo en dólares, costos, seguridad, pago posterior y simulación de tarjeta antes de cotizar en EnPesos.cl.';
+    const description = 'Guías simples para entender qué es EnPesos, el cupo internacional, vender cupo en dólares, costos, seguridad, pago posterior y simulación de tarjeta antes de cotizar en EnPesos.cl.';
     const canonicalUrl = 'https://www.enpesos.cl/guias';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
@@ -94,7 +101,7 @@ export default function Guias() {
               Aprende antes de cotizar
             </h1>
             <p className="text-lg sm:text-xl text-secondary-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-              Información clara para entender tu cupo internacional, comparar alternativas y cotizar con más seguridad.
+              Información clara para entender qué es EnPesos, tu cupo internacional, comparar alternativas y cotizar con más seguridad.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <Button
@@ -134,7 +141,7 @@ export default function Guias() {
                     </h2>
                     <p className="text-sm text-secondary-foreground leading-relaxed mb-5">{guide.description}</p>
                     <span className="inline-flex items-center gap-2 text-sm font-bold text-primary">
-                      {guide.category === 'Herramienta' ? 'Usar simulador' : 'Leer guía'}
+                      {guide.category === 'Herramienta' ? 'Usar simulador' : guide.category === 'Fundamentos' ? 'Leer qué es EnPesos' : 'Leer guía'}
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </a>
