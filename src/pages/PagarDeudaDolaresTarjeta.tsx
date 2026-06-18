@@ -156,19 +156,19 @@ export default function PagarDeudaDolaresTarjeta() {
 
               <aside className="rounded-3xl border border-border bg-background p-6 sm:p-8 card-shadow">
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
-                  La pregunta correcta no es solo cuánto recibes
+                  Mira la operación completa, no solo el depósito
                 </h2>
                 <p className="text-secondary-foreground leading-relaxed mb-6">
-                  También deberías preguntarte: “si uso mi cupo internacional, ¿cómo aparecerá después en mi estado de cuenta y cómo lo voy a pagar?”.
+                  Recibir pesos hoy es solo una parte de la decisión. La otra parte es entender cómo quedará reflejado el cargo en tu tarjeta y cómo lo tendrás que pagar después.
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="rounded-2xl bg-secondary p-4">
-                    <p className="text-xs font-bold uppercase tracking-wide text-primary mb-2">Usuario</p>
-                    <p className="text-sm font-semibold text-foreground">“Si recibo pesos hoy, ¿después qué pasa con mi tarjeta?”</p>
+                    <p className="text-sm font-bold text-foreground mb-1">Lo que recibes</p>
+                    <p className="text-sm text-secondary-foreground">Monto neto estimado en pesos, informado antes de avanzar.</p>
                   </div>
                   <div className="rounded-2xl bg-primary-light p-4">
-                    <p className="text-xs font-bold uppercase tracking-wide text-primary mb-2">EnPesos</p>
-                    <p className="text-sm font-semibold text-foreground">“Antes de avanzar, revisa cómo tu banco factura el cargo, la fecha de pago y el tipo de cambio aplicable.”</p>
+                    <p className="text-sm font-bold text-foreground mb-1">Lo que debes revisar</p>
+                    <p className="text-sm text-secondary-foreground">Facturación, fecha de pago, tipo de cambio del banco e intereses si no pagas el total.</p>
                   </div>
                 </div>
               </aside>
