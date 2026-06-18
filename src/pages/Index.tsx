@@ -5,6 +5,7 @@ import TrustSection from '@/components/TrustSection';
 import HowItWorks from '@/components/HowItWorks';
 import CompatibleBanks from '@/components/CompatibleBanks';
 import FAQ from '@/components/FAQ';
+import HomeGuides from '@/components/HomeGuides';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
@@ -26,6 +27,7 @@ const Index = () => {
       <HowItWorks />
       <CompatibleBanks />
       <FAQ />
+      <HomeGuides />
       <Footer />
       <WhatsAppButton />
     </div>
