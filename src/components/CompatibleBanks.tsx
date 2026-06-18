@@ -8,12 +8,16 @@ const banks = [
   { name: 'Itaú', className: 'text-orange-600' },
   { name: 'Scotiabank', className: 'text-red-600' },
   { name: 'Banco Falabella', className: 'text-green-700' },
+  { name: 'CMR Falabella', className: 'text-green-700' },
   { name: 'Banco Ripley', className: 'text-purple-700' },
   { name: 'Cencosud Scotiabank', className: 'text-red-700' },
   { name: 'Líder BCI', className: 'text-blue-700' },
   { name: 'Banco BICE', className: 'text-blue-900' },
   { name: 'Banco Security', className: 'text-slate-700' },
   { name: 'Consorcio', className: 'text-blue-800' },
+  { name: 'Tenpo', className: 'text-violet-700' },
+  { name: 'MACH BCI', className: 'text-blue-700' },
+  { name: 'Mercado Pago', className: 'text-sky-700' },
   { name: 'VISA', className: 'text-blue-700 tracking-wide' },
   { name: 'Mastercard', className: 'text-slate-700' },
   { name: 'American Express', className: 'text-blue-800' },
@@ -31,7 +35,7 @@ export default function CompatibleBanks() {
             Bancos y tarjetas que podemos revisar
           </h2>
           <p className="text-muted-foreground text-lg">
-            Puedes consultar por tarjetas de crédito emitidas por bancos, emisores y casas comerciales en Chile. La compatibilidad final depende de la validación del caso, el cupo internacional disponible y las condiciones de tu tarjeta.
+            Puedes consultar por tarjetas de crédito emitidas por bancos, casas comerciales, fintech y emisores digitales en Chile. La compatibilidad final depende de la validación del caso, el cupo internacional disponible y las condiciones de tu tarjeta.
           </p>
         </div>
 
@@ -53,7 +57,7 @@ export default function CompatibleBanks() {
               <span>La compatibilidad se confirma durante la cotización.</span>
             </div>
             <p className="text-xs text-muted-foreground max-w-3xl">
-              EnPesos no está afiliado, asociado ni patrocinado por estos bancos, emisores o marcas. La mención es referencial para orientar la consulta del usuario.
+              EnPesos no está afiliado, asociado ni patrocinado por estos bancos, emisores, fintech o marcas. La mención es referencial para orientar la consulta del usuario.
             </p>
           </div>
         </div>
