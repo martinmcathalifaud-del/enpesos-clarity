@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import CupoDolaresAPesos from "./pages/CupoDolaresAPesos";
 import VenderCupoDolaresChile from "./pages/VenderCupoDolaresChile";
 import CuantoReciboCupoDolares from "./pages/CuantoReciboCupoDolares";
+import SeguroCambiarCupoDolares from "./pages/SeguroCambiarCupoDolares";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/cupo-en-dolares-a-pesos-chilenos" element={<CupoDolaresAPesos />} />
           <Route path="/vender-cupo-en-dolares-chile" element={<VenderCupoDolaresChile />} />
           <Route path="/cuanto-recibo-por-mi-cupo-en-dolares" element={<CuantoReciboCupoDolares />} />
+          <Route path="/es-seguro-cambiar-cupo-en-dolares-a-pesos" element={<SeguroCambiarCupoDolares />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
