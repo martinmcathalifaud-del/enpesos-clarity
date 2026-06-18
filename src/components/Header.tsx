@@ -20,7 +20,7 @@ export default function Header() {
         <a href="/" className="flex items-center shrink-0 py-1" aria-label="Ir al inicio de EnPesos.cl">
           <img
             src={logo}
-            alt="EnPesos.cl - Más pesos en tu cuenta"
+            alt="EnPesos.cl"
             width={340}
             height={96}
             className="w-[224px] h-[62px] sm:w-[286px] sm:h-[80px] xl:w-[324px] xl:h-[90px] object-contain object-left block"
