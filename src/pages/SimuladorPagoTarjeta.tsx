@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, ArrowRight, Calculator, CreditCard, MessageCircle, Pencil, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Calculator, CreditCard, Info, MessageCircle, Pencil, ShieldCheck } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -95,7 +95,7 @@ function simulateFixedPayment(initialAmount: number, monthlyRate: number, monthl
       totalInterest: 0,
       monthlyPayment,
       schedule,
-      warning: `Ese pago mensual no alcanza a disminuir la deuda: el interés estimado del primer mes sería ${formatCLP(firstMonthInterest)}. Sube el pago mensual o usa el pago referencial.`,
+      warning: `Con estos supuestos, el interés estimado del primer mes sería ${formatCLP(firstMonthInterest)}. Tu pago mensual no alcanza a cubrir ese interés, por eso la deuda no baja. Prueba con un pago mayor o usa el pago referencial.`,
       doesNotAmortize: true,
     };
   }
@@ -192,7 +192,6 @@ export default function SimuladorPagoTarjeta() {
     return simulateFixedPayment(initialAmount, monthlyRate, Math.max(fixedPayment, 0));
   }, [fixedPayment, initialAmount, monthlyRate, paymentMode, referencePayment, targetMonths]);
 
-  const interestVsAmount = initialAmount > 0 ? (result.totalInterest / initialAmount) * 100 : 0;
   const displayedSchedule = result.schedule.length > 12
     ? [...result.schedule.slice(0, 12), result.schedule[result.schedule.length - 1]]
     : result.schedule;
@@ -369,25 +368,30 @@ export default function SimuladorPagoTarjeta() {
                       <p className="text-2xl font-extrabold text-foreground">{formatCLP(result.monthlyPayment)}</p>
                     </div>
                     <div className="rounded-2xl bg-primary-light p-4">
-                      <p className="text-sm text-muted-foreground mb-1">Costo financiero estimado</p>
-                      <p className="text-2xl font-extrabold text-foreground">{result.doesNotAmortize ? 'No aplica' : formatCLP(result.totalInterest)}</p>
+                      <p className="text-sm text-muted-foreground mb-1">Total estimado pagado</p>
+                      <p className="text-2xl font-extrabold text-foreground">{result.doesNotAmortize ? 'No aplica' : formatCLP(result.totalPaid)}</p>
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-border bg-background p-4 mb-5">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Total estimado pagado</p>
-                        <p className="text-3xl font-extrabold text-foreground">{result.doesNotAmortize ? 'No aplica' : formatCLP(result.totalPaid)}</p>
-                      </div>
-                      <div className="text-sm text-secondary-foreground">
-                        {result.doesNotAmortize ? 'Con este pago mensual, la deuda no disminuye en la simulación.' : <>Costo financiero equivalente a aprox. <strong>{interestVsAmount.toFixed(1)}%</strong> del monto simulado.</>}
+                  {!result.doesNotAmortize && (
+                    <div className="rounded-2xl border border-primary/20 bg-background p-4 mb-4">
+                      <div className="flex gap-3">
+                        <Info className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                        <div>
+                          <h3 className="font-extrabold text-foreground mb-2">Si financias el saldo de tu tarjeta</h3>
+                          <p className="text-sm text-secondary-foreground leading-relaxed">
+                            Si no pagas el total facturado y decides financiar el saldo de tu tarjeta, el interés estimado que podrías pagar es de aproximadamente <strong>{formatCLP(result.totalInterest)}</strong>, según los supuestos actuales.
+                          </p>
+                          <p className="mt-3 rounded-xl bg-primary-light px-3 py-2 text-xs font-bold text-secondary-foreground">
+                            Importante: esto no es un cobro de EnPesos. Es una estimación referencial de intereses de tu tarjeta.
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
 
                   {paymentMode === 'reference' && (
-                    <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 mb-5">
+                    <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 mb-4">
                       <div className="flex gap-3">
                         <AlertTriangle className="w-5 h-5 mt-0.5 shrink-0" />
                         <p>Este escenario mantiene fijo el primer pago referencial ({formatCLP(referencePayment)}) durante todos los meses. Es una simplificación para entender el plazo.</p>
@@ -396,13 +400,19 @@ export default function SimuladorPagoTarjeta() {
                   )}
 
                   {result.warning && (
-                    <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-950">
+                    <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-950 mb-4">
                       <div className="flex gap-3">
                         <AlertTriangle className="w-5 h-5 mt-0.5 shrink-0" />
                         <p>{result.warning}</p>
                       </div>
                     </div>
                   )}
+
+                  <Button className="h-13 w-full rounded-xl px-7 text-base sm:text-lg font-extrabold button-shadow" onClick={() => openWhatsApp('simulador_pago_tarjeta_resultado')}>
+                    ¿Cuánto podrías recibir?
+                    <MessageCircle className="w-5 h-5" />
+                  </Button>
+                  <p className="mt-3 text-center text-sm text-secondary-foreground">Recibe una estimación antes de decidir.</p>
                 </div>
 
                 <div className="rounded-3xl border border-border bg-card p-6 sm:p-7">
@@ -442,19 +452,12 @@ export default function SimuladorPagoTarjeta() {
                     </thead>
                     <tbody>
                       {displayedSchedule.map((row, index) => (
-                        <>
-                          {index === 12 && row.month > 13 && (
-                            <tr key="separator" className="border-b border-border/70">
-                              <td className="py-3 pr-4 text-muted-foreground" colSpan={4}>… meses intermedios omitidos para simplificar</td>
-                            </tr>
-                          )}
-                          <tr key={row.month} className="border-b border-border/70">
-                            <td className="py-3 pr-4 font-bold text-foreground">{row.month}</td>
-                            <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.payment)}</td>
-                            <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.principal)}</td>
-                            <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.balance)}</td>
-                          </tr>
-                        </>
+                        <tr key={row.month === result.schedule[result.schedule.length - 1]?.month && index > 0 ? `final-${row.month}` : row.month} className="border-b border-border/70">
+                          <td className="py-3 pr-4 font-bold text-foreground">{index === displayedSchedule.length - 1 && result.schedule.length > 12 ? `${row.month} (final)` : row.month}</td>
+                          <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.payment)}</td>
+                          <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.principal)}</td>
+                          <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.balance)}</td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
@@ -474,7 +477,7 @@ export default function SimuladorPagoTarjeta() {
               <p className="text-lg text-secondary-foreground leading-relaxed max-w-3xl mx-auto mb-7">Puedes cotizar por WhatsApp y revisar el monto estimado en pesos antes de avanzar. La simulación de pago posterior es solo una referencia para mirar el escenario completo.</p>
               <div className="flex flex-col sm:flex-row justify-center gap-3">
                 <Button className="h-12 rounded-xl px-7 text-base font-bold button-shadow" onClick={() => openWhatsApp('simulador_pago_tarjeta_footer')}>
-                  Cotizar por WhatsApp
+                  ¿Cuánto podrías recibir?
                   <MessageCircle className="w-5 h-5" />
                 </Button>
                 <a href="/como-pagar-deuda-en-dolares-tarjeta-credito" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Leer guía de pago posterior</a>
