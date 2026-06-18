@@ -8,7 +8,7 @@ const navLinks = [
   { label: 'Seguridad', href: '#seguridad' },
   { label: 'Bancos', href: '#bancos' },
   { label: 'Preguntas frecuentes', href: '#preguntas-frecuentes' },
-  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Guías EnPesos', href: '/guias' },
 ];
 
 export default function Footer() {
