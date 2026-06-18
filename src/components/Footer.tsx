@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Seguridad', href: '#seguridad' },
   { label: 'Bancos', href: '#bancos' },
   { label: 'Preguntas frecuentes', href: '#preguntas-frecuentes' },
+  { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
   { label: 'Guías EnPesos', href: '/guias' },
 ];
 
@@ -46,7 +47,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto_1fr] items-center">
             <div>
-              <img src={logo} alt="EnPesos.cl - Más pesos en tu cuenta" className="h-12 w-auto object-contain object-left mb-2" />
+              <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-2" />
             </div>
 
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold text-secondary-foreground">
