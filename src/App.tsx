@@ -11,6 +11,7 @@ import CuantoReciboCupoDolares from "./pages/CuantoReciboCupoDolares";
 import SeguroCambiarCupoDolares from "./pages/SeguroCambiarCupoDolares";
 import AvanceCupoDolaresOnline from "./pages/AvanceCupoDolaresOnline";
 import PagarDeudaDolaresTarjeta from "./pages/PagarDeudaDolaresTarjeta";
+import SimuladorPagoTarjeta from "./pages/SimuladorPagoTarjeta";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/es-seguro-cambiar-cupo-en-dolares-a-pesos" element={<SeguroCambiarCupoDolares />} />
           <Route path="/avance-cupo-en-dolares-online" element={<AvanceCupoDolaresOnline />} />
           <Route path="/como-pagar-deuda-en-dolares-tarjeta-credito" element={<PagarDeudaDolaresTarjeta />} />
+          <Route path="/simulador-pago-tarjeta-credito" element={<SimuladorPagoTarjeta />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
