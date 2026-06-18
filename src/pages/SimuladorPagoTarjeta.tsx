@@ -12,7 +12,18 @@ type ScheduleRow = {
   month: number;
   payment: number;
   interest: number;
+  principal: number;
   balance: number;
+};
+
+type SimulationResult = {
+  months: number;
+  totalPaid: number;
+  totalInterest: number;
+  monthlyPayment: number;
+  schedule: ScheduleRow[];
+  warning: string;
+  doesNotAmortize: boolean;
 };
 
 const quickAmounts = [500, 1000, 1500, 2000];
@@ -52,7 +63,7 @@ const formatNumber = (value: number) =>
     maximumFractionDigits: 0,
   }).format(Math.round(value));
 
-function simulateFixedPayment(initialAmount: number, monthlyRate: number, monthlyPayment: number) {
+function simulateFixedPayment(initialAmount: number, monthlyRate: number, monthlyPayment: number): SimulationResult {
   let balance = initialAmount;
   let totalPaid = 0;
   let totalInterest = 0;
@@ -60,41 +71,46 @@ function simulateFixedPayment(initialAmount: number, monthlyRate: number, monthl
   const maxMonths = 360;
 
   if (initialAmount <= 0) {
-    return { months: 0, totalPaid: 0, totalInterest: 0, monthlyPayment: 0, schedule, warning: '' };
+    return { months: 0, totalPaid: 0, totalInterest: 0, monthlyPayment: 0, schedule, warning: '', doesNotAmortize: false };
   }
 
   if (monthlyPayment <= 0) {
     return {
-      months: maxMonths,
+      months: 0,
       totalPaid: 0,
       totalInterest: 0,
       monthlyPayment: 0,
       schedule,
       warning: 'Ingresa un pago mensual mayor a cero para poder simular.',
+      doesNotAmortize: true,
+    };
+  }
+
+  const firstMonthInterest = balance * monthlyRate;
+
+  if (monthlyRate > 0 && monthlyPayment <= firstMonthInterest) {
+    return {
+      months: 0,
+      totalPaid: 0,
+      totalInterest: 0,
+      monthlyPayment,
+      schedule,
+      warning: `Ese pago mensual no alcanza a disminuir la deuda: el interés estimado del primer mes sería ${formatCLP(firstMonthInterest)}. Sube el pago mensual o usa el pago referencial.`,
+      doesNotAmortize: true,
     };
   }
 
   for (let month = 1; month <= maxMonths && balance > 1; month += 1) {
     const interest = balance * monthlyRate;
     const amountDue = balance + interest;
-
-    if (monthlyPayment <= interest) {
-      return {
-        months: maxMonths,
-        totalPaid,
-        totalInterest,
-        monthlyPayment,
-        schedule,
-        warning: 'El pago mensual estimado no alcanza a cubrir el costo financiero mensual. Revisa los supuestos.',
-      };
-    }
-
     const payment = Math.min(monthlyPayment, amountDue);
+    const principal = Math.max(0, payment - interest);
+
     balance = Math.max(0, amountDue - payment);
     totalPaid += payment;
     totalInterest += interest;
 
-    schedule.push({ month, payment, interest, balance });
+    schedule.push({ month, payment, interest, principal, balance });
   }
 
   return {
@@ -103,7 +119,8 @@ function simulateFixedPayment(initialAmount: number, monthlyRate: number, monthl
     totalInterest,
     monthlyPayment,
     schedule,
-    warning: schedule.length >= maxMonths ? 'La simulación superó 360 meses. Revisa los supuestos.' : '',
+    warning: schedule.length >= maxMonths ? 'La simulación superó 360 meses. Prueba aumentar el pago mensual.' : '',
+    doesNotAmortize: false,
   };
 }
 
@@ -157,8 +174,9 @@ export default function SimuladorPagoTarjeta() {
         totalPaid: initialAmount,
         totalInterest: 0,
         monthlyPayment: initialAmount,
-        schedule: initialAmount > 0 ? [{ month: 1, payment: initialAmount, interest: 0, balance: 0 }] : [],
+        schedule: initialAmount > 0 ? [{ month: 1, payment: initialAmount, interest: 0, principal: initialAmount, balance: 0 }] : [],
         warning: '',
+        doesNotAmortize: false,
       };
     }
 
@@ -175,7 +193,10 @@ export default function SimuladorPagoTarjeta() {
   }, [fixedPayment, initialAmount, monthlyRate, paymentMode, referencePayment, targetMonths]);
 
   const interestVsAmount = initialAmount > 0 ? (result.totalInterest / initialAmount) * 100 : 0;
-  const schedulePreview = result.schedule.slice(0, 12);
+  const displayedSchedule = result.schedule.length > 12
+    ? [...result.schedule.slice(0, 12), result.schedule[result.schedule.length - 1]]
+    : result.schedule;
+  const timeLabel = result.doesNotAmortize ? 'No amortiza' : `${result.months} meses`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -289,6 +310,9 @@ export default function SimuladorPagoTarjeta() {
                         <span className="text-sm font-bold text-muted-foreground">CLP</span>
                         <input type="number" min="0" value={fixedPayment} onChange={(event) => setFixedPayment(Number(event.target.value))} className="w-full bg-transparent text-lg font-extrabold text-foreground outline-none" />
                       </div>
+                      <button type="button" onClick={() => setFixedPayment(Math.round(referencePayment))} className="mt-2 text-xs font-extrabold text-primary hover:text-primary-hover transition-colors">
+                        Usar pago referencial: {formatCLP(referencePayment)}
+                      </button>
                     </div>
                   )}
 
@@ -338,7 +362,7 @@ export default function SimuladorPagoTarjeta() {
                     </div>
                     <div className="rounded-2xl bg-secondary p-4">
                       <p className="text-sm text-muted-foreground mb-1">Tiempo estimado</p>
-                      <p className="text-2xl font-extrabold text-foreground">{result.months} meses</p>
+                      <p className="text-2xl font-extrabold text-foreground">{timeLabel}</p>
                     </div>
                     <div className="rounded-2xl bg-primary-light p-4">
                       <p className="text-sm text-muted-foreground mb-1">Pago mensual usado</p>
@@ -346,7 +370,7 @@ export default function SimuladorPagoTarjeta() {
                     </div>
                     <div className="rounded-2xl bg-primary-light p-4">
                       <p className="text-sm text-muted-foreground mb-1">Costo financiero estimado</p>
-                      <p className="text-2xl font-extrabold text-foreground">{formatCLP(result.totalInterest)}</p>
+                      <p className="text-2xl font-extrabold text-foreground">{result.doesNotAmortize ? 'No aplica' : formatCLP(result.totalInterest)}</p>
                     </div>
                   </div>
 
@@ -354,10 +378,10 @@ export default function SimuladorPagoTarjeta() {
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Total estimado pagado</p>
-                        <p className="text-3xl font-extrabold text-foreground">{formatCLP(result.totalPaid)}</p>
+                        <p className="text-3xl font-extrabold text-foreground">{result.doesNotAmortize ? 'No aplica' : formatCLP(result.totalPaid)}</p>
                       </div>
                       <div className="text-sm text-secondary-foreground">
-                        Costo financiero equivalente a aprox. <strong>{interestVsAmount.toFixed(1)}%</strong> del monto simulado.
+                        {result.doesNotAmortize ? 'Con este pago mensual, la deuda no disminuye en la simulación.' : <>Costo financiero equivalente a aprox. <strong>{interestVsAmount.toFixed(1)}%</strong> del monto simulado.</>}
                       </div>
                     </div>
                   </div>
@@ -396,13 +420,14 @@ export default function SimuladorPagoTarjeta() {
           </div>
         </section>
 
-        {schedulePreview.length > 0 && (
+        {displayedSchedule.length > 0 && (
           <section className="py-14 sm:py-18 bg-secondary">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow overflow-hidden">
                 <div className="mb-6">
                   <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Detalle referencial</p>
-                  <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Primeros meses de la simulación</h2>
+                  <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Cómo va bajando la deuda</h2>
+                  <p className="text-sm text-secondary-foreground mt-2">Mostramos los primeros 12 meses y, si el plazo es mayor, agregamos el mes final para ver cuándo queda en cero.</p>
                 </div>
 
                 <div className="overflow-x-auto">
@@ -410,25 +435,32 @@ export default function SimuladorPagoTarjeta() {
                     <thead>
                       <tr className="border-b border-border text-left text-muted-foreground">
                         <th className="py-3 pr-4 font-extrabold">Mes</th>
-                        <th className="py-3 pr-4 font-extrabold">Pago</th>
-                        <th className="py-3 pr-4 font-extrabold">Costo mensual</th>
-                        <th className="py-3 pr-4 font-extrabold">Saldo final</th>
+                        <th className="py-3 pr-4 font-extrabold">Pago mensual</th>
+                        <th className="py-3 pr-4 font-extrabold">Disminuye deuda</th>
+                        <th className="py-3 pr-4 font-extrabold">Saldo después</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {schedulePreview.map((row) => (
-                        <tr key={row.month} className="border-b border-border/70">
-                          <td className="py-3 pr-4 font-bold text-foreground">{row.month}</td>
-                          <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.payment)}</td>
-                          <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.interest)}</td>
-                          <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.balance)}</td>
-                        </tr>
+                      {displayedSchedule.map((row, index) => (
+                        <>
+                          {index === 12 && row.month > 13 && (
+                            <tr key="separator" className="border-b border-border/70">
+                              <td className="py-3 pr-4 text-muted-foreground" colSpan={4}>… meses intermedios omitidos para simplificar</td>
+                            </tr>
+                          )}
+                          <tr key={row.month} className="border-b border-border/70">
+                            <td className="py-3 pr-4 font-bold text-foreground">{row.month}</td>
+                            <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.payment)}</td>
+                            <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.principal)}</td>
+                            <td className="py-3 pr-4 text-secondary-foreground">{formatCLP(row.balance)}</td>
+                          </tr>
+                        </>
                       ))}
                     </tbody>
                   </table>
                 </div>
 
-                {result.schedule.length > 12 && <p className="text-xs text-muted-foreground mt-4">Mostramos los primeros 12 meses para mantener la tabla simple. El resultado total considera la simulación completa.</p>}
+                {result.schedule.length > 12 && <p className="text-xs text-muted-foreground mt-4">El resultado total considera la simulación completa, aunque el detalle muestre solo los primeros meses y el cierre.</p>}
               </div>
             </div>
           </section>
