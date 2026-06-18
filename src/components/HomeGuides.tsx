@@ -6,6 +6,7 @@ const featuredGuides = [
     title: '¿Cuánto recibo por mi cupo en dólares?',
     description: 'Entiende por qué el monto final depende del dólar del día, costos de procesamiento, comisión y condiciones del caso.',
     href: '/cuanto-recibo-por-mi-cupo-en-dolares',
+    cta: 'Guía para saber cuánto recibo por mi cupo en dólares',
     icon: Calculator,
   },
   {
@@ -13,6 +14,7 @@ const featuredGuides = [
     title: '¿Es seguro cambiar cupo en dólares a pesos?',
     description: 'Revisa qué señales mirar antes de operar, qué datos no entregar y cómo identificar un proceso responsable.',
     href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos',
+    cta: 'Guía sobre seguridad al cambiar cupo en dólares',
     icon: ShieldCheck,
   },
   {
@@ -20,6 +22,7 @@ const featuredGuides = [
     title: 'Vender cupo en dólares: cómo funciona en Chile',
     description: 'Aprende qué significa cotizar una operación con cupo internacional disponible y qué revisar antes de avanzar.',
     href: '/vender-cupo-en-dolares-chile',
+    cta: 'Guía para vender cupo en dólares en Chile',
     icon: WalletCards,
   },
 ];
@@ -42,7 +45,7 @@ export default function HomeGuides() {
             href="/guias"
             className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
           >
-            Ver todas las guías
+            Ver todas las guías EnPesos
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
@@ -65,7 +68,7 @@ export default function HomeGuides() {
                 </h3>
                 <p className="text-sm text-secondary-foreground leading-relaxed mb-5">{guide.description}</p>
                 <span className="inline-flex items-center gap-2 text-sm font-bold text-primary">
-                  Leer guía
+                  {guide.cta}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </a>
@@ -87,12 +90,12 @@ export default function HomeGuides() {
                 Simula el pago de tu tarjeta
               </h3>
               <p className="text-sm text-secondary-foreground leading-relaxed">
-                Antes de cotizar, estima cuánto podrías demorar en pagar si eliges pago total, mínimo estimado o un monto fijo mensual.
+                Antes de cotizar, estima cuánto podrías demorar en pagar si eliges pago total, pago mensual referencial o un monto fijo mensual.
               </p>
             </div>
           </div>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-primary shrink-0">
-            Usar simulador
+            Simulador de pago de tarjeta de crédito
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </a>
