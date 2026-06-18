@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { AlertTriangle, ArrowRight, CalendarDays, CheckCircle2, CreditCard, FileText, MessageCircle, WalletCards } from 'lucide-react';
+import { AlertTriangle, ArrowRight, CalendarDays, Calculator, CheckCircle2, CreditCard, FileText, MessageCircle, WalletCards } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -137,6 +137,13 @@ export default function PagarDeudaDolaresTarjeta() {
                     <MessageCircle className="w-5 h-5" />
                   </Button>
                   <a
+                    href="/simulador-pago-tarjeta-credito"
+                    className="inline-flex h-12 items-center justify-center rounded-xl border border-primary/30 bg-background px-7 text-base font-bold text-primary hover:bg-primary-light transition-colors"
+                  >
+                    Simular pago
+                    <Calculator className="w-5 h-5" />
+                  </a>
+                  <a
                     href="#que-revisar"
                     className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                   >
@@ -170,6 +177,13 @@ export default function PagarDeudaDolaresTarjeta() {
                     <p className="text-sm font-bold text-foreground mb-1">Lo que debes revisar</p>
                     <p className="text-sm text-secondary-foreground">Facturación, fecha de pago, tipo de cambio del banco e intereses si no pagas el total.</p>
                   </div>
+                  <a
+                    href="/simulador-pago-tarjeta-credito"
+                    className="flex items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-background p-4 text-sm font-bold text-primary hover:bg-primary-light transition-colors"
+                  >
+                    Usar simulador de pago
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
               </aside>
             </div>
@@ -283,16 +297,28 @@ export default function PagarDeudaDolaresTarjeta() {
               <p className="text-lg text-secondary-foreground leading-relaxed max-w-3xl mx-auto mb-7">
                 Podemos ayudarte a estimar cuánto recibirías en pesos. Pero antes de avanzar, revisa cómo tu banco mostrará y cobrará el cargo en tu tarjeta.
               </p>
-              <Button
-                className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
-                onClick={() => openWhatsApp('seo_pagar_deuda_footer')}
-              >
-                Consultar por WhatsApp
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+              <div className="flex flex-col sm:flex-row justify-center gap-3">
+                <Button
+                  className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
+                  onClick={() => openWhatsApp('seo_pagar_deuda_footer')}
+                >
+                  Consultar por WhatsApp
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+                <a
+                  href="/simulador-pago-tarjeta-credito"
+                  className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                >
+                  Usar simulador
+                </a>
+              </div>
             </div>
 
-            <div className="mt-8 grid md:grid-cols-3 gap-4">
+            <div className="mt-8 grid md:grid-cols-4 gap-4">
+              <a href="/simulador-pago-tarjeta-credito" className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
+                <p className="text-sm font-bold text-primary mb-2">Herramienta</p>
+                <h3 className="font-extrabold text-foreground">Simulador de pago de tarjeta</h3>
+              </a>
               <a href="/cuanto-recibo-por-mi-cupo-en-dolares" className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
                 <p className="text-sm font-bold text-primary mb-2">Guía relacionada</p>
                 <h3 className="font-extrabold text-foreground">Cuánto recibo por mi cupo en dólares</h3>
