@@ -49,13 +49,20 @@ const guides = [
     href: '/como-pagar-deuda-en-dolares-tarjeta-credito',
     icon: FileText,
   },
+  {
+    category: 'Herramienta',
+    title: 'Simulador de pago de tarjeta',
+    description: 'Simula cuánto podrías demorar en pagar tu tarjeta con pago total, mínimo estimado o monto fijo mensual.',
+    href: '/simulador-pago-tarjeta-credito',
+    icon: Calculator,
+  },
 ];
 
 export default function Guias() {
   useEffect(() => {
     document.title = 'Guías EnPesos | Cupo internacional y cupo en dólares';
 
-    const description = 'Guías simples para entender el cupo internacional, vender cupo en dólares, costos, seguridad y pago posterior de la tarjeta antes de cotizar en EnPesos.cl.';
+    const description = 'Guías simples para entender el cupo internacional, vender cupo en dólares, costos, seguridad, pago posterior y simulación de tarjeta antes de cotizar en EnPesos.cl.';
     const canonicalUrl = 'https://www.enpesos.cl/guias';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
@@ -127,7 +134,7 @@ export default function Guias() {
                     </h2>
                     <p className="text-sm text-secondary-foreground leading-relaxed mb-5">{guide.description}</p>
                     <span className="inline-flex items-center gap-2 text-sm font-bold text-primary">
-                      Leer guía
+                      {guide.category === 'Herramienta' ? 'Usar simulador' : 'Leer guía'}
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </a>
