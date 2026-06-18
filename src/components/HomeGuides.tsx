@@ -72,6 +72,30 @@ export default function HomeGuides() {
             );
           })}
         </div>
+
+        <a
+          href="/simulador-pago-tarjeta-credito"
+          className="group mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-3xl border border-primary/20 bg-background p-6 card-shadow hover:-translate-y-1 transition-all duration-200"
+        >
+          <div className="flex gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-primary-light flex items-center justify-center shrink-0">
+              <Calculator className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-primary mb-2">Herramienta</p>
+              <h3 className="text-xl font-extrabold text-foreground mb-2 group-hover:text-primary transition-colors">
+                Simula el pago de tu tarjeta
+              </h3>
+              <p className="text-sm text-secondary-foreground leading-relaxed">
+                Antes de cotizar, estima cuánto podrías demorar en pagar si eliges pago total, mínimo estimado o un monto fijo mensual.
+              </p>
+            </div>
+          </div>
+          <span className="inline-flex items-center gap-2 text-sm font-bold text-primary shrink-0">
+            Usar simulador
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </a>
       </div>
     </section>
   );
