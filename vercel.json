@@ -1,27 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/cupo-en-dolares-a-pesos-chilenos",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/cupo-en-dolares-a-pesos-chilenos/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/vender-cupo-en-dolares-chile",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/vender-cupo-en-dolares-chile/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/cuanto-recibo-por-mi-cupo-en-dolares",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/cuanto-recibo-por-mi-cupo-en-dolares/",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
