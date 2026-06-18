@@ -7,6 +7,14 @@
     {
       "source": "/cupo-en-dolares-a-pesos-chilenos/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/vender-cupo-en-dolares-chile",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/vender-cupo-en-dolares-chile/",
+      "destination": "/index.html"
     }
   ]
 }
