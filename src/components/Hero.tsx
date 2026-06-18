@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
 const bullets = [
-  'No es un préstamo nuevo',
+  'Sin préstamos ni avances bancarios',
   'No pedimos claves bancarias ni CVV',
   'Cotización clara antes de operar',
 ];
@@ -12,12 +12,12 @@ export default function Hero() {
   return (
     <div className="lg:pr-8">
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 leading-[1.06] tracking-tight animate-fade-in">
-        Recibe pesos usando el cupo internacional{' '}
-        <span className="text-primary">disponible</span> de tu tarjeta
+        Convierte tu cupo en dólares a{' '}
+        <span className="text-primary">pesos chilenos</span>
       </h1>
 
       <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-9 leading-relaxed animate-fade-in max-w-2xl" style={{ animationDelay: '0.1s' }}>
-        Cotiza una operación asistida por WhatsApp. Te mostramos el monto, el costo y las condiciones antes de que decidas operar.
+        Usa tu cupo internacional disponible de tarjeta de crédito para cotizar una operación asistida por WhatsApp. Antes de avanzar, te mostramos una estimación clara del monto que podrías recibir en pesos.
       </p>
 
       <div className="space-y-4 mb-9">
@@ -50,7 +50,7 @@ export default function Hero() {
       </div>
 
       <p className="text-xs sm:text-sm text-muted-foreground">
-        No pedimos claves bancarias ni CVV por WhatsApp.
+        EnPesos no es banco, no otorga créditos y no aumenta tu línea de crédito.
       </p>
     </div>
   );
