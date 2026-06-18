@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/cupo-en-dolares-a-pesos-chilenos",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/cupo-en-dolares-a-pesos-chilenos/",
       "destination": "/index.html"
     }
   ]
