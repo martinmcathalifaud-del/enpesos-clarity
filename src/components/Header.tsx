@@ -5,10 +5,10 @@ import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-header.png';
 
 const navLinks = [
-  { label: 'Cómo funciona', href: '#como-funciona' },
-  { label: 'Seguridad', href: '#seguridad' },
-  { label: 'Bancos', href: '#bancos' },
-  { label: 'Preguntas frecuentes', href: '#preguntas-frecuentes' },
+  { label: 'Cómo funciona', href: '/#como-funciona' },
+  { label: 'Seguridad', href: '/#seguridad' },
+  { label: 'Bancos', href: '/#bancos' },
+  { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
 ];
 
 export default function Header() {
@@ -16,14 +16,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/95 shadow-sm backdrop-blur">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[76px] sm:h-[92px] flex justify-between items-center gap-4">
-        <a href="#inicio" className="flex items-center shrink-0 py-1" aria-label="EnPesos.cl - Más pesos en tu cuenta">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[84px] sm:h-[104px] flex justify-between items-center gap-4">
+        <a href="/" className="flex items-center shrink-0 py-1" aria-label="Ir al inicio de EnPesos.cl">
           <img
             src={logo}
             alt="EnPesos.cl - Más pesos en tu cuenta"
-            width={260}
-            height={74}
-            className="w-[188px] h-[52px] sm:w-[244px] sm:h-[70px] object-contain object-left block"
+            width={340}
+            height={96}
+            className="w-[224px] h-[62px] sm:w-[286px] sm:h-[80px] xl:w-[324px] xl:h-[90px] object-contain object-left block"
             loading="eager"
             decoding="async"
           />
