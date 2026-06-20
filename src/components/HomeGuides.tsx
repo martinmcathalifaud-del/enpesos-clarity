@@ -1,6 +1,14 @@
-import { ArrowRight, Building2, Calculator, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, CreditCard, ShieldCheck, WalletCards } from 'lucide-react';
 
 const featuredGuides = [
+  {
+    category: 'Principal',
+    title: 'Cupo en dólares a pesos chilenos',
+    description: 'Conoce cómo cotizar tu cupo internacional disponible para evaluar cuánto podrías recibir en pesos chilenos antes de decidir.',
+    href: '/cupo-en-dolares-a-pesos-chilenos',
+    cta: 'Ver guía principal',
+    icon: CreditCard,
+  },
   {
     category: 'Costos',
     title: '¿Cuánto recibo por mi cupo en dólares?',
@@ -58,7 +66,7 @@ export default function HomeGuides() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
           {featuredGuides.map((guide) => {
             const Icon = guide.icon;
             return (
