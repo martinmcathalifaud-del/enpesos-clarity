@@ -14,6 +14,7 @@ import AvanceCupoDolaresOnline from "./pages/AvanceCupoDolaresOnline";
 import PagarDeudaDolaresTarjeta from "./pages/PagarDeudaDolaresTarjeta";
 import SimuladorPagoTarjeta from "./pages/SimuladorPagoTarjeta";
 import LiquidezNegociosCupoInternacional from "./pages/LiquidezNegociosCupoInternacional";
+import CupoDolaresCiudad from "./pages/CupoDolaresCiudad";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,11 @@ const App = () => (
           <Route path="/como-pagar-deuda-en-dolares-tarjeta-credito" element={<PagarDeudaDolaresTarjeta />} />
           <Route path="/simulador-pago-tarjeta-credito" element={<SimuladorPagoTarjeta />} />
           <Route path="/liquidez-para-negocios-cupo-internacional" element={<LiquidezNegociosCupoInternacional />} />
+          <Route path="/cupo-en-dolares-santiago" element={<CupoDolaresCiudad cityKey="santiago" />} />
+          <Route path="/cupo-en-dolares-las-condes" element={<CupoDolaresCiudad cityKey="las-condes" />} />
+          <Route path="/cupo-en-dolares-providencia" element={<CupoDolaresCiudad cityKey="providencia" />} />
+          <Route path="/cupo-en-dolares-concepcion" element={<CupoDolaresCiudad cityKey="concepcion" />} />
+          <Route path="/cupo-en-dolares-antofagasta" element={<CupoDolaresCiudad cityKey="antofagasta" />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
