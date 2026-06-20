@@ -15,6 +15,7 @@ import PagarDeudaDolaresTarjeta from "./pages/PagarDeudaDolaresTarjeta";
 import SimuladorPagoTarjeta from "./pages/SimuladorPagoTarjeta";
 import LiquidezNegociosCupoInternacional from "./pages/LiquidezNegociosCupoInternacional";
 import CupoDolaresCiudad from "./pages/CupoDolaresCiudad";
+import CupoDolaresBancoTarjeta from "./pages/CupoDolaresBancoTarjeta";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,16 @@ const App = () => (
           <Route path="/cupo-en-dolares-providencia" element={<CupoDolaresCiudad cityKey="providencia" />} />
           <Route path="/cupo-en-dolares-concepcion" element={<CupoDolaresCiudad cityKey="concepcion" />} />
           <Route path="/cupo-en-dolares-antofagasta" element={<CupoDolaresCiudad cityKey="antofagasta" />} />
+          <Route path="/bancos-y-tarjetas-cupo-en-dolares" element={<CupoDolaresBancoTarjeta />} />
+          <Route path="/cupo-en-dolares-banco-estado" element={<CupoDolaresBancoTarjeta pageKey="banco-estado" />} />
+          <Route path="/cupo-en-dolares-santander" element={<CupoDolaresBancoTarjeta pageKey="santander" />} />
+          <Route path="/cupo-en-dolares-banco-de-chile" element={<CupoDolaresBancoTarjeta pageKey="banco-de-chile" />} />
+          <Route path="/cupo-en-dolares-bci" element={<CupoDolaresBancoTarjeta pageKey="bci" />} />
+          <Route path="/cupo-en-dolares-scotiabank" element={<CupoDolaresBancoTarjeta pageKey="scotiabank" />} />
+          <Route path="/cupo-en-dolares-itau" element={<CupoDolaresBancoTarjeta pageKey="itau" />} />
+          <Route path="/cupo-en-dolares-cmr-falabella" element={<CupoDolaresBancoTarjeta pageKey="cmr-falabella" />} />
+          <Route path="/cupo-en-dolares-tarjeta-visa" element={<CupoDolaresBancoTarjeta pageKey="tarjeta-visa" />} />
+          <Route path="/cupo-en-dolares-tarjeta-mastercard" element={<CupoDolaresBancoTarjeta pageKey="tarjeta-mastercard" />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
