@@ -11,8 +11,15 @@ const navLinks = [
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
   { label: 'Guías EnPesos', href: '/guias' },
-  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
   { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
+];
+
+const cityLinks = [
+  { label: 'Cupo en dólares Santiago', href: '/cupo-en-dolares-santiago' },
+  { label: 'Cupo en dólares Las Condes', href: '/cupo-en-dolares-las-condes' },
+  { label: 'Cupo en dólares Providencia', href: '/cupo-en-dolares-providencia' },
+  { label: 'Cupo en dólares Concepción', href: '/cupo-en-dolares-concepcion' },
+  { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
 ];
 
 export default function Footer() {
@@ -66,6 +73,14 @@ export default function Footer() {
               <span>Proceso transparente y confidencial</span>
             </div>
           </div>
+
+          <nav className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-3 text-xs font-semibold text-muted-foreground">
+            {cityLinks.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
           <div className="mt-8 border-t border-border pt-6 text-center text-sm text-muted-foreground">
             <a href="/referidos" className="font-semibold text-primary hover:underline underline-offset-4">
