@@ -1,4 +1,4 @@
-import { ArrowRight, Calculator, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, ShieldCheck, WalletCards } from 'lucide-react';
 
 const featuredGuides = [
   {
@@ -25,6 +25,14 @@ const featuredGuides = [
     cta: 'Guía para vender cupo en dólares en Chile',
     icon: WalletCards,
   },
+  {
+    category: 'Negocios',
+    title: 'Liquidez para negocios con cupo internacional',
+    description: 'Revisa cuándo podría servir para cubrir caja puntual, proveedores o inventario usando cupo internacional disponible.',
+    href: '/liquidez-para-negocios-cupo-internacional',
+    cta: 'Ver alternativa de liquidez para mi negocio',
+    icon: Building2,
+  },
 ];
 
 export default function HomeGuides() {
@@ -50,7 +58,7 @@ export default function HomeGuides() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {featuredGuides.map((guide) => {
             const Icon = guide.icon;
             return (
