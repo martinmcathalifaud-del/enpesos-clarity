@@ -52,8 +52,8 @@ const trustItems = [
 function FooterLinkGroup({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
-      <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground mb-4">{title}</h3>
-      <nav className="grid gap-3 text-sm font-semibold text-secondary-foreground">
+      <h3 className="text-xs font-extrabold uppercase tracking-[0.16em] text-foreground mb-3">{title}</h3>
+      <nav className="grid gap-2.5 text-sm font-semibold leading-5 text-secondary-foreground">
         {links.map((link) => (
           <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
             {link.label}
@@ -85,9 +85,9 @@ function FooterAccordion({ title, links }: { title: string; links: FooterLink[] 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr] lg:gap-10">
-          <section className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-10">
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_2.35fr] lg:gap-10 xl:gap-12">
+          <section className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow lg:self-start">
             <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-4" />
             <p className="text-2xl font-extrabold text-foreground tracking-tight">Más pesos en tu cuenta</p>
             <p className="mt-3 text-sm text-secondary-foreground leading-relaxed">
@@ -102,7 +102,7 @@ export default function Footer() {
               <MessageCircle className="w-5 h-5" />
             </Button>
 
-            <div className="mt-6 grid gap-3">
+            <div className="mt-5 grid gap-2.5">
               {trustItems.map((item) => (
                 <div key={item} className="flex gap-3 text-sm font-semibold text-secondary-foreground">
                   <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
@@ -112,14 +112,11 @@ export default function Footer() {
             </div>
           </section>
 
-          <div className="hidden md:block rounded-3xl border border-border bg-background p-6">
+          <div className="hidden md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:grid-cols-4 lg:gap-x-8 xl:gap-x-10 lg:pt-2">
             <FooterLinkGroup title="Principales" links={primaryLinks} />
-          </div>
-          <div className="hidden md:block rounded-3xl border border-border bg-background p-6">
             <FooterLinkGroup title="Cobertura" links={coverageLinks} />
-          </div>
-          <div className="hidden md:block rounded-3xl border border-border bg-background p-6">
             <FooterLinkGroup title="Recursos" links={resourceLinks} />
+            <FooterLinkGroup title="Bancos y tarjetas" links={bankCardLinks} />
           </div>
 
           <div className="grid gap-3 md:hidden">
@@ -130,45 +127,27 @@ export default function Footer() {
           </div>
         </div>
 
-        <section className="mt-6 hidden md:block rounded-3xl border border-border bg-background p-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-            <div className="max-w-sm">
-              <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground mb-2">Bancos y tarjetas</h3>
-              <p className="text-sm text-secondary-foreground leading-relaxed">
-                Enlaces por banco, emisor o marca de tarjeta para revisar cupo internacional disponible.
-              </p>
-            </div>
-            <nav className="grid gap-x-5 gap-y-3 text-sm font-semibold text-secondary-foreground sm:grid-cols-2 lg:grid-cols-3">
-              {bankCardLinks.map((link) => (
-                <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </section>
-
-        <section className="mt-6 rounded-3xl border border-primary/20 bg-background p-5 sm:p-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <section className="mt-6 border-t border-border pt-4">
+          <div className="flex flex-col gap-3 rounded-2xl border border-border/70 bg-background/70 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-primary-light flex items-center justify-center shrink-0">
-                <CreditCard className="w-6 h-6 text-primary" />
+              <div className="w-9 h-9 rounded-xl bg-primary-light flex items-center justify-center shrink-0">
+                <CreditCard className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="text-base font-extrabold text-foreground">Programa de referidos</h3>
-                <p className="mt-1 text-sm text-secondary-foreground">Para asesores o referidores que quieren conocer el programa.</p>
+                <h3 className="text-sm font-extrabold text-foreground">Programa de referidos</h3>
+                <p className="mt-0.5 text-xs text-secondary-foreground">Para asesores o referidores que quieren conocer el programa.</p>
               </div>
             </div>
             <a
               href="/referidos"
-              className="inline-flex items-center justify-center rounded-xl border border-border bg-secondary px-5 py-3 text-sm font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+              className="inline-flex items-center justify-center rounded-xl border border-border bg-secondary px-4 py-2 text-xs font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
             >
               Conocer referidos
             </a>
           </div>
         </section>
 
-        <div className="mt-6 border-t border-border pt-5">
+        <div className="mt-5 border-t border-border pt-4">
           <div className="flex flex-col gap-3 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-accent shrink-0 mt-0.5" />
