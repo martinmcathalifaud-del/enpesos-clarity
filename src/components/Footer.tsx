@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Preguntas frecuentes', href: '#preguntas-frecuentes' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
   { label: 'Guías EnPesos', href: '/guias' },
+  { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
 ];
 
 export default function Footer() {
