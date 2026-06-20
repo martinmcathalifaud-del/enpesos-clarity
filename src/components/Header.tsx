@@ -6,7 +6,8 @@ import logo from '@/assets/logo-enpesos-header.png';
 
 const navLinks = [
   { label: 'Cómo funciona', href: '/#como-funciona' },
-  { label: 'Seguridad', href: '/#seguridad' },
+  { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
   { label: 'Bancos', href: '/#bancos' },
   { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
