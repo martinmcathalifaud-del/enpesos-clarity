@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Cómo funciona', href: '/#como-funciona' },
   { label: 'Seguridad', href: '/#seguridad' },
   { label: 'Bancos', href: '/#bancos' },
+  { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
 ];
 
