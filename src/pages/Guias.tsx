@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowRight, BookOpen, Calculator, CreditCard, FileText, Info, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, BookOpen, Calculator, CreditCard, FileText, Info, Landmark, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -20,6 +20,13 @@ const guides = [
     description: 'Qué significa cotizar tu cupo internacional y cómo funciona una conversión a pesos chilenos.',
     href: '/cupo-en-dolares-a-pesos-chilenos',
     icon: CreditCard,
+  },
+  {
+    category: 'Bancos y tarjetas',
+    title: 'Cupo en dólares según banco o tarjeta',
+    description: 'Revisa qué considerar según banco, emisor o marca de tarjeta antes de solicitar una cotización por WhatsApp.',
+    href: '/bancos-y-tarjetas-cupo-en-dolares',
+    icon: Landmark,
   },
   {
     category: 'Funcionamiento',
