@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Calculator, CreditCard, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, CreditCard, MapPin, ShieldCheck, WalletCards } from 'lucide-react';
 
 const featuredGuides = [
   {
@@ -41,6 +41,14 @@ const featuredGuides = [
     cta: 'Ver alternativa de liquidez para mi negocio',
     icon: Building2,
   },
+  {
+    category: 'Ciudades',
+    title: 'Cupo en dólares en Santiago',
+    description: 'Cotiza de forma remota por WhatsApp si estás en Santiago o Región Metropolitana, sin entregar claves bancarias.',
+    href: '/cupo-en-dolares-santiago',
+    cta: 'Ver página para Santiago',
+    icon: MapPin,
+  },
 ];
 
 export default function HomeGuides() {
@@ -66,7 +74,7 @@ export default function HomeGuides() {
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredGuides.map((guide) => {
             const Icon = guide.icon;
             return (
