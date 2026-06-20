@@ -4,10 +4,11 @@ import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-completo.png';
 
 const navLinks = [
-  { label: 'Cómo funciona', href: '#como-funciona' },
-  { label: 'Seguridad', href: '#seguridad' },
-  { label: 'Bancos', href: '#bancos' },
-  { label: 'Preguntas frecuentes', href: '#preguntas-frecuentes' },
+  { label: 'Cómo funciona', href: '/#como-funciona' },
+  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
+  { label: 'Bancos', href: '/#bancos' },
+  { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
   { label: 'Guías EnPesos', href: '/guias' },
   { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
@@ -35,8 +36,8 @@ export default function Footer() {
                 Hablar por WhatsApp
               </Button>
               <div className="mt-4">
-                <a href="#preguntas-frecuentes" className="text-sm font-semibold text-primary hover:underline underline-offset-4">
-                  Ver preguntas frecuentes →
+                <a href="/es-seguro-cambiar-cupo-en-dolares-a-pesos" className="text-sm font-semibold text-primary hover:underline underline-offset-4">
+                  Revisar guía de seguridad →
                 </a>
               </div>
             </div>
