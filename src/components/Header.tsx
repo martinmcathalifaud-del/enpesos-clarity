@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },
   { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
   { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
-  { label: 'Bancos', href: '/#bancos' },
+  { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
 ];
 

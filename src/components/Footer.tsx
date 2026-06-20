@@ -6,12 +6,25 @@ import logo from '@/assets/logo-enpesos-completo.png';
 const navLinks = [
   { label: 'Cómo funciona', href: '/#como-funciona' },
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
   { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
   { label: 'Bancos', href: '/#bancos' },
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
   { label: 'Guías EnPesos', href: '/guias' },
   { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
+];
+
+const bankCardLinks = [
+  { label: 'Cupo en dólares BancoEstado', href: '/cupo-en-dolares-banco-estado' },
+  { label: 'Cupo en dólares Santander', href: '/cupo-en-dolares-santander' },
+  { label: 'Cupo en dólares Banco de Chile', href: '/cupo-en-dolares-banco-de-chile' },
+  { label: 'Cupo en dólares BCI', href: '/cupo-en-dolares-bci' },
+  { label: 'Cupo en dólares Scotiabank', href: '/cupo-en-dolares-scotiabank' },
+  { label: 'Cupo en dólares Itaú', href: '/cupo-en-dolares-itau' },
+  { label: 'Cupo en dólares CMR Falabella', href: '/cupo-en-dolares-cmr-falabella' },
+  { label: 'Cupo en dólares Visa', href: '/cupo-en-dolares-tarjeta-visa' },
+  { label: 'Cupo en dólares Mastercard', href: '/cupo-en-dolares-tarjeta-mastercard' },
 ];
 
 const cityLinks = [
@@ -75,6 +88,14 @@ export default function Footer() {
           </div>
 
           <nav className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-3 text-xs font-semibold text-muted-foreground">
+            {bankCardLinks.map((link) => (
+              <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <nav className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-3 text-xs font-semibold text-muted-foreground">
             {cityLinks.map((link) => (
               <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
                 {link.label}

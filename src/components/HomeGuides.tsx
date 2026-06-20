@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Calculator, CreditCard, MapPin, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, CreditCard, Landmark, MapPin, ShieldCheck, WalletCards } from 'lucide-react';
 
 const featuredGuides = [
   {
@@ -8,6 +8,14 @@ const featuredGuides = [
     href: '/cupo-en-dolares-a-pesos-chilenos',
     cta: 'Ver guía principal',
     icon: CreditCard,
+  },
+  {
+    category: 'Bancos y tarjetas',
+    title: 'Cupo en dólares según banco o tarjeta',
+    description: 'Revisa qué considerar si tienes BancoEstado, Santander, Banco de Chile, BCI, CMR, Visa, Mastercard u otra tarjeta con cupo internacional disponible.',
+    href: '/bancos-y-tarjetas-cupo-en-dolares',
+    cta: 'Ver bancos y tarjetas',
+    icon: Landmark,
   },
   {
     category: 'Costos',
