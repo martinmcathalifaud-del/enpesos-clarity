@@ -57,7 +57,7 @@ export default function Header() {
               <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />
             </button>
 
-            <div className="pointer-events-none absolute right-0 top-full z-50 mt-3 w-64 opacity-0 translate-y-1 transition-all duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0">
+            <div className="pointer-events-none absolute right-0 top-full z-50 w-64 pt-3 opacity-0 translate-y-1 transition-all duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0">
               <div className="rounded-2xl border border-border bg-background p-2 shadow-xl">
                 {resourceLinks.map((link) => (
                   <a
