@@ -8,9 +8,8 @@ const navLinks = [
   { label: 'Cómo funciona', href: '/#como-funciona' },
   { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },
   { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
-  { label: 'Bancos', href: '/#bancos' },
-  { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },
   { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
+  { label: 'Bancos', href: '/#bancos' },
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
 ];
 
