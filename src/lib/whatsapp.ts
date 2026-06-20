@@ -123,13 +123,17 @@ export function getLeadSourceLabel() {
   return sourceLabels[source] || source;
 }
 
-export function getWhatsAppMessage() {
+export function getWhatsAppMessage(messageOverride?: string) {
+  if (messageOverride?.trim()) {
+    return messageOverride.trim();
+  }
+
   const sourceLabel = getLeadSourceLabel();
   return `Hola, vengo desde ${sourceLabel} y quiero cotizar mi cupo internacional.`;
 }
 
-export function getWhatsAppUrl() {
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(getWhatsAppMessage())}`;
+export function getWhatsAppUrl(messageOverride?: string) {
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(getWhatsAppMessage(messageOverride))}`;
 }
 
 export function trackWhatsAppClick(location: string) {
@@ -151,7 +155,7 @@ export function trackWhatsAppClick(location: string) {
   }
 }
 
-export function openWhatsApp(location: string) {
+export function openWhatsApp(location: string, messageOverride?: string) {
   trackWhatsAppClick(location);
-  window.open(getWhatsAppUrl(), '_blank', 'noopener,noreferrer');
+  window.open(getWhatsAppUrl(messageOverride), '_blank', 'noopener,noreferrer');
 }
