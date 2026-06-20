@@ -31,7 +31,7 @@ export default function Header() {
           />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -52,7 +52,7 @@ export default function Header() {
           </Button>
 
           <button
-            className="lg:hidden p-2 -mr-2 text-foreground"
+            className="xl:hidden p-2 -mr-2 text-foreground"
             onClick={() => setOpen((value) => !value)}
             aria-label="Abrir menú"
             aria-expanded={open}
@@ -63,7 +63,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="xl:hidden border-t border-border bg-background">
           <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
             {navLinks.map((link) => (
               <a
