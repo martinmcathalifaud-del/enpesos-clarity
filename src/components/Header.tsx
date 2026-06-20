@@ -5,12 +5,13 @@ import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-header.png';
 
 const navLinks = [
-  { label: 'Cómo funciona', href: '/#como-funciona' },
   { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },
   { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
-  { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
   { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
+  { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
   { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
+  { label: 'Guías EnPesos', href: '/guias' },
+  { label: 'Cómo funciona', href: '/#como-funciona' },
 ];
 
 export default function Header() {
@@ -31,7 +32,7 @@ export default function Header() {
           />
         </a>
 
-        <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -52,9 +53,9 @@ export default function Header() {
           </Button>
 
           <button
-            className="xl:hidden p-2 -mr-2 text-foreground"
+            className="xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-foreground shadow-sm"
             onClick={() => setOpen((value) => !value)}
-            aria-label="Abrir menú"
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={open}
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -63,20 +64,26 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="xl:hidden border-t border-border bg-background">
-          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="text-base font-semibold text-foreground py-1"
-              >
-                {link.label}
-              </a>
-            ))}
+        <div className="xl:hidden border-t border-border bg-secondary/95 px-4 py-4 shadow-lg">
+          <div className="max-w-7xl mx-auto rounded-3xl border border-border bg-background p-4 card-shadow">
+            <div className="mb-4 border-b border-border pb-3">
+              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-primary">Menú EnPesos</p>
+              <p className="mt-1 text-sm text-secondary-foreground">Cotiza y aprende antes de decidir.</p>
+            </div>
+            <nav className="grid gap-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-2xl px-4 py-3 text-base font-bold text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
             <Button
-              className="sm:hidden mt-2 rounded-xl font-bold"
+              className="mt-4 w-full h-12 rounded-xl font-bold"
               onClick={() => {
                 setOpen(false);
                 openWhatsApp('header_mobile');
@@ -84,7 +91,7 @@ export default function Header() {
             >
               Cotizar por WhatsApp
             </Button>
-          </nav>
+          </div>
         </div>
       )}
     </header>

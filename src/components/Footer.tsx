@@ -1,21 +1,37 @@
-import { CreditCard, MessageCircle, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, CreditCard, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-completo.png';
 
-const navLinks = [
-  { label: 'Cómo funciona', href: '/#como-funciona' },
+type FooterLink = {
+  label: string;
+  href: string;
+};
+
+const primaryLinks: FooterLink[] = [
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
-  { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
   { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
-  { label: 'Bancos', href: '/#bancos' },
-  { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
-  { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
-  { label: 'Guías EnPesos', href: '/guias' },
+  { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
   { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
 ];
 
-const bankCardLinks = [
+const coverageLinks: FooterLink[] = [
+  { label: 'Cupo en dólares Santiago', href: '/cupo-en-dolares-santiago' },
+  { label: 'Cupo en dólares Las Condes', href: '/cupo-en-dolares-las-condes' },
+  { label: 'Cupo en dólares Providencia', href: '/cupo-en-dolares-providencia' },
+  { label: 'Cupo en dólares Concepción', href: '/cupo-en-dolares-concepcion' },
+  { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
+];
+
+const resourceLinks: FooterLink[] = [
+  { label: 'Guías EnPesos', href: '/guias' },
+  { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
+  { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
+  { label: 'Cómo funciona', href: '/#como-funciona' },
+  { label: 'Bancos compatibles', href: '/#bancos' },
+];
+
+const bankCardLinks: FooterLink[] = [
   { label: 'Cupo en dólares BancoEstado', href: '/cupo-en-dolares-banco-estado' },
   { label: 'Cupo en dólares Santander', href: '/cupo-en-dolares-santander' },
   { label: 'Cupo en dólares Banco de Chile', href: '/cupo-en-dolares-banco-de-chile' },
@@ -27,91 +43,139 @@ const bankCardLinks = [
   { label: 'Cupo en dólares Mastercard', href: '/cupo-en-dolares-tarjeta-mastercard' },
 ];
 
-const cityLinks = [
-  { label: 'Cupo en dólares Santiago', href: '/cupo-en-dolares-santiago' },
-  { label: 'Cupo en dólares Las Condes', href: '/cupo-en-dolares-las-condes' },
-  { label: 'Cupo en dólares Providencia', href: '/cupo-en-dolares-providencia' },
-  { label: 'Cupo en dólares Concepción', href: '/cupo-en-dolares-concepcion' },
-  { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
+const trustItems = [
+  'Proceso transparente y confidencial',
+  'No pedimos claves ni contraseñas',
+  'Cotización previa antes de decidir',
 ];
+
+function FooterLinkGroup({ title, links }: { title: string; links: FooterLink[] }) {
+  return (
+    <div>
+      <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground mb-4">{title}</h3>
+      <nav className="grid gap-3 text-sm font-semibold text-secondary-foreground">
+        {links.map((link) => (
+          <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+function FooterAccordion({ title, links }: { title: string; links: FooterLink[] }) {
+  return (
+    <details className="group rounded-2xl border border-border bg-background p-4 open:card-shadow">
+      <summary className="cursor-pointer list-none flex items-center justify-between gap-4 text-sm font-extrabold uppercase tracking-[0.14em] text-foreground">
+        {title}
+        <span className="text-primary text-lg leading-none group-open:rotate-90 transition-transform">›</span>
+      </summary>
+      <nav className="mt-4 grid gap-3 border-t border-border pt-4 text-sm font-semibold text-secondary-foreground">
+        {links.map((link) => (
+          <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </details>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer className="bg-background">
-      <section className="py-12 sm:py-16 bg-secondary">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary-light via-background to-primary-light p-8 sm:p-10 text-center card-shadow">
-            <div className="absolute right-0 top-0 h-full w-1/2 opacity-30 bg-[radial-gradient(circle_at_70%_35%,hsl(var(--primary)_/_0.22),transparent_22%),radial-gradient(circle_at_78%_62%,hsl(var(--primary)_/_0.18),transparent_20%)]" />
-            <div className="relative mx-auto max-w-3xl">
-              <div className="mx-auto mb-5 w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center">
-                <CreditCard className="w-8 h-8 text-primary" />
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-4 tracking-tight">
-                ¿Tienes cupo internacional disponible y quieres evaluar una cotización?
-              </h2>
-              <Button
-                className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
-                onClick={() => openWhatsApp('footer_cta')}
-              >
-                <MessageCircle className="w-5 h-5" />
-                Hablar por WhatsApp
-              </Button>
-              <div className="mt-4">
-                <a href="/es-seguro-cambiar-cupo-en-dolares-a-pesos" className="text-sm font-semibold text-primary hover:underline underline-offset-4">
-                  Revisar guía de seguridad →
-                </a>
-              </div>
+    <footer className="border-t border-border bg-secondary">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr] lg:gap-10">
+          <section className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow">
+            <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-4" />
+            <p className="text-2xl font-extrabold text-foreground tracking-tight">Más pesos en tu cuenta</p>
+            <p className="mt-3 text-sm text-secondary-foreground leading-relaxed">
+              Cotiza tu cupo internacional disponible con atención humana por WhatsApp.
+            </p>
+
+            <Button
+              className="mt-5 w-full sm:w-auto h-12 rounded-xl px-6 font-bold button-shadow"
+              onClick={() => openWhatsApp('footer_cta')}
+            >
+              Cotizar por WhatsApp
+              <MessageCircle className="w-5 h-5" />
+            </Button>
+
+            <div className="mt-6 grid gap-3">
+              {trustItems.map((item) => (
+                <div key={item} className="flex gap-3 text-sm font-semibold text-secondary-foreground">
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
+          </section>
+
+          <div className="hidden md:block rounded-3xl border border-border bg-background p-6">
+            <FooterLinkGroup title="Principales" links={primaryLinks} />
+          </div>
+          <div className="hidden md:block rounded-3xl border border-border bg-background p-6">
+            <FooterLinkGroup title="Cobertura" links={coverageLinks} />
+          </div>
+          <div className="hidden md:block rounded-3xl border border-border bg-background p-6">
+            <FooterLinkGroup title="Recursos" links={resourceLinks} />
+          </div>
+
+          <div className="grid gap-3 md:hidden">
+            <FooterAccordion title="Principales" links={primaryLinks} />
+            <FooterAccordion title="Cobertura" links={coverageLinks} />
+            <FooterAccordion title="Recursos" links={resourceLinks} />
+            <FooterAccordion title="Bancos y tarjetas" links={bankCardLinks} />
           </div>
         </div>
-      </section>
 
-      <div className="border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto_1fr] items-center">
-            <div>
-              <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-2" />
+        <section className="mt-6 hidden md:block rounded-3xl border border-border bg-background p-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-sm">
+              <h3 className="text-sm font-extrabold uppercase tracking-[0.16em] text-foreground mb-2">Bancos y tarjetas</h3>
+              <p className="text-sm text-secondary-foreground leading-relaxed">
+                Enlaces por banco, emisor o marca de tarjeta para revisar cupo internacional disponible.
+              </p>
             </div>
-
-            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold text-secondary-foreground">
-              {navLinks.map((link) => (
+            <nav className="grid gap-x-5 gap-y-3 text-sm font-semibold text-secondary-foreground sm:grid-cols-2 lg:grid-cols-3">
+              {bankCardLinks.map((link) => (
                 <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
                   {link.label}
                 </a>
               ))}
             </nav>
-
-            <div className="lg:justify-self-end inline-flex items-center gap-2 text-sm text-secondary-foreground">
-              <ShieldCheck className="w-5 h-5 text-accent" />
-              <span>Proceso transparente y confidencial</span>
-            </div>
           </div>
+        </section>
 
-          <nav className="mt-7 flex flex-wrap justify-center gap-x-5 gap-y-3 text-xs font-semibold text-muted-foreground">
-            {bankCardLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <nav className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-3 text-xs font-semibold text-muted-foreground">
-            {cityLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="mt-8 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-            <a href="/referidos" className="font-semibold text-primary hover:underline underline-offset-4">
-              ¿Eres asesor o referidor? Conoce el programa de referidos →
-            </a>
-            <div className="mt-5 space-y-1 text-xs">
-              <p>EnPesos no ofrece préstamos, adelantos de efectivo ni financiamiento.</p>
-              <p>EnPesos no es banco ni entidad financiera regulada.</p>
-              <p>© 2026 EnPesos.cl. Todos los derechos reservados.</p>
+        <section className="mt-6 rounded-3xl border border-primary/20 bg-background p-5 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex gap-3">
+              <div className="w-11 h-11 rounded-2xl bg-primary-light flex items-center justify-center shrink-0">
+                <CreditCard className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-base font-extrabold text-foreground">Programa de referidos</h3>
+                <p className="mt-1 text-sm text-secondary-foreground">Para asesores o referidores que quieren conocer el programa.</p>
+              </div>
             </div>
+            <a
+              href="/referidos"
+              className="inline-flex items-center justify-center rounded-xl border border-border bg-secondary px-5 py-3 text-sm font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+            >
+              Conocer referidos
+            </a>
+          </div>
+        </section>
+
+        <div className="mt-6 border-t border-border pt-5">
+          <div className="flex flex-col gap-3 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-2">
+              <ShieldCheck className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+              <p>EnPesos no ofrece préstamos, adelantos de efectivo ni financiamiento.</p>
+            </div>
+            <p>EnPesos no es banco ni entidad financiera regulada.</p>
+            <p>© 2026 EnPesos.cl. Todos los derechos reservados.</p>
           </div>
         </div>
       </div>
