@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowRight, BookOpen, Calculator, CreditCard, FileText, Info, Landmark, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, CreditCard, Landmark, MapPin, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -7,13 +7,6 @@ import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
 const guides = [
-  {
-    category: 'Fundamentos',
-    title: 'Qué es EnPesos.cl',
-    description: 'Definición oficial de EnPesos, qué hace, qué no hace y cómo funciona la cotización asistida por WhatsApp.',
-    href: '/que-es-enpesos',
-    icon: Info,
-  },
   {
     category: 'Funcionamiento',
     title: 'Cupo en dólares a pesos chilenos',
@@ -27,13 +20,6 @@ const guides = [
     description: 'Revisa qué considerar según banco, emisor o marca de tarjeta antes de solicitar una cotización por WhatsApp.',
     href: '/bancos-y-tarjetas-cupo-en-dolares',
     icon: Landmark,
-  },
-  {
-    category: 'Funcionamiento',
-    title: 'Vender cupo en dólares: cómo funciona en Chile',
-    description: 'Qué se entiende por vender cupo en dólares y qué revisar antes de avanzar con una cotización.',
-    href: '/vender-cupo-en-dolares-chile',
-    icon: WalletCards,
   },
   {
     category: 'Costos',
@@ -50,26 +36,27 @@ const guides = [
     icon: ShieldCheck,
   },
   {
-    category: 'Comparación',
-    title: 'Avance cupo en dólares online',
-    description: 'Qué significa esta búsqueda y cómo diferenciar una cotización de cupo internacional de un avance bancario.',
-    href: '/avance-cupo-en-dolares-online',
-    icon: BookOpen,
+    category: 'Funcionamiento',
+    title: 'Vender cupo en dólares: cómo funciona en Chile',
+    description: 'Qué se entiende por vender cupo en dólares y qué revisar antes de avanzar con una cotización.',
+    href: '/vender-cupo-en-dolares-chile',
+    icon: WalletCards,
   },
   {
-    category: 'Tarjeta de crédito',
-    title: 'Cómo pagar la deuda en dólares de la tarjeta',
-    description: 'Qué revisar después de usar el cupo: facturación, fecha de pago, tipo de cambio e intereses.',
-    href: '/como-pagar-deuda-en-dolares-tarjeta-credito',
-    icon: FileText,
+    category: 'Negocios',
+    title: 'Liquidez para negocios con cupo internacional',
+    description: 'Revisa cuándo podría servir para cubrir caja puntual, proveedores o inventario usando cupo internacional disponible.',
+    href: '/liquidez-para-negocios-cupo-internacional',
+    icon: Building2,
   },
-  {
-    category: 'Herramienta',
-    title: 'Simulador de pago de tarjeta',
-    description: 'Simula cuánto podrías demorar en pagar tu tarjeta con pago total, mínimo estimado o monto fijo mensual.',
-    href: '/simulador-pago-tarjeta-credito',
-    icon: Calculator,
-  },
+];
+
+const cityLinks = [
+  { label: 'Cupo en dólares Santiago', href: '/cupo-en-dolares-santiago' },
+  { label: 'Cupo en dólares Las Condes', href: '/cupo-en-dolares-las-condes' },
+  { label: 'Cupo en dólares Providencia', href: '/cupo-en-dolares-providencia' },
+  { label: 'Cupo en dólares Concepción', href: '/cupo-en-dolares-concepcion' },
+  { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
 ];
 
 export default function Guias() {
@@ -148,12 +135,37 @@ export default function Guias() {
                     </h2>
                     <p className="text-sm text-secondary-foreground leading-relaxed mb-5">{guide.description}</p>
                     <span className="inline-flex items-center gap-2 text-sm font-bold text-primary">
-                      {guide.category === 'Herramienta' ? 'Usar simulador' : guide.category === 'Fundamentos' ? 'Leer qué es EnPesos' : 'Leer guía'}
+                      Leer guía
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </a>
                 );
               })}
+            </div>
+
+            <div className="mt-6 rounded-3xl border border-border bg-secondary p-5 sm:p-6">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-2xl">
+                  <p className="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.16em] text-primary mb-2">
+                    <MapPin className="w-4 h-4" />
+                    Cobertura por ciudad
+                  </p>
+                  <p className="text-sm text-secondary-foreground leading-relaxed">
+                    También puedes revisar páginas específicas por ciudad para cotizar cupo internacional disponible de forma remota.
+                  </p>
+                </div>
+                <nav className="flex flex-wrap gap-3">
+                  {cityLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className="inline-flex items-center justify-center rounded-full border border-border bg-background px-4 py-2 text-sm font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
             </div>
           </div>
         </section>
