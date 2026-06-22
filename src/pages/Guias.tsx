@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowRight, Building2, Calculator, CreditCard, Landmark, MapPin, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, CreditCard, Landmark, MessageCircle, ShieldCheck, WalletCards } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -51,12 +51,48 @@ const guides = [
   },
 ];
 
+const extraResourceLinks = [
+  { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Avance cupo en dólares online', href: '/avance-cupo-en-dolares-online' },
+  { label: 'Pagar deuda en dólares', href: '/como-pagar-deuda-en-dolares-tarjeta-credito' },
+];
+
+const bankCardLinks = [
+  { label: 'BancoEstado', href: '/cupo-en-dolares-banco-estado' },
+  { label: 'Santander', href: '/cupo-en-dolares-santander' },
+  { label: 'Banco de Chile', href: '/cupo-en-dolares-banco-de-chile' },
+  { label: 'BCI', href: '/cupo-en-dolares-bci' },
+  { label: 'Scotiabank', href: '/cupo-en-dolares-scotiabank' },
+  { label: 'Itaú', href: '/cupo-en-dolares-itau' },
+  { label: 'CMR Falabella', href: '/cupo-en-dolares-cmr-falabella' },
+  { label: 'Visa', href: '/cupo-en-dolares-tarjeta-visa' },
+  { label: 'Mastercard', href: '/cupo-en-dolares-tarjeta-mastercard' },
+];
+
 const cityLinks = [
-  { label: 'Cupo en dólares Santiago', href: '/cupo-en-dolares-santiago' },
-  { label: 'Cupo en dólares Las Condes', href: '/cupo-en-dolares-las-condes' },
-  { label: 'Cupo en dólares Providencia', href: '/cupo-en-dolares-providencia' },
-  { label: 'Cupo en dólares Concepción', href: '/cupo-en-dolares-concepcion' },
-  { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
+  { label: 'Santiago', href: '/cupo-en-dolares-santiago' },
+  { label: 'Las Condes', href: '/cupo-en-dolares-las-condes' },
+  { label: 'Providencia', href: '/cupo-en-dolares-providencia' },
+  { label: 'Concepción', href: '/cupo-en-dolares-concepcion' },
+  { label: 'Antofagasta', href: '/cupo-en-dolares-antofagasta' },
+];
+
+const compactSections = [
+  {
+    title: 'Más recursos',
+    description: 'Herramientas y guías complementarias para revisar antes de cotizar.',
+    links: extraResourceLinks,
+  },
+  {
+    title: 'Bancos y tarjetas populares',
+    description: 'Páginas específicas según banco, emisor o marca de tarjeta.',
+    links: bankCardLinks,
+  },
+  {
+    title: 'Cobertura por ciudad',
+    description: 'Referencias de atención remota para distintas ciudades de Chile.',
+    links: cityLinks,
+  },
 ];
 
 export default function Guias() {
@@ -143,28 +179,28 @@ export default function Guias() {
               })}
             </div>
 
-            <div className="mt-6 rounded-3xl border border-border bg-secondary p-5 sm:p-6">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                <div className="max-w-2xl">
-                  <p className="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.16em] text-primary mb-2">
-                    <MapPin className="w-4 h-4" />
-                    Cobertura por ciudad
-                  </p>
-                  <p className="text-sm text-secondary-foreground leading-relaxed">
-                    También puedes revisar páginas específicas por ciudad para cotizar cupo internacional disponible de forma remota.
-                  </p>
-                </div>
-                <nav className="flex flex-wrap gap-3">
-                  {cityLinks.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      className="inline-flex items-center justify-center rounded-full border border-border bg-background px-4 py-2 text-sm font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </nav>
+            <div className="mt-7 rounded-3xl border border-border bg-secondary/70 px-5 py-5 sm:px-6">
+              <div className="grid gap-5 lg:grid-cols-3">
+                {compactSections.map((section) => (
+                  <div key={section.title} className="min-w-0">
+                    <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary mb-2">
+                      {section.title}
+                    </p>
+                    <p className="text-sm text-secondary-foreground leading-relaxed mb-3">
+                      {section.description}
+                    </p>
+                    <nav className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-bold text-foreground">
+                      {section.links.map((link, index) => (
+                        <span key={link.href} className="inline-flex items-center gap-2">
+                          {index > 0 && <span className="text-muted-foreground/50">·</span>}
+                          <a href={link.href} className="hover:text-primary transition-colors">
+                            {link.label}
+                          </a>
+                        </span>
+                      ))}
+                    </nav>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
