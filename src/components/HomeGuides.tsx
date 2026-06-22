@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Calculator, CreditCard, Landmark, MapPin, ShieldCheck, WalletCards } from 'lucide-react';
+import { ArrowRight, Building2, Calculator, CreditCard, Landmark, ShieldCheck, WalletCards } from 'lucide-react';
 
 const featuredGuides = [
   {
@@ -49,14 +49,14 @@ const featuredGuides = [
     cta: 'Ver alternativa de liquidez para mi negocio',
     icon: Building2,
   },
-  {
-    category: 'Ciudades',
-    title: 'Cupo en dólares en Santiago',
-    description: 'Cotiza de forma remota por WhatsApp si estás en Santiago o Región Metropolitana, sin entregar claves bancarias.',
-    href: '/cupo-en-dolares-santiago',
-    cta: 'Ver página para Santiago',
-    icon: MapPin,
-  },
+];
+
+const cityLinks = [
+  { label: 'Santiago', href: '/cupo-en-dolares-santiago' },
+  { label: 'Las Condes', href: '/cupo-en-dolares-las-condes' },
+  { label: 'Providencia', href: '/cupo-en-dolares-providencia' },
+  { label: 'Concepción', href: '/cupo-en-dolares-concepcion' },
+  { label: 'Antofagasta', href: '/cupo-en-dolares-antofagasta' },
 ];
 
 export default function HomeGuides() {
@@ -106,6 +106,20 @@ export default function HomeGuides() {
               </a>
             );
           })}
+        </div>
+
+        <div className="mt-5 rounded-2xl border border-border/70 bg-background/70 px-5 py-4 text-sm text-secondary-foreground">
+          <span className="font-semibold text-foreground">También puedes revisar cobertura por ciudad: </span>
+          <span className="inline-flex flex-wrap gap-x-2 gap-y-1">
+            {cityLinks.map((city, index) => (
+              <span key={city.href} className="inline-flex items-center gap-x-2">
+                <a href={city.href} className="font-bold text-primary hover:text-primary/80 transition-colors">
+                  {city.label}
+                </a>
+                {index < cityLinks.length - 1 && <span className="text-border">·</span>}
+              </span>
+            ))}
+          </span>
         </div>
 
         <a
