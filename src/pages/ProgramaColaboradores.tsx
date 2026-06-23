@@ -7,7 +7,6 @@ import {
   ExternalLink,
   FileText,
   MessageCircle,
-  Newspaper,
   Sparkles,
   Users,
   WalletCards,
@@ -20,7 +19,7 @@ import { openWhatsApp } from '@/lib/whatsapp';
 
 const WHATSAPP_MESSAGES = {
   hero: 'Hola, quiero postular al programa de colaboradores de EnPesos.cl y recibir información.',
-  material: 'Hola, quiero revisar el material y condiciones del programa de colaboradores EnPesos.cl.',
+  earnings: 'Hola, quiero descubrir cuánto puedo ganar como colaborador de EnPesos.cl y recibir las condiciones del programa.',
   final: 'Hola, quiero postular al programa de colaboradores de EnPesos.cl.',
 };
 
@@ -60,25 +59,6 @@ const badReferral = [
   'No tiene claridad sobre su cupo internacional disponible.',
   'Quiere usar una tarjeta que no es propia.',
   'Busca una solución estructural para endeudamiento de largo plazo.',
-];
-
-const materialItems = [
-  {
-    title: 'Link o código personal',
-    description: 'Para identificar referidos y mantener trazabilidad.',
-  },
-  {
-    title: 'Mensaje sugerido',
-    description: 'Textos breves para historia, DM o WhatsApp.',
-  },
-  {
-    title: 'Guía de comunicación',
-    description: 'Qué decir, cómo explicarlo y cuándo derivar a EnPesos.',
-  },
-  {
-    title: 'Seguimiento simple',
-    description: 'Registro de contactos atendidos y operaciones concretadas.',
-  },
 ];
 
 const compatibleProfiles = [
@@ -371,14 +351,28 @@ export default function ProgramaColaboradores() {
               </p>
               <CheckList items={['EnPesos evalúa cada caso antes de avanzar.', 'La persona recibe una cotización clara.', 'Si solo consulta o no concreta, no se genera comisión.']} />
             </div>
+
+            <div className="md:col-span-2 flex flex-col items-center justify-center gap-4 rounded-[1.5rem] border border-emerald-200/20 bg-emerald-200/10 p-7 text-center">
+              <p className="max-w-2xl text-sm font-semibold leading-relaxed text-white/72">
+                ¿Quieres estimar el potencial del programa antes de postular? Te enviamos las condiciones y el material base para que evalúes si calza contigo.
+              </p>
+              <Button
+                size="lg"
+                className="h-13 rounded-2xl px-7 text-base font-black button-shadow"
+                onClick={() => openWhatsApp('colaboradores_descubre_cuanto_puedes_ganar', WHATSAPP_MESSAGES.earnings)}
+              >
+                Descubre cuánto puedes ganar
+                <ArrowRight className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
         </section>
 
         <section className="bg-[#f7f4e9] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <SectionTitle
-              kicker="Contexto de mercado"
-              title="Una categoría que ya se conversa en medios."
+              kicker="La nueva forma que los medios están hablando"
+              title="Noticias que explican este tipo de servicio."
               description="Distintos medios han explicado el uso del cupo internacional disponible como una forma de obtener pesos chilenos. Estas notas no son publicaciones de EnPesos, pero ayudan a entender la categoría y su crecimiento."
             />
 
@@ -440,44 +434,6 @@ export default function ProgramaColaboradores() {
                 </div>
                 <CheckList items={badReferral} />
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="material" className="bg-secondary px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-            <div>
-              <div className="mb-8 max-w-2xl">
-                <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Soporte para colaborar</p>
-                <h2 className="text-3xl font-black leading-none tracking-[-0.05em] text-foreground sm:text-5xl">Te damos estructura para comunicar sin improvisar.</h2>
-                <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
-                  El objetivo es proteger tu comunidad y evitar mensajes confusos. Por eso el programa entrega materiales y criterios claros para derivar.
-                </p>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {materialItems.map((item) => (
-                  <div key={item.title} className="rounded-3xl border border-border bg-background p-5 shadow-sm">
-                    <h3 className="text-base font-black text-foreground">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-secondary-foreground">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[2rem] border border-border bg-background p-7 card-shadow">
-              <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-primary-light text-primary"><MessageCircle className="h-6 w-6" /></div>
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-muted-foreground">Canal de atención</p>
-              <h3 className="text-3xl font-black leading-none tracking-[-0.05em]">WhatsApp ayuda, pero no es la propuesta central.</h3>
-              <p className="mt-4 leading-relaxed text-secondary-foreground">
-                La propuesta es ayudar a una persona a evaluar una alternativa de liquidez usando cupo internacional disponible, con cotización clara y acompañamiento humano. WhatsApp solo hace que ese proceso sea más simple y cercano.
-              </p>
-              <Button
-                className="mt-7 rounded-2xl font-black"
-                onClick={() => openWhatsApp('colaboradores_material', WHATSAPP_MESSAGES.material)}
-              >
-                Pedir material del programa
-              </Button>
             </div>
           </div>
         </section>
