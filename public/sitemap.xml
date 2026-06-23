@@ -19,6 +19,12 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://www.enpesos.cl/programa-de-colaboradores</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.enpesos.cl/simulador-pago-tarjeta-credito</loc>
     <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
