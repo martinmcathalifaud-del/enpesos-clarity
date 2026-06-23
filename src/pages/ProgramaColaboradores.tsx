@@ -4,14 +4,13 @@ import {
   BadgeDollarSign,
   CheckCircle2,
   CreditCard,
+  ExternalLink,
   FileText,
-  Handshake,
   MessageCircle,
-  ShieldCheck,
+  Newspaper,
   Sparkles,
   Users,
   WalletCards,
-  XCircle,
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -39,7 +38,7 @@ const modelSteps = [
   {
     number: '03',
     title: 'EnPesos evalúa y cotiza el caso',
-    description: 'Nosotros explicamos costos, condiciones y pasos. Tú no atiendes clientes ni cierras operaciones.',
+    description: 'Nosotros revisamos el caso, explicamos costos, condiciones y pasos. Tú no atiendes ni cierras operaciones.',
   },
   {
     number: '04',
@@ -53,29 +52,14 @@ const goodReferral = [
   'Tiene tarjeta de crédito propia.',
   'Cuenta con cupo internacional disponible.',
   'Quiere cotizar antes de tomar una decisión.',
-  'Entiende que no es préstamo ni plata garantizada.',
+  'Busca una solución puntual para ordenar pagos, cubrir un imprevisto o aprovechar una oportunidad.',
 ];
 
 const badReferral = [
-  'Busca plata garantizada o inmediata.',
-  'Necesita un préstamo o avance bancario.',
-  'Quiere operar sin entender costos y condiciones.',
-  'Pretende usar tarjetas de terceros o datos no propios.',
-  'Busca resolver un problema estructural de deuda.',
-];
-
-const communicationDo = [
-  'Liquidez usando cupo internacional disponible.',
-  'Evaluación caso a caso y cotización previa.',
-  'Acompañamiento humano antes de decidir.',
-  'Dato útil para una necesidad puntual de pesos.',
-];
-
-const communicationDont = [
-  'Préstamo o crédito.',
-  'Plata fácil o garantizada.',
-  'Aprobado para todos.',
-  'Sirve para cualquier tarjeta.',
+  'Quiere avanzar sin revisar una cotización.',
+  'No tiene claridad sobre su cupo internacional disponible.',
+  'Quiere usar una tarjeta que no es propia.',
+  'Busca una solución estructural para endeudamiento de largo plazo.',
 ];
 
 const materialItems = [
@@ -89,7 +73,7 @@ const materialItems = [
   },
   {
     title: 'Guía de comunicación',
-    description: 'Qué decir, qué evitar y cómo derivar bien.',
+    description: 'Qué decir, cómo explicarlo y cuándo derivar a EnPesos.',
   },
   {
     title: 'Seguimiento simple',
@@ -116,6 +100,33 @@ const compatibleProfiles = [
   },
 ];
 
+const pressCards = [
+  {
+    media: 'El Mostrador',
+    date: '2 enero 2026',
+    title: 'Cómo cambiar el cupo en dólares de la tarjeta de crédito en pesos chilenos online',
+    description: 'Explica cómo el cupo internacional puede convertirse en pesos mediante una operación online con cotización y acompañamiento.',
+    url: 'https://www.elmostrador.cl/mercados/2026/01/02/como-cambiar-el-cupo-en-dolares-de-la-tarjeta-de-credito-en-pesos-chilenos-online/',
+    image: 'https://media-front.elmostrador.cl/2026/01/dolar-peso-chileno.jpg',
+  },
+  {
+    media: 'TVN',
+    date: '5 enero 2026',
+    title: 'Cómo cambiar el cupo en dólares de mi tarjeta de crédito este 2026',
+    description: 'Presenta el cupo internacional como una capacidad ya aprobada por el banco que puede transformarse en pesos chilenos.',
+    url: 'https://www.tvn.cl/publireportajes/como-cambiar-el-cupo-en-dolares-de-mi-tarjeta-de-credito-este-2026-',
+    image: 'https://www.tvn.cl/tvn/site/artic/20260105/imag/foto_0000000220260105162829/Tarjeta_de_Credito.jpg',
+  },
+  {
+    media: 'Cooperativa',
+    date: '2 enero 2026',
+    title: 'Cómo vender el cupo en dólares de forma segura el 2026',
+    description: 'Describe esta categoría como una forma práctica de convertir parte del cupo internacional en pesos y transferirlo a una cuenta bancaria.',
+    url: 'https://www.cooperativa.cl/noticias/corporativo/noticias/marcas-negocios/como-vender-el-cupo-en-dolares-de-forma-segura-el-2026/2026-01-02/165601.html',
+    image: 'https://www.cooperativa.cl/noticias/site/artic/20260102/imag/foto_0000000220260102165601.jpg',
+  },
+];
+
 const faqs = [
   {
     question: '¿Tengo que explicar todo el servicio?',
@@ -128,10 +139,6 @@ const faqs = [
   {
     question: '¿Puedo participar sin hacer una campaña grande?',
     answer: 'Sí. El programa puede funcionar con una historia puntual, un mensaje directo o derivaciones privadas. No requiere una campaña masiva.',
-  },
-  {
-    question: '¿EnPesos es un préstamo?',
-    answer: 'No. EnPesos no debe comunicarse como préstamo, avance bancario ni plata garantizada. La propuesta es evaluar una alternativa de liquidez usando cupo internacional disponible.',
   },
   {
     question: '¿Cómo se sabe que alguien llegó por mí?',
@@ -149,13 +156,12 @@ function SectionTitle({ kicker, title, description }: { kicker: string; title: s
   );
 }
 
-function CheckList({ items, negative = false }: { items: string[]; negative?: boolean }) {
-  const Icon = negative ? XCircle : CheckCircle2;
+function CheckList({ items }: { items: string[] }) {
   return (
     <ul className="mt-5 grid gap-3">
       {items.map((item) => (
         <li key={item} className="flex gap-3 text-sm font-semibold leading-relaxed text-secondary-foreground">
-          <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${negative ? 'text-destructive' : 'text-accent'}`} />
+          <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
           <span>{item}</span>
         </li>
       ))}
@@ -262,11 +268,11 @@ export default function ProgramaColaboradores() {
               </div>
 
               <h1 className="max-w-4xl text-5xl font-black leading-[0.92] tracking-[-0.07em] sm:text-6xl lg:text-7xl">
-                Ayuda a personas a usar mejor un cupo que ya tienen disponible.
+                Ayuda a personas a que usen mejor sus tarjetas.
               </h1>
 
               <p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/72 sm:text-xl">
-                EnPesos.cl acompaña a personas con tarjeta de crédito y cupo internacional disponible que quieren evaluar una forma de obtener liquidez puntual en pesos chilenos. Tú derivas con un link o código personal; si la persona concreta una operación, recibes comisión.
+                Recomienda EnPesos.cl a personas que tienen tarjeta de crédito con cupo internacional disponible y necesitan liquidez puntual en pesos chilenos. Tú derivas el contacto con tu link o código personal; EnPesos evalúa el caso, entrega una cotización clara y acompaña el proceso. Si la persona concreta una operación, recibes comisión.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -284,25 +290,6 @@ export default function ProgramaColaboradores() {
                 >
                   Ver cómo funciona
                 </a>
-              </div>
-
-              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/52">
-                No se trata de prometer resultados ni vender “plata fácil”. Es un programa de referidos con comunicación responsable, condiciones claras y comisión por operaciones concretadas.
-              </p>
-
-              <div className="mt-9 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-3xl border border-white/10 bg-white/8 p-5">
-                  <p className="text-2xl font-black tracking-tight">0</p>
-                  <p className="mt-1 text-xs font-semibold leading-relaxed text-white/56">claves, token o contraseñas solicitadas</p>
-                </div>
-                <div className="rounded-3xl border border-white/10 bg-white/8 p-5">
-                  <p className="text-2xl font-black tracking-tight">Caso a caso</p>
-                  <p className="mt-1 text-xs font-semibold leading-relaxed text-white/56">evaluación y cotización previa antes de avanzar</p>
-                </div>
-                <div className="rounded-3xl border border-white/10 bg-white/8 p-5">
-                  <p className="text-2xl font-black tracking-tight">Comisión</p>
-                  <p className="mt-1 text-xs font-semibold leading-relaxed text-white/56">solo por operaciones concretadas</p>
-                </div>
               </div>
             </div>
 
@@ -349,8 +336,8 @@ export default function ProgramaColaboradores() {
           <div className="mx-auto max-w-7xl">
             <SectionTitle
               kicker="El modelo"
-              title="Simple como un programa de referidos. Serio como una alianza comercial."
-              description="El enfoque es transaccional: una persona llega por ti, EnPesos revisa el caso y, si la operación se concreta, recibes comisión. Sin prometer carrera comercial, sin vender un sistema de brokers y sin inflar expectativas."
+              title="Un programa simple para referir bien."
+              description="La lógica es directa: una persona llega por ti, EnPesos revisa el caso y, si la operación se concreta, recibes comisión. Sin vender un sistema de brokers ni inflar expectativas."
             />
 
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -366,37 +353,79 @@ export default function ProgramaColaboradores() {
         </section>
 
         <section className="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-20">
-          <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
-            <div className="rounded-[2rem] bg-[#0f172a] p-7 text-white shadow-xl lg:p-9">
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-emerald-200">Qué toma de Propital</p>
-              <h2 className="text-3xl font-black leading-none tracking-[-0.05em]">Look & feel de sistema serio.</h2>
+          <div className="mx-auto grid max-w-7xl gap-6 rounded-[2rem] bg-[#07110d] p-6 text-white shadow-[0_30px_90px_rgba(3,10,7,.22)] md:grid-cols-2 lg:p-9">
+            <div className="rounded-[1.5rem] border border-white/12 bg-white/8 p-7">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-emerald-200">Beneficio claro</p>
+              <h2 className="text-3xl font-black leading-none tracking-[-0.05em]">Gana comisión por operaciones concretadas.</h2>
               <p className="mt-4 leading-relaxed text-white/70">
-                Usamos una estética más premium, sensación de proceso, filtro de postulación, bloques de respaldo, jerarquía fuerte y CTA claro. No se ve como “pásame datos y te pago”, sino como una colaboración cuidada.
+                Recibe comisión cuando una persona referida por ti concreta una operación con EnPesos.cl. La comisión se acuerda antes de activar tu link o código personal, y solo se genera cuando existe una operación real.
               </p>
-              <CheckList items={['Postulación en vez de inscripción abierta.', 'Herramientas y material para comunicar bien.', 'Sensación de método, respaldo y acompañamiento.']} />
+              <CheckList items={['No necesitas vender ni cerrar la operación.', 'No se paga por clicks ni por simples cotizaciones.', 'El referido debe llegar por un canal identificable.']} />
             </div>
 
-            <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm lg:p-9">
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-muted-foreground">Qué toma de Tricapitals</p>
-              <h2 className="text-3xl font-black leading-none tracking-[-0.05em] text-foreground">Propuesta simple y transaccional.</h2>
-              <p className="mt-4 leading-relaxed text-secondary-foreground">
-                Incentivo claro, requisitos del referido, condiciones visibles y comisión por resultado. EnPesos no está ofreciendo una carrera de broker: está ofreciendo una forma de monetizar referidos concretados.
+            <div className="rounded-[1.5rem] border border-white/12 bg-white/8 p-7">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-emerald-200">Filtro del referido</p>
+              <h2 className="text-3xl font-black leading-none tracking-[-0.05em]">Deriva personas que sí calzan con el servicio.</h2>
+              <p className="mt-4 leading-relaxed text-white/70">
+                El programa funciona mejor cuando el referido cumple condiciones básicas: vive en Chile, es mayor de edad, tiene tarjeta de crédito propia y cuenta con cupo internacional disponible.
               </p>
-              <CheckList items={['Referir personas específicas.', 'Ganar solo si la operación se concreta.', 'Requisitos simples para reducir referidos no calificados.']} />
+              <CheckList items={['EnPesos evalúa cada caso antes de avanzar.', 'La persona recibe una cotización clara.', 'Si solo consulta o no concreta, no se genera comisión.']} />
             </div>
           </div>
         </section>
 
-        <section id="referir" className="bg-[#f7f4e9] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <section className="bg-[#f7f4e9] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <SectionTitle
-              kicker="A quién referir"
-              title="No todos los contactos son buenos referidos."
-              description="La calidad importa más que el volumen. La página filtra desde el inicio para proteger a la colaboradora, al referido y a EnPesos."
+              kicker="Contexto de mercado"
+              title="Una categoría que ya se conversa en medios."
+              description="Distintos medios han explicado el uso del cupo internacional disponible como una forma de obtener pesos chilenos. Estas notas no son publicaciones de EnPesos, pero ayudan a entender la categoría y su crecimiento."
+            />
+
+            <div className="grid gap-5 lg:grid-cols-3">
+              {pressCards.map((article) => (
+                <a
+                  key={article.url}
+                  href={article.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group overflow-hidden rounded-[1.75rem] border border-[#e8dfc6] bg-white shadow-sm transition-transform hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="relative aspect-[1.7/1] overflow-hidden bg-secondary">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute left-4 top-4 rounded-full bg-white/92 px-3 py-1 text-xs font-black text-foreground shadow-sm">
+                      {article.media}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-xs font-black uppercase tracking-[0.14em] text-primary">{article.date}</p>
+                    <h3 className="mt-3 text-xl font-black leading-tight tracking-[-0.04em] text-foreground">{article.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-secondary-foreground">{article.description}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-primary">
+                      Ver nota <ExternalLink className="h-4 w-4" />
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="referir" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl">
+            <SectionTitle
+              kicker="Requisitos importantes"
+              title="Qué debe cumplir una persona referida."
+              description="La calidad importa más que el volumen. Estos criterios ayudan a proteger a la colaboradora, al referido y a EnPesos."
             />
 
             <div className="grid gap-5 lg:grid-cols-2">
-              <div className="rounded-[2rem] border border-[#eadfca] bg-white p-7 shadow-sm">
+              <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
                 <div className="mb-5 flex items-center gap-3">
                   <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-light text-primary"><CheckCircle2 className="h-6 w-6" /></div>
                   <h3 className="text-2xl font-black tracking-[-0.04em]">Buen perfil para derivar</h3>
@@ -404,25 +433,25 @@ export default function ProgramaColaboradores() {
                 <CheckList items={goodReferral} />
               </div>
 
-              <div className="rounded-[2rem] border border-[#eadfca] bg-white p-7 shadow-sm">
+              <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
                 <div className="mb-5 flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-red-50 text-destructive"><XCircle className="h-6 w-6" /></div>
-                  <h3 className="text-2xl font-black tracking-[-0.04em]">No conviene derivar si busca</h3>
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary-light text-primary"><WalletCards className="h-6 w-6" /></div>
+                  <h3 className="text-2xl font-black tracking-[-0.04em]">Mejor revisar antes de derivar si</h3>
                 </div>
-                <CheckList items={badReferral} negative />
+                <CheckList items={badReferral} />
               </div>
             </div>
           </div>
         </section>
 
-        <section id="material" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <section id="material" className="bg-secondary px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
             <div>
               <div className="mb-8 max-w-2xl">
                 <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Soporte para colaborar</p>
                 <h2 className="text-3xl font-black leading-none tracking-[-0.05em] text-foreground sm:text-5xl">Te damos estructura para comunicar sin improvisar.</h2>
                 <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
-                  El objetivo es proteger tu comunidad y evitar mensajes confusos. Por eso el programa entrega materiales y límites claros.
+                  El objetivo es proteger tu comunidad y evitar mensajes confusos. Por eso el programa entrega materiales y criterios claros para derivar.
                 </p>
               </div>
 
@@ -438,27 +467,22 @@ export default function ProgramaColaboradores() {
 
             <div className="rounded-[2rem] border border-border bg-background p-7 card-shadow">
               <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-primary-light text-primary"><MessageCircle className="h-6 w-6" /></div>
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-muted-foreground">Comunicación responsable</p>
-              <h3 className="text-3xl font-black leading-none tracking-[-0.05em]">WhatsApp es canal, no la propuesta central.</h3>
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-muted-foreground">Canal de atención</p>
+              <h3 className="text-3xl font-black leading-none tracking-[-0.05em]">WhatsApp ayuda, pero no es la propuesta central.</h3>
               <p className="mt-4 leading-relaxed text-secondary-foreground">
-                La propuesta no es “atendemos por WhatsApp”. La propuesta es ayudar a una persona a evaluar una alternativa de liquidez usando cupo internacional disponible, con cotización clara y acompañamiento humano.
+                La propuesta es ayudar a una persona a evaluar una alternativa de liquidez usando cupo internacional disponible, con cotización clara y acompañamiento humano. WhatsApp solo hace que ese proceso sea más simple y cercano.
               </p>
-
-              <div className="mt-7 grid gap-5">
-                <div>
-                  <h4 className="text-sm font-black uppercase tracking-[0.14em] text-primary">Sí comunicar</h4>
-                  <CheckList items={communicationDo} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-black uppercase tracking-[0.14em] text-destructive">No comunicar</h4>
-                  <CheckList items={communicationDont} negative />
-                </div>
-              </div>
+              <Button
+                className="mt-7 rounded-2xl font-black"
+                onClick={() => openWhatsApp('colaboradores_material', WHATSAPP_MESSAGES.material)}
+              >
+                Pedir material del programa
+              </Button>
             </div>
           </div>
         </section>
 
-        <section id="condiciones" className="bg-secondary px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <section id="condiciones" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <SectionTitle
               kicker="Condiciones claras"
@@ -486,7 +510,7 @@ export default function ProgramaColaboradores() {
           </div>
         </section>
 
-        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <section className="bg-[#f7f4e9] px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <SectionTitle
               kicker="Perfiles compatibles"
@@ -495,7 +519,7 @@ export default function ProgramaColaboradores() {
             />
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {compatibleProfiles.map((profile) => (
-                <div key={profile.title} className="rounded-3xl border border-border bg-background p-6 shadow-sm">
+                <div key={profile.title} className="rounded-3xl border border-[#eadfca] bg-background p-6 shadow-sm">
                   <Users className="mb-4 h-8 w-8 text-primary" />
                   <h3 className="text-lg font-black tracking-[-0.03em]">{profile.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-secondary-foreground">{profile.description}</p>
@@ -505,7 +529,7 @@ export default function ProgramaColaboradores() {
           </div>
         </section>
 
-        <section className="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-20">
+        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#07110d] p-8 text-white shadow-[0_30px_90px_rgba(3,10,7,.22)] sm:p-10 lg:p-12">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
