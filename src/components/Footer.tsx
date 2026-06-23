@@ -91,7 +91,7 @@ export default function Footer() {
             <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-4" />
             <p className="text-2xl font-extrabold text-foreground tracking-tight">Más pesos en tu cuenta</p>
             <p className="mt-3 text-sm text-secondary-foreground leading-relaxed">
-              Cotiza tu cupo internacional disponible con atención humana por WhatsApp.
+              Evalúa una alternativa de liquidez usando cupo internacional disponible, con cotización clara antes de decidir.
             </p>
 
             <Button
@@ -134,15 +134,15 @@ export default function Footer() {
                 <CreditCard className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="text-sm font-extrabold text-foreground">Programa de referidos</h3>
-                <p className="mt-0.5 text-xs text-secondary-foreground">Para asesores o referidores que quieren conocer el programa.</p>
+                <h3 className="text-sm font-extrabold text-foreground">Programa de colaboradores</h3>
+                <p className="mt-0.5 text-xs text-secondary-foreground">Para creadoras, asesoras o referidores que quieren conocer el programa.</p>
               </div>
             </div>
             <a
-              href="/referidos"
+              href="/programa-de-colaboradores"
               className="inline-flex items-center justify-center rounded-xl border border-border bg-secondary px-4 py-2 text-xs font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
             >
-              Conocer referidos
+              Conocer programa
             </a>
           </div>
         </section>
