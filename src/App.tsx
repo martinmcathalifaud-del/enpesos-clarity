@@ -14,6 +14,8 @@ import AvanceCupoDolaresOnline from "./pages/AvanceCupoDolaresOnline";
 import PagarDeudaDolaresTarjeta from "./pages/PagarDeudaDolaresTarjeta";
 import SimuladorPagoTarjeta from "./pages/SimuladorPagoTarjeta";
 import LiquidezNegociosCupoInternacional from "./pages/LiquidezNegociosCupoInternacional";
+import FormasFinanciamientoPersonas from "./pages/FormasFinanciamientoPersonas";
+import FinanciamientoNegociosPymes from "./pages/FinanciamientoNegociosPymes";
 import ProgramaColaboradores from "./pages/ProgramaColaboradores";
 import CupoDolaresCiudad from "./pages/CupoDolaresCiudad";
 import CupoDolaresBancoTarjeta from "./pages/CupoDolaresBancoTarjeta";
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/como-pagar-deuda-en-dolares-tarjeta-credito" element={<PagarDeudaDolaresTarjeta />} />
           <Route path="/simulador-pago-tarjeta-credito" element={<SimuladorPagoTarjeta />} />
           <Route path="/liquidez-para-negocios-cupo-internacional" element={<LiquidezNegociosCupoInternacional />} />
+          <Route path="/formas-de-financiamiento-para-personas-chile" element={<FormasFinanciamientoPersonas />} />
+          <Route path="/financiamiento-para-negocios-y-pymes-chile" element={<FinanciamientoNegociosPymes />} />
           <Route path="/programa-de-colaboradores" element={<ProgramaColaboradores />} />
           <Route path="/referidos" element={<ProgramaColaboradores />} />
           <Route path="/cupo-en-dolares-santiago" element={<CupoDolaresCiudad cityKey="santiago" />} />
