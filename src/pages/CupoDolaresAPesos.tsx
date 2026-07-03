@@ -283,6 +283,13 @@ export default function CupoDolaresAPesos() {
               <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
                 Para que sea seguro, debe haber cotización previa, titularidad clara, costos explicados y cero claves bancarias. Si alguien te pide acceso a tu banco, token, coordenadas o control remoto, no avances.
               </p>
+              <a
+                href="/es-seguro-cambiar-cupo-en-dolares-a-pesos"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline"
+              >
+                Revisar guía de seguridad completa
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -303,7 +310,7 @@ export default function CupoDolaresAPesos() {
                 <HelpCircle className="h-7 w-7" />
               </div>
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Preguntas frecuentes</p>
-              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Lo que conviene aclarar antes de cotizar.</h2>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Cupo en dólares a pesos: dudas antes de cotizar.</h2>
             </div>
 
             <div className="space-y-4">
