@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import {
   AlertTriangle,
+  ArrowRight,
   CheckCircle2,
   FileCheck,
   HelpCircle,
@@ -207,12 +208,20 @@ export default function SeguroCambiarCupoDolares() {
                   <MessageCircle className="h-5 w-5" />
                 </Button>
                 <a
-                  href="#checklist"
+                  href="/cupo-en-dolares-a-pesos-chilenos"
                   className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
                 >
-                  Ver checklist
+                  Ver cómo funciona
                 </a>
               </div>
+
+              <a
+                href="#checklist"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline"
+              >
+                Revisar checklist de seguridad
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
 
             <div className="rounded-[2rem] border border-border bg-background p-6 shadow-xl lg:p-8">
@@ -315,7 +324,7 @@ export default function SeguroCambiarCupoDolares() {
                 <HelpCircle className="h-7 w-7" />
               </div>
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Preguntas frecuentes</p>
-              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Dudas normales antes de cotizar.</h2>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Seguridad, cupo en dólares y cotización.</h2>
             </div>
 
             <div className="space-y-4">
@@ -338,20 +347,28 @@ export default function SeguroCambiarCupoDolares() {
             <p className="mx-auto mb-7 max-w-2xl text-primary-foreground/85">
               Te explicamos el monto estimado, los costos y las condiciones antes de que decidas avanzar.
             </p>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="h-12 rounded-xl px-7 text-base font-black"
-              onClick={() =>
-                openWhatsApp(
-                  'seo_seguridad_final',
-                  'Hola, quiero cotizar mi cupo en dólares de forma segura con EnPesos.',
-                )
-              }
-            >
-              Hablar por WhatsApp
-              <MessageCircle className="h-5 w-5" />
-            </Button>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="h-12 rounded-xl px-7 text-base font-black"
+                onClick={() =>
+                  openWhatsApp(
+                    'seo_seguridad_final',
+                    'Hola, quiero cotizar mi cupo en dólares de forma segura con EnPesos.',
+                  )
+                }
+              >
+                Hablar por WhatsApp
+                <MessageCircle className="h-5 w-5" />
+              </Button>
+              <a
+                href="/cupo-en-dolares-a-pesos-chilenos"
+                className="inline-flex h-12 items-center justify-center rounded-xl border border-primary-foreground/30 px-7 text-base font-black text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+              >
+                Ver cupo en dólares a pesos
+              </a>
+            </div>
           </div>
         </section>
       </main>
