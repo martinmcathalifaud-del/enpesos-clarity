@@ -14,3 +14,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.enpesos.cl/sitemap.xml
+Sitemap: https://www.enpesos.cl/sitemap-seo-prioritario.xml
