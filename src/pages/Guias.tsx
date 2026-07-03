@@ -15,6 +15,20 @@ const guides = [
     icon: CreditCard,
   },
   {
+    category: 'Financiamiento',
+    title: 'Formas de financiamiento para personas',
+    description: 'Compara crédito de consumo, avance, línea de crédito, tarjeta, refinanciamiento y cupo en dólares.',
+    href: '/formas-de-financiamiento-para-personas-chile',
+    icon: WalletCards,
+  },
+  {
+    category: 'Negocios',
+    title: 'Financiamiento para negocios y pymes',
+    description: 'Opciones para capital de trabajo, liquidez, caja, proveedores, factoring, crédito y cupo internacional.',
+    href: '/financiamiento-para-negocios-y-pymes-chile',
+    icon: Building2,
+  },
+  {
     category: 'Bancos y tarjetas',
     title: 'Cupo en dólares según banco o tarjeta',
     description: 'Revisa qué considerar según banco, emisor o marca de tarjeta antes de solicitar una cotización por WhatsApp.',
@@ -52,6 +66,8 @@ const guides = [
 ];
 
 const extraResourceLinks = [
+  { label: 'Financiamiento para personas', href: '/formas-de-financiamiento-para-personas-chile' },
+  { label: 'Financiamiento para negocios', href: '/financiamiento-para-negocios-y-pymes-chile' },
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
   { label: 'Avance cupo en dólares online', href: '/avance-cupo-en-dolares-online' },
   { label: 'Pagar deuda en dólares', href: '/como-pagar-deuda-en-dolares-tarjeta-credito' },
@@ -97,9 +113,9 @@ const compactSections = [
 
 export default function Guias() {
   useEffect(() => {
-    document.title = 'Guías EnPesos | Cupo internacional y cupo en dólares';
+    document.title = 'Guías EnPesos | Cupo internacional, financiamiento y liquidez';
 
-    const description = 'Guías simples para entender qué es EnPesos, el cupo internacional, vender cupo en dólares, costos, seguridad, pago posterior y simulación de tarjeta antes de cotizar en EnPesos.cl.';
+    const description = 'Guías simples para entender EnPesos, cupo internacional, financiamiento para personas, liquidez para negocios, costos, seguridad y alternativas antes de cotizar.';
     const canonicalUrl = 'https://www.enpesos.cl/guias';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
@@ -131,7 +147,7 @@ export default function Guias() {
               Aprende antes de cotizar
             </h1>
             <p className="text-lg sm:text-xl text-secondary-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-              Información clara para entender qué es EnPesos, tu cupo internacional, comparar alternativas y cotizar con más seguridad.
+              Información clara para entender EnPesos, comparar alternativas de financiamiento y decidir con más seguridad antes de cotizar.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <Button
@@ -153,7 +169,7 @@ export default function Guias() {
 
         <section id="guias" className="py-14 sm:py-18 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {guides.map((guide) => {
                 const Icon = guide.icon;
                 return (
