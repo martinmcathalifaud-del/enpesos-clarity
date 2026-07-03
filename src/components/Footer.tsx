@@ -10,6 +10,8 @@ type FooterLink = {
 
 const primaryLinks: FooterLink[] = [
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Financiamiento personas', href: '/formas-de-financiamiento-para-personas-chile' },
+  { label: 'Financiamiento negocios', href: '/financiamiento-para-negocios-y-pymes-chile' },
   { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
   { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
   { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
