@@ -1,4 +1,22 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "enpesos.cl"
+        }
+      ],
+      "destination": "https://www.enpesos.cl/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/referidos",
+      "destination": "/programa-de-colaboradores",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
