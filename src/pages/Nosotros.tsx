@@ -87,7 +87,7 @@ export default function Nosotros() {
             <div>
               <p className="mb-4 inline-flex rounded-full border border-primary/20 bg-primary-light px-4 py-2 text-sm font-bold text-primary">Nosotros</p>
               <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Quienes somos y como trabajamos en EnPesos
+                Quiénes somos y cómo trabajamos en EnPesos
               </h1>
               <p className="mb-7 max-w-2xl text-lg leading-relaxed text-secondary-foreground sm:text-xl">
                 EnPesos es un servicio chileno que ayuda a cotizar cuantos pesos chilenos podrias recibir usando el cupo en dolares de tu tarjeta, con atencion humana, costo claro antes de decidir y sin claves bancarias.
