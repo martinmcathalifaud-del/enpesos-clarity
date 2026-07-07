@@ -58,6 +58,8 @@ const App = () => (
           <Route path="/cupo-en-dolares-providencia" element={<CupoDolaresCiudad cityKey="providencia" />} />
           <Route path="/cupo-en-dolares-concepcion" element={<CupoDolaresCiudad cityKey="concepcion" />} />
           <Route path="/cupo-en-dolares-antofagasta" element={<CupoDolaresCiudad cityKey="antofagasta" />} />
+          <Route path="/cupo-en-dolares-valparaiso" element={<CupoDolaresCiudad cityKey="valparaiso" />} />
+          <Route path="/cupo-en-dolares-rancagua" element={<CupoDolaresCiudad cityKey="rancagua" />} />
           <Route path="/bancos-y-tarjetas-cupo-en-dolares" element={<CupoDolaresBancoTarjeta />} />
           <Route path="/cupo-en-dolares-banco-estado" element={<CupoDolaresBancoTarjeta pageKey="banco-estado" />} />
           <Route path="/cupo-en-dolares-santander" element={<CupoDolaresBancoTarjeta pageKey="santander" />} />

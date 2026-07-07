@@ -4,7 +4,6 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock3,
-  CreditCard,
   MapPin,
   MessageCircle,
   ShieldCheck,
@@ -15,7 +14,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
-type CityKey = 'santiago' | 'las-condes' | 'providencia' | 'concepcion' | 'antofagasta';
+type CityKey = 'santiago' | 'las-condes' | 'providencia' | 'concepcion' | 'antofagasta' | 'valparaiso' | 'rancagua';
 
 type CityConfig = {
   key: CityKey;
@@ -23,6 +22,9 @@ type CityConfig = {
   region: string;
   slug: string;
   searchName: string;
+  title: string;
+  description: string;
+  h1: string;
   intro: string;
   localContext: string;
 };
@@ -34,8 +36,11 @@ const cities: Record<CityKey, CityConfig> = {
     region: 'Región Metropolitana',
     slug: 'cupo-en-dolares-santiago',
     searchName: 'Santiago',
-    intro: 'Si estás en Santiago y tienes tarjeta de crédito con cupo internacional disponible, puedes cotizar por WhatsApp una operación para evaluar cuánto podrías recibir en pesos chilenos antes de decidir.',
-    localContext: 'En Santiago muchas personas comparan alternativas de liquidez rápida, avances bancarios y uso de tarjeta. La diferencia es que en EnPesos primero revisas una cotización clara y puedes preguntar antes de avanzar.',
+    title: 'Cupo en dólares desde Santiago | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Santiago cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Santiago',
+    intro: 'Si estás en Santiago y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo. Primero ves monto estimado, costo y condiciones antes de decidir.',
+    localContext: 'Desde Santiago puedes solicitar una cotización remota para revisar tu cupo en dólares de la tarjeta, sin asumir una decisión a ciegas y sin entregar claves bancarias.',
   },
   'las-condes': {
     key: 'las-condes',
@@ -43,8 +48,11 @@ const cities: Record<CityKey, CityConfig> = {
     region: 'Región Metropolitana',
     slug: 'cupo-en-dolares-las-condes',
     searchName: 'Las Condes',
-    intro: 'Si estás en Las Condes y quieres evaluar tu cupo internacional disponible, puedes cotizar de forma remota por WhatsApp, sin entregar claves bancarias ni avanzar sin conocer antes el monto estimado.',
-    localContext: 'Las Condes concentra muchos usuarios bancarizados, profesionales, emprendedores y personas con tarjetas de crédito. Por eso es clave comparar el neto estimado, costos y condiciones antes de tomar una decisión.',
+    title: 'Cupo en dólares desde Las Condes | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Las Condes cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Las Condes',
+    intro: 'Si estás en Las Condes y tienes cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta usando ese cupo.',
+    localContext: 'Desde Las Condes puedes revisar una cotización previa con monto estimado, costo y condiciones antes de decidir si avanzar.',
   },
   providencia: {
     key: 'providencia',
@@ -52,8 +60,11 @@ const cities: Record<CityKey, CityConfig> = {
     region: 'Región Metropolitana',
     slug: 'cupo-en-dolares-providencia',
     searchName: 'Providencia',
-    intro: 'Si estás en Providencia y tienes cupo internacional disponible, puedes escribirnos por WhatsApp para cotizar una alternativa asistida y revisar el monto estimado en pesos chilenos antes de decidir.',
-    localContext: 'Providencia es una zona con alta actividad comercial y profesional. Si necesitas liquidez puntual, lo responsable es entender primero costos, plazos, banco, tarjeta y forma de pago posterior.',
+    title: 'Cupo en dólares desde Providencia | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Providencia cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Providencia',
+    intro: 'Si estás en Providencia y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
+    localContext: 'Desde Providencia puedes revisar una cotización clara antes de decidir, con explicación de costos, condiciones y cargo posterior en la tarjeta.',
   },
   concepcion: {
     key: 'concepcion',
@@ -61,8 +72,11 @@ const cities: Record<CityKey, CityConfig> = {
     region: 'Región del Biobío',
     slug: 'cupo-en-dolares-concepcion',
     searchName: 'Concepción',
-    intro: 'Si estás en Concepción y buscas cotizar cupo en dólares a pesos chilenos, EnPesos atiende por WhatsApp para revisar tu caso de forma remota, clara y sin pedir claves bancarias.',
-    localContext: 'La atención remota permite cotizar desde Concepción sin depender de una oficina presencial. Lo importante es revisar compatibilidad del banco, cupo disponible y condiciones antes de avanzar.',
+    title: 'Cupo en dólares desde Concepción | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Concepción cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Concepción',
+    intro: 'Si estás en Concepción y tienes cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo.',
+    localContext: 'Desde Concepción puedes cotizar de forma remota, revisar el monto estimado y decidir con más información antes de avanzar.',
   },
   antofagasta: {
     key: 'antofagasta',
@@ -70,8 +84,35 @@ const cities: Record<CityKey, CityConfig> = {
     region: 'Región de Antofagasta',
     slug: 'cupo-en-dolares-antofagasta',
     searchName: 'Antofagasta',
-    intro: 'Si estás en Antofagasta y necesitas evaluar tu cupo internacional disponible, puedes cotizar por WhatsApp cuánto podrías recibir en pesos chilenos antes de decidir si avanzar.',
-    localContext: 'En ciudades con alta actividad laboral y comercial como Antofagasta, muchas necesidades de liquidez son puntuales. La cotización previa ayuda a comparar sin asumir una operación a ciegas.',
+    title: 'Cupo en dólares desde Antofagasta | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Antofagasta cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. No somos casa de cambio ni pedimos claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Antofagasta',
+    intro: 'Si estás en Antofagasta y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo. Primero ves monto estimado, costo y condiciones antes de decidir.',
+    localContext: 'Desde Antofagasta puedes solicitar una cotización previa para saber cuántos pesos chilenos podrías recibir en tu cuenta usando el cupo en dólares de tu tarjeta.',
+  },
+  valparaiso: {
+    key: 'valparaiso',
+    name: 'Valparaíso',
+    region: 'Región de Valparaíso',
+    slug: 'cupo-en-dolares-valparaiso',
+    searchName: 'Valparaíso',
+    title: 'Cupo en dólares desde Valparaíso | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Valparaíso cuántos pesos chilenos podrías recibir usando cupo internacional disponible de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Valparaíso',
+    intro: 'Si estás en Valparaíso y tienes cupo en dólares disponible en tu tarjeta, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
+    localContext: 'Desde Valparaíso puedes revisar una cotización previa con monto estimado, costo y condiciones antes de decidir si avanzar.',
+  },
+  rancagua: {
+    key: 'rancagua',
+    name: 'Rancagua',
+    region: "Región de O'Higgins",
+    slug: 'cupo-en-dolares-rancagua',
+    searchName: 'Rancagua',
+    title: 'Cupo en dólares desde Rancagua | Cotiza a pesos chilenos',
+    description: 'Desde Rancagua, cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Con costo claro antes de decidir.',
+    h1: 'Cupo en dólares a pesos chilenos desde Rancagua',
+    intro: 'Si estás en Rancagua y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
+    localContext: 'Desde Rancagua puedes revisar monto estimado, costo y condiciones antes de decidir si quieres avanzar con una operación asistida.',
   },
 };
 
@@ -79,51 +120,55 @@ const cityList = Object.values(cities);
 
 const processSteps = [
   {
-    title: 'Nos escribes por WhatsApp',
-    description: 'Indicas desde qué ciudad cotizas, banco, tarjeta y monto aproximado que quieres revisar.',
+    title: 'Indicas tu cupo y monto',
+    description: 'Nos cuentas que tienes cupo internacional disponible y el monto aproximado que quieres cotizar.',
   },
   {
-    title: 'Revisamos si el caso tiene sentido',
-    description: 'Validamos información básica para estimar condiciones. Nunca pedimos claves bancarias, token ni acceso remoto.',
+    title: 'Recibes una cotización previa',
+    description: 'Revisas cuántos pesos chilenos podrías recibir, junto con costo y condiciones antes de decidir.',
   },
   {
-    title: 'Recibes una cotización clara',
-    description: 'Antes de avanzar, ves monto estimado en pesos, costos considerados y condiciones relevantes.',
+    title: 'Decides si avanzar',
+    description: 'Cotizar no te obliga a continuar. Puedes preguntar, comparar y decidir con más información.',
   },
   {
-    title: 'Tú decides si continuar',
-    description: 'Cotizar no te obliga a operar. Puedes comparar, preguntar y decidir con más información.',
+    title: 'Recibes transferencia en pesos',
+    description: 'Si decides avanzar y la operación se confirma, recibes una transferencia en pesos chilenos en tu cuenta.',
   },
 ];
 
 const safetyItems = [
-  'No entregues claves bancarias, token, contraseñas ni códigos dinámicos.',
-  'No aceptes acceso remoto a tu celular o computador.',
-  'Pide siempre el monto neto estimado antes de avanzar.',
-  'Confirma costos, condiciones y forma de pago posterior de tu tarjeta.',
-  'Evita cualquier oferta que prometa resultados garantizados sin revisar tu caso.',
+  'No pedimos claves bancarias, token, coordenadas ni contraseñas.',
+  'No pedimos CVV por WhatsApp ni acceso remoto a tu celular o computador.',
+  'Primero revisas monto estimado, costo y condiciones antes de decidir.',
+  'Usa únicamente los canales enlazados desde enpesos.cl y nuestras redes oficiales.',
+  'Si algo no queda claro, detente y pregunta antes de avanzar.',
 ];
 
-const faqs = [
+const buildFaqs = (city: CityConfig) => [
   {
-    question: '¿Puedo cotizar desde regiones?',
-    answer: 'Sí. La atención de EnPesos es por WhatsApp, por lo que puedes cotizar de forma remota desde distintas ciudades de Chile. La compatibilidad se revisa caso a caso según banco, tarjeta, cupo disponible y condiciones.',
+    question: `¿Puedo cotizar mi cupo en dólares desde ${city.name}?`,
+    answer: `Sí. Si estás en ${city.name} y tienes cupo internacional disponible en tu tarjeta, puedes solicitar una cotización para revisar cuántos pesos chilenos podrías recibir en tu cuenta. La revisión depende del banco, emisor, monto, cupo disponible y condiciones del caso.`,
   },
   {
-    question: '¿Necesito ir a una oficina?',
-    answer: 'No. La cotización se realiza de forma remota por WhatsApp. El foco es que puedas revisar monto estimado, costos y condiciones antes de decidir.',
+    question: '¿EnPesos tiene oficina local?',
+    answer: 'No declaramos oficina física local si no está documentada. La cotización se realiza por los canales oficiales enlazados desde enpesos.cl, con atención humana y explicación previa antes de decidir.',
   },
   {
-    question: '¿EnPesos pide claves bancarias?',
-    answer: 'No. Nunca pedimos claves bancarias, token, contraseñas, acceso remoto ni control de tus cuentas. Si alguien te pide esa información, no la entregues.',
+    question: '¿EnPesos es una casa de cambio?',
+    answer: 'No. EnPesos no es una casa de cambio, no compra ni vende divisas como actividad cambiaria y no entrega dinero físico. Ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible de tu tarjeta.',
   },
   {
-    question: '¿Cotizar me obliga a operar?',
-    answer: 'No. Cotizar no te obliga a avanzar. La idea es que primero puedas entender el monto estimado en pesos chilenos, costos y condiciones.',
+    question: '¿Recibo transferencia en pesos chilenos?',
+    answer: 'Si decides avanzar y la operación se confirma, el objetivo es que recibas una transferencia en pesos chilenos en tu cuenta bancaria. Primero revisas la cotización y decides si te hace sentido.',
   },
   {
-    question: '¿Es un préstamo o avance bancario?',
-    answer: 'No. EnPesos no entrega préstamos ni avances bancarios. Entrega atención asistida para cotizar una operación usando cupo internacional disponible de una tarjeta de crédito.',
+    question: '¿Queda un cargo o deuda en mi tarjeta?',
+    answer: 'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor. El pago posterior, facturación, intereses o comisiones dependen de esas condiciones.',
+  },
+  {
+    question: '¿Qué datos no debo entregar?',
+    answer: 'No entregues claves bancarias, token, coordenadas, contraseñas, CVV por WhatsApp ni acceso remoto a tus dispositivos. Si alguien te pide esos datos, detente y usa solo canales oficiales enlazados desde enpesos.cl.',
   },
 ];
 
@@ -133,9 +178,10 @@ interface CupoDolaresCiudadProps {
 
 export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
   const city = cities[cityKey];
+  const faqs = buildFaqs(city);
   const canonicalUrl = `https://www.enpesos.cl/${city.slug}`;
-  const title = `Cupo en dólares en ${city.searchName} | Cotiza por WhatsApp | EnPesos.cl`;
-  const description = `Cotiza tu cupo en dólares en ${city.searchName}. Atención remota por WhatsApp para evaluar cupo internacional a pesos chilenos, sin claves bancarias y sin obligación de operar.`;
+  const title = city.title;
+  const description = city.description;
   const whatsappMessage = `Hola, estoy en ${city.name} y quiero cotizar mi cupo internacional disponible para recibir pesos chilenos.`;
 
   useEffect(() => {
@@ -163,7 +209,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
       {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: `Cupo en dólares en ${city.searchName}`,
+        name: city.h1,
         description,
         url: canonicalUrl,
         isPartOf: {
@@ -172,22 +218,6 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           url: 'https://www.enpesos.cl',
         },
         about: 'Cotización asistida de cupo internacional disponible a pesos chilenos',
-      },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Service',
-        name: `Cotización de cupo en dólares en ${city.searchName}`,
-        provider: {
-          '@type': 'Organization',
-          name: 'EnPesos.cl',
-          url: 'https://www.enpesos.cl',
-        },
-        areaServed: {
-          '@type': 'City',
-          name: city.name,
-        },
-        serviceType: 'Atención asistida por WhatsApp para cotizar cupo internacional disponible',
-        description,
       },
       {
         '@context': 'https://schema.org',
@@ -202,7 +232,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: `Cupo en dólares en ${city.searchName}`,
+            name: city.h1,
             item: canonicalUrl,
           },
         ],
@@ -233,7 +263,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
     return () => {
       document.getElementById(`ld-json-cupo-ciudad-${city.key}`)?.remove();
     };
-  }, [canonicalUrl, city, description, title]);
+  }, [canonicalUrl, city, description, faqs, title]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -249,7 +279,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
                   {city.name}, {city.region}
                 </p>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight mb-6">
-                  Cupo en dólares en {city.searchName}: cotiza a pesos chilenos por WhatsApp
+                  {city.h1}
                 </h1>
                 <p className="text-xl text-secondary-foreground leading-relaxed mb-8 max-w-3xl">
                   {city.intro}
@@ -259,24 +289,24 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
                     className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
                     onClick={() => openWhatsApp(`seo_ciudad_${city.key}_hero`, whatsappMessage)}
                   >
-                    Cotizar desde {city.name}
+                    Solicitar cotización
                     <MessageCircle className="w-5 h-5" />
                   </Button>
                   <a
-                    href="/es-seguro-cambiar-cupo-en-dolares-a-pesos"
+                    href="/como-funciona"
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-6 py-3 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                   >
-                    Revisar seguridad
-                    <ShieldCheck className="w-5 h-5" />
+                    Ver cómo funciona
+                    <ArrowRight className="w-5 h-5" />
                   </a>
                 </div>
               </div>
 
               <div className="rounded-3xl border border-border bg-background p-6 sm:p-8 card-shadow">
                 <ShieldCheck className="w-10 h-10 text-primary mb-5" />
-                <h2 className="text-2xl font-extrabold text-foreground mb-4">Atención remota, no presencial</h2>
+                <h2 className="text-2xl font-extrabold text-foreground mb-4">Cotización remota, sin oficina local declarada</h2>
                 <p className="text-secondary-foreground leading-relaxed mb-5">
-                  EnPesos atiende por WhatsApp. Esta página está pensada para personas en {city.name} que quieren cotizar de forma remota, con información clara y sin entregar datos sensibles.
+                  Esta página es para personas que quieren cotizar desde {city.name}. EnPesos no declara una oficina física local si no está documentada; la atención se realiza por canales oficiales enlazados desde enpesos.cl.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex gap-3 text-secondary-foreground">
@@ -285,11 +315,11 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
                   </li>
                   <li className="flex gap-3 text-secondary-foreground">
                     <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>Sin claves bancarias, token ni acceso remoto.</span>
+                    <span>Pesos chilenos en tu cuenta si avanzas y la operación se confirma.</span>
                   </li>
                   <li className="flex gap-3 text-secondary-foreground">
                     <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span>Atención humana por WhatsApp.</span>
+                    <span>Sin claves bancarias, token, acceso remoto ni CVV por WhatsApp.</span>
                   </li>
                 </ul>
               </div>
@@ -302,7 +332,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
             <div className="max-w-3xl mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Cómo funciona</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                Cómo cotizar cupo internacional desde {city.name}
+                Cotiza tu cupo en dólares desde {city.name}
               </h2>
               <p className="text-lg text-secondary-foreground leading-relaxed">
                 {city.localContext}
@@ -327,16 +357,41 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
               <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Seguridad</p>
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">No somos casa de cambio</p>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                  Qué revisar antes de usar tu cupo en dólares
+                  Una alternativa distinta para cotizar cupo en dólares
                 </h2>
                 <p className="text-lg text-secondary-foreground leading-relaxed">
-                  Que la atención sea remota no significa operar a ciegas. Antes de tomar una decisión, revisa estas señales básicas de seguridad.
+                  EnPesos no es una casa de cambio, no compra ni vende divisas como actividad cambiaria y no entrega dinero físico. La referencia a dólares viene del cupo internacional disponible en tu tarjeta.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-border bg-background p-6 sm:p-8 card-shadow">
+                <h3 className="text-2xl font-extrabold text-foreground mb-4">Qué significa para ti</h3>
+                <p className="text-secondary-foreground leading-relaxed mb-4">
+                  Puedes cotizar cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Primero revisas el monto estimado, el costo y las condiciones. Después decides si avanzar.
+                </p>
+                <p className="text-secondary-foreground leading-relaxed">
+                  Si la operación se confirma, recibes una transferencia en pesos chilenos en tu cuenta bancaria.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Seguridad</p>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
+                  Datos que EnPesos no pide
+                </h2>
+                <p className="text-lg text-secondary-foreground leading-relaxed">
+                  Antes de decidir, revisa el monto estimado, costo, condiciones y datos solicitados. No entregues información sensible fuera de los canales oficiales.
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-border bg-background p-6 sm:p-8 card-shadow">
+              <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 card-shadow">
                 <ul className="space-y-4">
                   {safetyItems.map((item) => (
                     <li key={item} className="flex gap-3 text-secondary-foreground">
@@ -345,19 +400,28 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="/es-seguro-cambiar-cupo-en-dolares-a-pesos"
-                  className="mt-6 inline-flex items-center gap-2 font-bold text-primary hover:underline underline-offset-4"
-                >
-                  Ver guía completa de seguridad
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="/seguridad"
+                    className="inline-flex items-center gap-2 font-bold text-primary hover:underline underline-offset-4"
+                  >
+                    Ver seguridad en EnPesos
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="/preguntas-frecuentes"
+                    className="inline-flex items-center gap-2 font-bold text-primary hover:underline underline-offset-4"
+                  >
+                    Ver preguntas frecuentes
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-background">
+        <section className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl border border-amber-200 bg-amber-50 p-7 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-5 items-start">
@@ -365,13 +429,34 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.18em] text-amber-700 mb-3">Importante</p>
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                    No somos banco, casa de cambio ni prestamista
+                    Puede generarse un cargo o deuda en tu tarjeta
                   </h2>
+                  <p className="text-secondary-foreground leading-relaxed mb-4">
+                    Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.
+                  </p>
                   <p className="text-secondary-foreground leading-relaxed">
-                    EnPesos no entrega préstamos, no aumenta tu línea bancaria y no ofrece avances bancarios. La atención consiste en cotizar de forma asistida una operación usando cupo internacional disponible, para que puedas comparar antes de decidir.
+                    EnPesos no entrega préstamos, no aumenta tu línea bancaria, no es banco y no ofrece avances bancarios tradicionales. El pago posterior, facturación, intereses o comisiones dependen de tu banco o emisor.
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Enlaces útiles</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                Revisa más información antes de decidir
+              </h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <a href="/como-funciona" className="rounded-2xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Cómo funciona</a>
+              <a href="/seguridad" className="rounded-2xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Seguridad</a>
+              <a href="/preguntas-frecuentes" className="rounded-2xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Preguntas frecuentes</a>
+              <a href="/cupo-en-dolares-a-pesos-chilenos" className="rounded-2xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Cupo en dólares a pesos</a>
+              <a href="/que-es-enpesos" className="rounded-2xl border border-border bg-card p-4 font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Qué es EnPesos</a>
             </div>
           </div>
         </section>
@@ -407,7 +492,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-                Dudas comunes sobre cupo en dólares en {city.searchName}
+                Dudas comunes sobre cotizar desde {city.searchName}
               </h2>
             </div>
             <div className="space-y-4">
@@ -431,7 +516,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
               Cotiza tu cupo en dólares desde {city.name}
             </h2>
             <p className="text-lg leading-relaxed max-w-3xl mx-auto mb-7 text-primary-foreground/90">
-              Escríbenos por WhatsApp, revisamos tu caso y te entregamos una cotización clara. No estás obligado a operar.
+              Primero revisas cuánto podrías recibir en pesos chilenos, costo y condiciones. Si no te hace sentido, no tienes obligación de avanzar.
             </p>
             <Button
               variant="secondary"

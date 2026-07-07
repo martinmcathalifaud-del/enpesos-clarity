@@ -180,22 +180,80 @@ const routes = [
 ];
 
 const cityRoutes = [
-  ['santiago', 'Santiago', 'Región Metropolitana'],
-  ['las-condes', 'Las Condes', 'Región Metropolitana'],
-  ['providencia', 'Providencia', 'Región Metropolitana'],
-  ['concepcion', 'Concepción', 'Región del Biobío'],
-  ['antofagasta', 'Antofagasta', 'Región de Antofagasta'],
+  {
+    slug: 'santiago',
+    city: 'Santiago',
+    region: 'Región Metropolitana',
+    title: 'Cupo en dólares desde Santiago | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Santiago cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Santiago',
+  },
+  {
+    slug: 'las-condes',
+    city: 'Las Condes',
+    region: 'Región Metropolitana',
+    title: 'Cupo en dólares desde Las Condes | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Las Condes cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Las Condes',
+  },
+  {
+    slug: 'providencia',
+    city: 'Providencia',
+    region: 'Región Metropolitana',
+    title: 'Cupo en dólares desde Providencia | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Providencia cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Providencia',
+  },
+  {
+    slug: 'concepcion',
+    city: 'Concepción',
+    region: 'Región del Biobío',
+    title: 'Cupo en dólares desde Concepción | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Concepción cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Concepción',
+  },
+  {
+    slug: 'antofagasta',
+    city: 'Antofagasta',
+    region: 'Región de Antofagasta',
+    title: 'Cupo en dólares desde Antofagasta | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Antofagasta cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. No somos casa de cambio ni pedimos claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Antofagasta',
+  },
+  {
+    slug: 'valparaiso',
+    city: 'Valparaíso',
+    region: 'Región de Valparaíso',
+    title: 'Cupo en dólares desde Valparaíso | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Valparaíso cuántos pesos chilenos podrías recibir usando cupo internacional disponible de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Valparaíso',
+  },
+  {
+    slug: 'rancagua',
+    city: 'Rancagua',
+    region: "Región de O'Higgins",
+    title: 'Cupo en dólares desde Rancagua | Cotiza a pesos chilenos',
+    description: 'Desde Rancagua, cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Con costo claro antes de decidir.',
+    h1: 'Cupo en dólares a pesos chilenos desde Rancagua',
+  },
 ];
 
-for (const [slug, city, region] of cityRoutes) {
+for (const route of cityRoutes) {
   routes.push({
-    path: `/cupo-en-dolares-${slug}`,
-    title: `Cupo en dólares en ${city} | Cotiza por WhatsApp | EnPesos.cl`,
-    description: `Cotiza cupo en dólares en ${city}. Atención remota por WhatsApp para evaluar cupo internacional a pesos chilenos, sin claves bancarias y sin obligación de operar.`,
-    h1: `Cupo en dólares en ${city}: cotiza a pesos chilenos por WhatsApp`,
-    category: `Cobertura ${region}`,
-    intro: `Si estás en ${city} y tienes tarjeta de crédito con cupo internacional disponible, puedes solicitar una cotización remota para evaluar cuánto podrías recibir en pesos chilenos antes de decidir.`,
-    points: ['Atención remota por WhatsApp', 'Cotización previa', 'Sin claves bancarias', `Referencia para personas en ${city}`],
+    path: `/cupo-en-dolares-${route.slug}`,
+    title: route.title,
+    description: route.description,
+    h1: route.h1,
+    category: `Cobertura ${route.region}`,
+    intro: `Si estás en ${route.city} y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo. Primero ves monto estimado, costo y condiciones antes de decidir.`,
+    points: [
+      `Cotización de cupo en dólares desde ${route.city}`,
+      'Pesos chilenos en tu cuenta si avanzas y la operación se confirma',
+      'Sin claves bancarias, token, acceso remoto ni CVV por WhatsApp',
+      'EnPesos no es una casa de cambio ni declara oficina local documentada',
+      'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta',
+    ],
+    city: route.city,
   });
 }
 
@@ -237,6 +295,17 @@ function buildStaticContent(route) {
   const safeDescription = escapeHtml(route.description);
   const safeIntro = escapeHtml(route.intro);
   const points = route.points.map((point) => `<li>${escapeHtml(point)}</li>`).join('\n');
+  const cityContent = route.city
+    ? `
+        <section>
+          <h2>No somos casa de cambio ni oficina local</h2>
+          <p>EnPesos no es una casa de cambio, no compra ni vende divisas como actividad cambiaria y no declara una oficina física local si no está documentada. Puedes cotizar desde ${escapeHtml(route.city)} por los canales oficiales enlazados desde enpesos.cl.</p>
+        </section>
+        <section>
+          <h2>Cargo o deuda posterior en tu tarjeta</h2>
+          <p>Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.</p>
+        </section>`
+    : '';
 
   return `
     <main class="seo-prerender-content" data-seo-prerender="true">
@@ -251,6 +320,7 @@ function buildStaticContent(route) {
             ${points}
           </ul>
         </section>
+        ${cityContent}
         <section>
           <h2>Información importante sobre EnPesos</h2>
           <p>EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible o cupo en dólares de tu tarjeta. Cotizar no obliga a avanzar.</p>
