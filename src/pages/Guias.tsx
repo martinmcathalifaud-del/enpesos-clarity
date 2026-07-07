@@ -91,6 +91,8 @@ const cityLinks = [
   { label: 'Providencia', href: '/cupo-en-dolares-providencia' },
   { label: 'Concepción', href: '/cupo-en-dolares-concepcion' },
   { label: 'Antofagasta', href: '/cupo-en-dolares-antofagasta' },
+  { label: 'Valparaíso', href: '/cupo-en-dolares-valparaiso' },
+  { label: 'Rancagua', href: '/cupo-en-dolares-rancagua' },
 ];
 
 const compactSections = [
