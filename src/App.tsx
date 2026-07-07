@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Guias from "./pages/Guias";
 import QueEsEnPesos from "./pages/QueEsEnPesos";
+import ComoFunciona from "./pages/ComoFunciona";
+import PreguntasFrecuentes from "./pages/PreguntasFrecuentes";
+import Seguridad from "./pages/Seguridad";
+import Nosotros from "./pages/Nosotros";
 import CupoDolaresAPesos from "./pages/CupoDolaresAPesos";
 import VenderCupoDolaresChile from "./pages/VenderCupoDolaresChile";
 import CuantoReciboCupoDolares from "./pages/CuantoReciboCupoDolares";
@@ -33,6 +37,10 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/guias" element={<Guias />} />
           <Route path="/que-es-enpesos" element={<QueEsEnPesos />} />
+          <Route path="/como-funciona" element={<ComoFunciona />} />
+          <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
+          <Route path="/seguridad" element={<Seguridad />} />
+          <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/cupo-en-dolares-a-pesos-chilenos" element={<CupoDolaresAPesos />} />
           <Route path="/vender-cupo-en-dolares-chile" element={<VenderCupoDolaresChile />} />
           <Route path="/cuanto-recibo-por-mi-cupo-en-dolares" element={<CuantoReciboCupoDolares />} />
