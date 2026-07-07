@@ -1,4 +1,4 @@
-import { CheckCircle2, CreditCard, MessageCircle, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, CreditCard, Mail, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 import logo from '@/assets/logo-enpesos-completo.png';
@@ -10,9 +10,9 @@ type FooterLink = {
 
 const primaryLinks: FooterLink[] = [
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
-  { label: 'Financiamiento personas', href: '/formas-de-financiamiento-para-personas-chile' },
-  { label: 'Financiamiento negocios', href: '/financiamiento-para-negocios-y-pymes-chile' },
-  { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
+  { label: 'Cómo funciona', href: '/como-funciona' },
+  { label: 'Seguridad', href: '/seguridad' },
+  { label: 'Preguntas frecuentes', href: '/preguntas-frecuentes' },
   { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
   { label: 'Liquidez para negocios', href: '/liquidez-para-negocios-cupo-internacional' },
 ];
@@ -27,9 +27,9 @@ const coverageLinks: FooterLink[] = [
 
 const resourceLinks: FooterLink[] = [
   { label: 'Guías EnPesos', href: '/guias' },
-  { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
+  { label: 'Nosotros', href: '/nosotros' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
-  { label: 'Cómo funciona', href: '/#como-funciona' },
+  { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
   { label: 'Bancos compatibles', href: '/#bancos' },
 ];
 
@@ -46,9 +46,9 @@ const bankCardLinks: FooterLink[] = [
 ];
 
 const trustItems = [
-  'Proceso transparente y confidencial',
-  'No pedimos claves ni contraseñas',
   'Cotización previa antes de decidir',
+  'No pedimos claves ni contraseñas',
+  'Costo y condiciones claras antes de avanzar',
 ];
 
 function FooterLinkGroup({ title, links }: { title: string; links: FooterLink[] }) {
@@ -93,14 +93,14 @@ export default function Footer() {
             <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-4" />
             <p className="text-2xl font-extrabold text-foreground tracking-tight">Más pesos en tu cuenta</p>
             <p className="mt-3 text-sm text-secondary-foreground leading-relaxed">
-              Evalúa una alternativa de liquidez usando cupo internacional disponible, con cotización clara antes de decidir.
+              Cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta, con costo claro antes de decidir.
             </p>
 
             <Button
               className="mt-5 w-full sm:w-auto h-12 rounded-xl px-6 font-bold button-shadow"
               onClick={() => openWhatsApp('footer_cta')}
             >
-              Cotizar por WhatsApp
+              Solicitar cotización
               <MessageCircle className="w-5 h-5" />
             </Button>
 
@@ -112,6 +112,11 @@ export default function Footer() {
                 </div>
               ))}
             </div>
+
+            <a href="mailto:contacto@enpesos.cl" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+              <Mail className="w-4 h-4" />
+              contacto@enpesos.cl
+            </a>
           </section>
 
           <div className="hidden md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:grid-cols-4 lg:gap-x-8 xl:gap-x-10 lg:pt-2">
