@@ -8,12 +8,12 @@ const templatePath = path.join(distDir, 'index.html');
 const routes = [
   {
     path: '/',
-    title: 'EnPesos.cl | Más pesos en tu cuenta',
-    description: 'EnPesos te ayuda a cotizar cupo internacional disponible de tarjeta de crédito para evaluar pesos chilenos por WhatsApp, sin préstamos ni claves bancarias.',
-    h1: 'Más pesos en tu cuenta con una cotización clara por WhatsApp',
+    title: 'Cupo en dólares a pesos chilenos | EnPesos.cl',
+    description: 'Cotiza tu cupo en dólares de la tarjeta, revisa cuántos pesos chilenos podrías recibir y decide con costo claro, proceso asistido y sin claves bancarias.',
+    h1: 'Convierte el cupo en dólares de tu tarjeta en pesos chilenos',
     category: 'Inicio',
-    intro: 'EnPesos es una alternativa para personas que tienen tarjeta de crédito con cupo internacional disponible y quieren evaluar cuánto podrían recibir en pesos chilenos antes de tomar una decisión.',
-    points: ['Cotización previa antes de avanzar', 'Atención humana por WhatsApp', 'No pedimos claves bancarias', 'No es préstamo ni crédito de consumo'],
+    intro: 'Primero cotizas cuánto podrías recibir en pesos chilenos. Si decides avanzar, se realiza una operación asistida con tu tarjeta y recibes una transferencia en tu cuenta.',
+    points: ['Cotización previa antes de decidir', 'Pesos chilenos en tu cuenta si avanzas y la operación se confirma', 'Sin claves bancarias ni CVV por WhatsApp', 'Puede generarse un cargo o deuda en tu tarjeta'],
   },
   {
     path: '/que-es-enpesos',
@@ -23,6 +23,42 @@ const routes = [
     category: 'Funcionamiento',
     intro: 'EnPesos ayuda a evaluar una operación usando cupo internacional disponible de una tarjeta de crédito para recibir una cotización en pesos chilenos. La decisión de avanzar se toma solo después de revisar condiciones.',
     points: ['Evalúas tu cupo disponible', 'Recibes una cotización previa', 'Revisas costos y condiciones', 'Decides si avanzar o no'],
+  },
+  {
+    path: '/como-funciona',
+    title: 'Como funciona EnPesos | Cupo en dolares a pesos chilenos',
+    description: 'Conoce como EnPesos te ayuda a cotizar tu cupo en dolares de la tarjeta, ver cuantos pesos podrias recibir y entender el cargo posterior antes de decidir.',
+    h1: 'Como funciona EnPesos: cotizas primero y decides despues',
+    category: 'Proceso',
+    intro: 'Si tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuantos pesos chilenos podrias recibir usando ese cupo. Si decides avanzar, se realiza una operacion asistida con tu tarjeta y recibes una transferencia en pesos en tu cuenta.',
+    points: ['Indicas el monto que quieres cotizar', 'Recibes una cotizacion previa', 'Revisas costo y condiciones', 'Puede generarse un cargo o deuda en tu tarjeta'],
+  },
+  {
+    path: '/preguntas-frecuentes',
+    title: 'Preguntas frecuentes EnPesos | Cupo en dolares a pesos',
+    description: 'Resuelve dudas sobre EnPesos: cotizacion, costos, seguridad, datos que no pedimos, deuda posterior en la tarjeta y diferencias con prestamos o avances.',
+    h1: 'Preguntas frecuentes sobre EnPesos',
+    category: 'Preguntas frecuentes',
+    intro: 'Resuelve dudas sobre cotizacion, costos, seguridad, datos que no pedimos, transferencia en pesos y cargo o deuda posterior en tu tarjeta.',
+    points: ['Que es y que no es EnPesos', 'Costos y cotizacion', 'Seguridad y datos', 'Tarjeta, banco y deuda'],
+  },
+  {
+    path: '/seguridad',
+    title: 'Seguridad EnPesos | Datos que no pedimos y proceso claro',
+    description: 'Conoce las reglas de seguridad de EnPesos. No pedimos claves bancarias ni CVV por WhatsApp. Revisa datos, titularidad y costos antes de decidir.',
+    h1: 'Seguridad en EnPesos: cotiza sin entregar claves bancarias',
+    category: 'Seguridad',
+    intro: 'Antes de avanzar debes ver cuanto podrias recibir en pesos, el costo y las condiciones. EnPesos no pide claves bancarias ni CVV por WhatsApp.',
+    points: ['No pedimos claves bancarias', 'No pedimos CVV por WhatsApp', 'Usa canales enlazados desde enpesos.cl y redes oficiales', 'Si algo no puede completarse, se detiene el proceso'],
+  },
+  {
+    path: '/nosotros',
+    title: 'Nosotros | EnPesos.cl',
+    description: 'Conoce EnPesos, un servicio chileno que te ayuda a cotizar tu cupo en dolares a pesos chilenos con atencion humana, claridad y sin claves bancarias.',
+    h1: 'Quienes somos y como trabajamos en EnPesos',
+    category: 'Nosotros',
+    intro: 'EnPesos es un servicio chileno que ayuda a cotizar cuantos pesos chilenos podrias recibir usando el cupo en dolares de tu tarjeta, con atencion humana, costo claro antes de decidir y sin claves bancarias.',
+    points: ['Atencion humana', 'Cotizacion previa', 'No somos banco ni casa de cambio', 'No entregamos prestamos ni creditos'],
   },
   {
     path: '/guias',
@@ -57,8 +93,8 @@ const routes = [
     description: 'Compara financiamiento para negocios y pymes: crédito comercial, factoring, línea de crédito, proveedores, subsidios y cupo internacional disponible.',
     h1: 'Financiamiento para negocios y pymes en Chile',
     category: 'Financiamiento negocios',
-    intro: 'Un negocio puede necesitar caja para inventario, proveedores, pagos urgentes, capital de trabajo o desfases entre cobros y pagos. Esta guía compara alternativas y muestra cuándo puede hacer sentido cotizar cupo internacional disponible.',
-    points: ['Crédito comercial', 'Factoring', 'Línea de crédito empresa', 'Cupo internacional para liquidez puntual'],
+    intro: 'Un negocio puede necesitar caja para inventario, proveedores o desfases de pago. Esta guía compara alternativas y muestra cuándo puede hacer sentido cotizar cupo internacional disponible.',
+    points: ['Crédito comercial', 'Factoring', 'Línea de crédito empresa', 'Cupo internacional para caja puntual'],
   },
   {
     path: '/es-seguro-cambiar-cupo-en-dolares-a-pesos',
@@ -102,7 +138,7 @@ const routes = [
     description: 'Evalúa cupo internacional disponible como alternativa de liquidez puntual para negocios, proveedores, inventario o desfases de caja.',
     h1: 'Liquidez para negocios con cupo internacional disponible',
     category: 'Negocios',
-    intro: 'Algunos negocios necesitan caja puntual para inventario, proveedores o desfases de pago. Si el dueño o empresa cuenta con cupo internacional disponible, puede cotizar una alternativa antes de solicitar un crédito comercial nuevo.',
+    intro: 'Algunos negocios necesitan caja para inventario, proveedores o desfases de pago. Si el dueño o empresa cuenta con cupo internacional disponible, puede cotizar una alternativa antes de solicitar un crédito comercial nuevo.',
     points: ['Capital de trabajo puntual', 'Proveedores', 'Inventario', 'Cotización antes de decidir'],
   },
   {
@@ -217,8 +253,8 @@ function buildStaticContent(route) {
         </section>
         <section>
           <h2>Información importante sobre EnPesos</h2>
-          <p>EnPesos entrega una cotización asistida por WhatsApp para personas que cuentan con cupo internacional disponible. No entrega préstamos, no aumenta líneas de crédito, no representa bancos y no solicita claves bancarias, token, coordenadas ni acceso remoto.</p>
-          <p>Antes de avanzar, conviene revisar el monto estimado en pesos chilenos, los costos asociados, las condiciones del caso y la forma en que se pagará posteriormente la tarjeta de crédito. Cotizar no obliga a operar.</p>
+          <p>EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible o cupo en dólares de tu tarjeta. Cotizar no obliga a avanzar.</p>
+          <p>Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor. EnPesos no entrega préstamos, no aumenta líneas de crédito, no representa bancos y no solicita claves bancarias, token, coordenadas ni acceso remoto.</p>
         </section>
       </article>
     </main>`;
