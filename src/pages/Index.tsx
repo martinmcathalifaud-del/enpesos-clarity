@@ -13,35 +13,31 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 const homeFaqs = [
   {
     question: '¿Es un préstamo?',
-    answer: 'No. EnPesos no es un préstamo nuevo ni una línea de crédito. Es una operación asistida para evaluar el uso de un cupo internacional disponible, con cotización previa y aceptación del cliente antes de avanzar.',
+    answer: 'No. EnPesos no entrega préstamos ni crea una línea de crédito nueva. Te ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible de tu tarjeta.',
   },
   {
     question: '¿Piden mis claves bancarias?',
-    answer: 'No. Nunca pedimos claves bancarias. Tampoco pedimos CVV por WhatsApp. El proceso se coordina con acompañamiento y validaciones de seguridad.',
+    answer: 'No. EnPesos no pide claves bancarias, token, coordenadas ni acceso remoto. Tampoco pedimos CVV por WhatsApp.',
   },
   {
-    question: '¿Cuándo conozco el costo?',
-    answer: 'Antes de operar. Te enviamos una cotización clara con el monto estimado, costos y condiciones. Tú decides si avanzar o no después de revisar esa información.',
+    question: '¿Cotizar me obliga a avanzar?',
+    answer: 'No. La cotización sirve para revisar monto estimado, costo y condiciones antes de decidir. Si no te conviene, no tienes obligación de continuar.',
   },
   {
-    question: '¿Qué tarjetas pueden cotizar?',
-    answer: 'Principalmente tarjetas de crédito con cupo internacional disponible y uso internacional habilitado. La compatibilidad se confirma caso a caso durante la cotización.',
+    question: '¿Qué pasa con la deuda de la tarjeta?',
+    answer: 'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.',
   },
   {
-    question: '¿Cuánto tiempo toma la operación?',
-    answer: 'Depende de las validaciones y del procesamiento de la operación. Como referencia, una vez validado el caso, el proceso puede tomar entre 24 y 48 horas hábiles.',
-  },
-  {
-    question: '¿Cómo me llega el dinero?',
-    answer: 'La transferencia se realiza a una cuenta bancaria chilena del titular validado. Por seguridad, no se realizan transferencias a cuentas de terceros.',
+    question: '¿Cómo recibo los pesos?',
+    answer: 'Si decides avanzar y la operación se confirma, recibes una transferencia en pesos chilenos en una cuenta bancaria del titular validado.',
   },
 ];
 
 const Index = () => {
   useEffect(() => {
-    document.title = 'Cupo en Dólares a Pesos Chilenos | EnPesos.cl';
+    document.title = 'Cupo en dólares a pesos chilenos | EnPesos.cl';
 
-    const metaDescription = 'Cotiza tu cupo en dólares de tarjeta de crédito y recibe una estimación en pesos chilenos. Proceso asistido por WhatsApp, sin préstamos ni avances bancarios.';
+    const metaDescription = 'Cotiza tu cupo en dólares de la tarjeta, revisa cuántos pesos chilenos podrías recibir y decide con costo claro, proceso asistido y sin claves bancarias.';
     const canonicalUrl = 'https://www.enpesos.cl/';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
@@ -54,7 +50,7 @@ const Index = () => {
     };
 
     upsertMeta('meta[name="description"]', { name: 'description', content: metaDescription });
-    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: 'Cupo en Dólares a Pesos Chilenos | EnPesos.cl' });
+    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: 'Cupo en dólares a pesos chilenos | EnPesos.cl' });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: metaDescription });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
