@@ -4,27 +4,23 @@ import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 const faqs = [
   {
     q: '¿Es un préstamo?',
-    a: 'No. EnPesos no es un préstamo nuevo ni una línea de crédito. Es una operación asistida para evaluar el uso de un cupo internacional disponible, con cotización previa y aceptación del cliente antes de avanzar.',
+    a: 'No. EnPesos no entrega préstamos ni crea una línea de crédito nueva. Te ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible de tu tarjeta.',
   },
   {
     q: '¿Piden mis claves bancarias?',
-    a: 'No. Nunca pedimos claves bancarias. Tampoco pedimos CVV por WhatsApp. El proceso se coordina con acompañamiento y validaciones de seguridad.',
+    a: 'No. EnPesos no pide claves bancarias, token, coordenadas ni acceso remoto. Tampoco pedimos CVV por WhatsApp.',
   },
   {
-    q: '¿Cuándo conozco el costo?',
-    a: 'Antes de operar. Te enviamos una cotización clara con el monto estimado, costos y condiciones. Tú decides si avanzar o no después de revisar esa información.',
+    q: '¿Cotizar me obliga a avanzar?',
+    a: 'No. La cotización sirve para revisar monto estimado, costo y condiciones antes de decidir. Si no te conviene, no tienes obligación de continuar.',
   },
   {
-    q: '¿Qué tarjetas pueden cotizar?',
-    a: 'Principalmente tarjetas de crédito con cupo internacional disponible y uso internacional habilitado. La compatibilidad se confirma caso a caso durante la cotización.',
+    q: '¿Qué pasa con la deuda de la tarjeta?',
+    a: 'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.',
   },
   {
-    q: '¿Cuánto tiempo toma la operación?',
-    a: 'Depende de las validaciones y del procesamiento de la operación. Como referencia, una vez validado el caso, el proceso puede tomar entre 24 y 48 horas hábiles.',
-  },
-  {
-    q: '¿Cómo me llega el dinero?',
-    a: 'La transferencia se realiza a una cuenta bancaria chilena del titular validado. Por seguridad, no se realizan transferencias a cuentas de terceros.',
+    q: '¿Cómo recibo los pesos?',
+    a: 'Si decides avanzar y la operación se confirma, recibes una transferencia en pesos chilenos en una cuenta bancaria del titular validado.',
   },
 ];
 
@@ -38,9 +34,12 @@ export default function FAQ() {
   return (
     <section id="preguntas-frecuentes" className="py-16 sm:py-20 bg-secondary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mb-10 text-center tracking-tight">
-          Preguntas frecuentes
-        </h2>
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+            Preguntas frecuentes
+          </h2>
+          <p className="mt-4 text-lg text-secondary-foreground">Resuelve lo esencial antes de pedir una cotización.</p>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-4">
           {faqs.map((faq, index) => (
@@ -75,6 +74,12 @@ export default function FAQ() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <a href="/preguntas-frecuentes" className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-5 py-3 text-sm font-bold text-foreground transition-colors hover:border-primary/40 hover:text-primary">
+            Ver todas las preguntas frecuentes
+          </a>
         </div>
       </div>
     </section>

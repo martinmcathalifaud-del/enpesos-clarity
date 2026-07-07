@@ -1,21 +1,21 @@
-import { Calculator, ChevronRight, FileSearch, Handshake, LockKeyhole, MessageCircle } from 'lucide-react';
+import { Calculator, ChevronRight, CreditCard, FileSearch, Handshake, LockKeyhole } from 'lucide-react';
 
 const steps = [
   {
-    icon: MessageCircle,
-    title: 'Nos escribes por WhatsApp',
+    icon: CreditCard,
+    title: 'Tienes cupo en dólares en tu tarjeta',
   },
   {
     icon: FileSearch,
-    title: 'Revisamos tu caso y te cotizamos',
+    title: 'Cotizas cuánto podrías recibir',
   },
   {
     icon: Calculator,
-    title: 'Te mostramos monto, costo y condiciones',
+    title: 'Revisas costo y condiciones',
   },
   {
     icon: Handshake,
-    title: 'Si aceptas, coordinamos la operación',
+    title: 'Si aceptas, coordinamos el proceso',
   },
 ];
 
@@ -24,7 +24,8 @@ export default function HowItWorks() {
     <section id="como-funciona" className="py-12 sm:py-16 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Cómo funciona</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Cómo funciona en simple</h2>
+          <p className="mt-4 text-lg text-secondary-foreground">Primero ves cuánto podrías recibir en pesos chilenos. Después decides si avanzar.</p>
         </div>
 
         <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-4 items-stretch">
@@ -48,9 +49,12 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <div className="mt-7 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <LockKeyhole className="w-4 h-4" />
-          <span>Siempre decides después de ver la cotización.</span>
+        <div className="mt-7 flex flex-col items-center justify-center gap-3 text-sm text-muted-foreground sm:flex-row">
+          <div className="flex items-center gap-2">
+            <LockKeyhole className="w-4 h-4" />
+            <span>Siempre decides después de ver la cotización.</span>
+          </div>
+          <a href="/como-funciona" className="font-bold text-primary hover:underline">Ver proceso completo</a>
         </div>
       </div>
     </section>

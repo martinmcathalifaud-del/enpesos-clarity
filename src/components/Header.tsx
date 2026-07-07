@@ -6,16 +6,17 @@ import logo from '@/assets/logo-enpesos-header.png';
 
 const primaryLinks = [
   { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Cómo funciona', href: '/como-funciona' },
+  { label: 'Seguridad', href: '/seguridad' },
   { label: 'Bancos y tarjetas', href: '/bancos-y-tarjetas-cupo-en-dolares' },
-  { label: 'Seguridad', href: '/es-seguro-cambiar-cupo-en-dolares-a-pesos' },
-  { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
+  { label: 'Preguntas frecuentes', href: '/preguntas-frecuentes' },
 ];
 
 const resourceLinks = [
-  { label: 'Cómo funciona', href: '/#como-funciona' },
-  { label: 'Preguntas frecuentes', href: '/#preguntas-frecuentes' },
   { label: 'Guías EnPesos', href: '/guias' },
+  { label: 'Nosotros', href: '/nosotros' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
+  { label: 'Negocios', href: '/liquidez-para-negocios-cupo-internacional' },
 ];
 
 export default function Header() {
@@ -78,7 +79,7 @@ export default function Header() {
             className="hidden sm:inline-flex h-11 rounded-xl px-5 font-bold button-shadow"
             onClick={() => openWhatsApp('header_desktop')}
           >
-            Cotizar por WhatsApp
+            Solicitar cotización
           </Button>
 
           <button
@@ -141,7 +142,7 @@ export default function Header() {
                 openWhatsApp('header_mobile');
               }}
             >
-              Cotizar por WhatsApp
+              Solicitar cotización
             </Button>
           </div>
         </div>
