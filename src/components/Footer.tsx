@@ -23,6 +23,8 @@ const coverageLinks: FooterLink[] = [
   { label: 'Cupo en dólares Providencia', href: '/cupo-en-dolares-providencia' },
   { label: 'Cupo en dólares Concepción', href: '/cupo-en-dolares-concepcion' },
   { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
+  { label: 'Cupo en dólares Valparaíso', href: '/cupo-en-dolares-valparaiso' },
+  { label: 'Cupo en dólares Rancagua', href: '/cupo-en-dolares-rancagua' },
 ];
 
 const resourceLinks: FooterLink[] = [
