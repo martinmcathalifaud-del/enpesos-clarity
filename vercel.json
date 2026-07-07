@@ -15,6 +15,11 @@
       "source": "/referidos",
       "destination": "/programa-de-colaboradores",
       "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/preguntas-frecuentes",
+      "permanent": true
     }
   ],
   "rewrites": [
