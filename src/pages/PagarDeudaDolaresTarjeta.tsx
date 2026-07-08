@@ -9,54 +9,63 @@ import { openWhatsApp } from '@/lib/whatsapp';
 const reviewItems = [
   {
     icon: CreditCard,
-    title: 'Cómo factura tu banco los cargos internacionales',
-    description: 'Cada banco puede mostrar y cobrar los cargos en dólares de forma distinta. Revisa tu estado de cuenta y las condiciones de tu tarjeta.',
+    title: 'Cargo o deuda posterior',
+    description: 'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.',
   },
   {
     icon: CalendarDays,
     title: 'Fecha de facturación y fecha de pago',
-    description: 'La fecha en que se registra el cargo y la fecha de vencimiento pueden afectar cuándo debes pagarlo y cómo lo verás en tu cartola.',
+    description: 'El día en que se registra el cargo y la fecha de vencimiento pueden afectar cuándo debes pagarlo y cómo aparecerá en tu estado de cuenta.',
   },
   {
     icon: WalletCards,
-    title: 'Tipo de cambio usado por tu banco',
-    description: 'El banco puede usar su propio tipo de cambio para convertir montos en dólares a pesos, según sus reglas y fecha de facturación o pago.',
+    title: 'Tipo de cambio usado por el banco',
+    description: 'Tu banco o emisor puede usar sus propias reglas para convertir, facturar o cobrar montos asociados al cupo internacional.',
   },
   {
     icon: FileText,
-    title: 'Intereses, cuotas y pago mínimo',
-    description: 'Si no pagas el total facturado, pueden aplicarse intereses u otros cargos. No conviene avanzar si no entiendes cómo vas a pagar después.',
+    title: 'Pago mínimo, intereses y condiciones',
+    description: 'Si no pagas el total facturado, pueden aplicarse intereses, cargos u otras condiciones del contrato de tu tarjeta.',
   },
 ];
 
 const checklist = [
-  'Revisa si el cargo quedará facturado en dólares o convertido a pesos por tu banco.',
-  'Confirma la fecha de facturación, fecha de vencimiento y condiciones de pago.',
-  'Mira si tu tarjeta permite pagar el saldo internacional en pesos, dólares o ambos.',
-  'Considera que el tipo de cambio del banco puede cambiar respecto del día de la operación.',
-  'No avances si dependes de pagar solo el mínimo y no entiendes el costo financiero total.',
+  'Revisa tu estado de cuenta y las condiciones de tu tarjeta.',
+  'Confirma si el cargo se muestra en dólares, pesos o bajo una regla específica del banco.',
+  'Mira fecha de facturación, fecha de vencimiento y forma de pago disponible.',
+  'Considera intereses, pago mínimo, comisiones u otros cargos si no pagas el total.',
+  'No avances si no entiendes cómo pagarás después.',
+];
+
+const relatedLinks = [
+  { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares' },
+  { label: 'Formas de financiamiento', href: '/formas-de-financiamiento-para-personas-chile' },
+  { label: 'Seguridad', href: '/seguridad' },
+  { label: 'Preguntas frecuentes', href: '/preguntas-frecuentes' },
+  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
 ];
 
 const faqs = [
   {
     question: '¿Después de usar mi cupo en dólares tengo que pagarle al banco?',
-    answer: 'Sí. Si se realiza una operación con tu tarjeta, el banco puede registrar un cargo asociado en tu estado de cuenta. Antes de avanzar debes revisar cómo se factura y cómo tendrás que pagarlo según las condiciones de tu tarjeta.',
+    answer: 'Sí. Si se realiza una operación con tu tarjeta, el banco o emisor puede registrar un cargo o deuda en tu estado de cuenta. Debes revisar cómo se factura y cómo tendrás que pagarlo según las condiciones de tu tarjeta.',
   },
   {
     question: '¿EnPesos define cómo se paga la deuda de mi tarjeta?',
-    answer: 'No. La forma de pago, fechas, intereses, cuotas y tipo de cambio aplicable dependen de tu banco y de las condiciones de tu tarjeta de crédito.',
+    answer: 'No. EnPesos no define fechas de pago, intereses, pago mínimo, tipo de cambio del banco ni condiciones de tu contrato de tarjeta. Eso depende de tu banco o emisor.',
   },
   {
     question: '¿El cargo se paga en dólares o en pesos?',
-    answer: 'Depende de tu banco y de tu tarjeta. Algunas tarjetas muestran saldo internacional en dólares y otras permiten convertir o pagar en pesos según sus condiciones. Debes revisarlo directamente en tu banco.',
+    answer: 'Depende de tu banco o emisor. Algunas tarjetas muestran saldo internacional en dólares y otras permiten pagar o convertir según sus propias reglas. Debes revisarlo directamente con tu banco.',
   },
   {
     question: '¿Qué pasa si no pago el total facturado?',
-    answer: 'Podrían aplicarse intereses, cargos u otras condiciones propias de tu tarjeta. Por eso es importante entender el costo posterior antes de cotizar o aceptar una operación.',
+    answer: 'Podrían aplicarse intereses, cargos u otras condiciones propias de tu tarjeta. Por eso conviene revisar capacidad de pago antes de aceptar una operación.',
   },
   {
     question: '¿Me conviene cotizar si no sé cómo voy a pagar la tarjeta?',
-    answer: 'No. Si no tienes claro cómo se reflejará el cargo o cómo pagarás el estado de cuenta, lo responsable es revisar primero la información de tu banco antes de avanzar.',
+    answer: 'Si no tienes claro cómo se reflejará el cargo o cómo lo pagarás, lo responsable es revisar primero la información de tu banco o emisor antes de avanzar.',
   },
 ];
 
@@ -64,7 +73,7 @@ export default function PagarDeudaDolaresTarjeta() {
   useEffect(() => {
     document.title = 'Cómo pagar la deuda en dólares de la tarjeta | EnPesos.cl';
 
-    const metaDescription = 'Guía para entender qué revisar después de usar cupo internacional: estado de cuenta, deuda en dólares, tipo de cambio, fechas de pago e información del banco.';
+    const metaDescription = 'Entiende qué pasa después de usar cupo internacional: cargo o deuda en tarjeta, facturación, tipo de cambio del banco, pago mínimo, intereses y condiciones del emisor.';
     const canonicalUrl = 'https://www.enpesos.cl/como-pagar-deuda-en-dolares-tarjeta-credito';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
@@ -117,36 +126,27 @@ export default function PagarDeudaDolaresTarjeta() {
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-light px-4 py-2 text-sm font-bold text-primary mb-5">
                   <FileText className="w-4 h-4" />
-                  Guía para usar cupo internacional con responsabilidad
+                  Guía sobre deuda posterior
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-tight mb-6">
-                  Cómo pagar la deuda en dólares de la tarjeta después de usar el cupo
+                  Qué pasa con la deuda de la tarjeta después de usar cupo en dólares
                 </h1>
 
                 <p className="text-lg sm:text-xl text-secondary-foreground leading-relaxed max-w-2xl mb-7">
-                  Antes de cotizar una operación con tu cupo internacional, no basta con mirar cuánto recibirías en pesos. También debes entender cómo se reflejará el cargo en tu tarjeta, cuándo tendrás que pagarlo y qué condiciones aplica tu banco.
+                  Antes de cotizar, mira la operación completa: cuánto podrías recibir en pesos y qué cargo o deuda puede quedar después en tu tarjeta de crédito.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-8">
-                  <Button
-                    className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
-                    onClick={() => openWhatsApp('seo_pagar_deuda_hero')}
-                  >
+                  <Button className="h-12 rounded-xl px-7 text-base font-bold button-shadow" onClick={() => openWhatsApp('seo_pagar_deuda_hero')}>
                     Resolver dudas por WhatsApp
                     <MessageCircle className="w-5 h-5" />
                   </Button>
-                  <a
-                    href="/simulador-pago-tarjeta-credito"
-                    className="inline-flex h-12 items-center justify-center rounded-xl border border-primary/30 bg-background px-7 text-base font-bold text-primary hover:bg-primary-light transition-colors"
-                  >
+                  <a href="/simulador-pago-tarjeta-credito" className="inline-flex h-12 items-center justify-center rounded-xl border border-primary/30 bg-background px-7 text-base font-bold text-primary hover:bg-primary-light transition-colors">
                     Simular pago
                     <Calculator className="w-5 h-5" />
                   </a>
-                  <a
-                    href="#que-revisar"
-                    className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                  >
+                  <a href="#que-revisar" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">
                     Ver qué revisar
                   </a>
                 </div>
@@ -154,36 +154,23 @@ export default function PagarDeudaDolaresTarjeta() {
                 <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
                   <div className="flex gap-3">
                     <AlertTriangle className="w-5 h-5 mt-0.5 shrink-0" />
-                    <p>
-                      Esta guía no reemplaza la información oficial de tu banco. Cada tarjeta puede tener condiciones distintas de facturación, pago, intereses y tipo de cambio.
-                    </p>
+                    <p>Esta guía no reemplaza la información oficial de tu banco o emisor. Cada tarjeta puede tener condiciones distintas de facturación, pago, intereses y tipo de cambio.</p>
                   </div>
                 </div>
               </div>
 
               <aside className="rounded-3xl border border-border bg-background p-6 sm:p-8 card-shadow">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
-                  Mira la operación completa, no solo el depósito
-                </h2>
-                <p className="text-secondary-foreground leading-relaxed mb-6">
-                  Recibir pesos hoy es solo una parte de la decisión. La otra parte es entender cómo quedará reflejado el cargo en tu tarjeta y cómo lo tendrás que pagar después.
-                </p>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-4">Mira dos cosas al mismo tiempo</h2>
+                <p className="text-secondary-foreground leading-relaxed mb-6">Lo que recibirías en pesos hoy y lo que tendrás que pagar después no son lo mismo. Ambas partes deben estar claras antes de decidir.</p>
                 <div className="space-y-3">
                   <div className="rounded-2xl bg-secondary p-4">
                     <p className="text-sm font-bold text-foreground mb-1">Lo que recibes</p>
                     <p className="text-sm text-secondary-foreground">Monto neto estimado en pesos, informado antes de avanzar.</p>
                   </div>
                   <div className="rounded-2xl bg-primary-light p-4">
-                    <p className="text-sm font-bold text-foreground mb-1">Lo que debes revisar</p>
-                    <p className="text-sm text-secondary-foreground">Facturación, fecha de pago, tipo de cambio del banco e intereses si no pagas el total.</p>
+                    <p className="text-sm font-bold text-foreground mb-1">Lo que pagas después</p>
+                    <p className="text-sm text-secondary-foreground">Cargo o deuda en la tarjeta, según banco, emisor y condiciones.</p>
                   </div>
-                  <a
-                    href="/simulador-pago-tarjeta-credito"
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-background p-4 text-sm font-bold text-primary hover:bg-primary-light transition-colors"
-                  >
-                    Usar simulador de pago
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
                 </div>
               </aside>
             </div>
@@ -194,12 +181,8 @@ export default function PagarDeudaDolaresTarjeta() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Qué revisar</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                Antes de aceptar una cotización, mira cómo se pagará el cargo
-              </h2>
-              <p className="text-lg text-secondary-foreground leading-relaxed">
-                Una operación puede parecer conveniente por el monto que recibes hoy, pero la decisión completa incluye lo que pasará después con tu tarjeta de crédito.
-              </p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">Antes de aceptar una cotización, revisa cómo se pagará el cargo</h2>
+              <p className="text-lg text-secondary-foreground leading-relaxed">EnPesos puede ayudarte a cotizar, pero no define las condiciones bancarias de tu tarjeta. Esa parte depende de tu banco o emisor.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
@@ -225,9 +208,7 @@ export default function PagarDeudaDolaresTarjeta() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl border border-border bg-background p-7 sm:p-10 card-shadow">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Checklist</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-6">
-                Preguntas que deberías responder antes de avanzar
-              </h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-6">Preguntas que deberías responder antes de avanzar</h2>
               <div className="space-y-4">
                 {checklist.map((item) => (
                   <div key={item} className="flex gap-3">
@@ -245,21 +226,16 @@ export default function PagarDeudaDolaresTarjeta() {
             <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
               <div>
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Criterio responsable</p>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                  Si no sabes cómo vas a pagar la tarjeta, no avances todavía
-                </h2>
-                <p className="text-lg text-secondary-foreground leading-relaxed">
-                  EnPesos puede ayudarte a cotizar el monto neto estimado, pero la obligación con tu tarjeta depende de tu banco. La decisión responsable es revisar ambos lados: lo que recibes hoy y lo que tendrás que pagar después.
-                </p>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">Si no sabes cómo vas a pagar la tarjeta, no avances todavía</h2>
+                <p className="text-lg text-secondary-foreground leading-relaxed">Cotizar puede ayudarte a entender cuánto recibirías en pesos, pero la decisión responsable también considera capacidad de pago, fecha de vencimiento y condiciones del emisor.</p>
               </div>
 
               <div className="rounded-3xl border border-border bg-card p-6 sm:p-7">
-                <h3 className="text-2xl font-extrabold text-foreground mb-4">Cómo lo comunicamos en EnPesos</h3>
+                <h3 className="text-2xl font-extrabold text-foreground mb-4">Qué sí y qué no define EnPesos</h3>
                 <div className="space-y-4">
-                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">Primero te informamos el neto estimado en pesos.</p></div>
-                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">La cotización no te obliga a operar.</p></div>
-                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">Te recomendamos revisar las condiciones de tu tarjeta antes de aceptar.</p></div>
-                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">No ofrecemos préstamos, avances bancarios ni asesoría financiera personalizada.</p></div>
+                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">Puede informar una cotización previa con monto neto estimado en pesos.</p></div>
+                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">No define intereses, pago mínimo, facturación ni tipo de cambio del banco.</p></div>
+                  <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">No ofrece préstamos, créditos, avances bancarios ni asesoría financiera personalizada.</p></div>
                 </div>
               </div>
             </div>
@@ -270,9 +246,7 @@ export default function PagarDeudaDolaresTarjeta() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-                Dudas sobre deuda en dólares y tarjeta de crédito
-              </h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Dudas sobre deuda en dólares y tarjeta de crédito</h2>
             </div>
             <div className="space-y-4">
               {faqs.map((faq) => (
@@ -289,48 +263,19 @@ export default function PagarDeudaDolaresTarjeta() {
         </section>
 
         <section className="py-14 sm:py-18 bg-background">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-border bg-gradient-to-br from-primary-light via-background to-secondary p-7 sm:p-10 text-center card-shadow">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                Cotiza solo si entiendes ambos lados de la operación
-              </h2>
-              <p className="text-lg text-secondary-foreground leading-relaxed max-w-3xl mx-auto mb-7">
-                Podemos ayudarte a estimar cuánto recibirías en pesos. Pero antes de avanzar, revisa cómo tu banco mostrará y cobrará el cargo en tu tarjeta.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-3">
-                <Button
-                  className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
-                  onClick={() => openWhatsApp('seo_pagar_deuda_footer')}
-                >
-                  Consultar por WhatsApp
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-                <a
-                  href="/simulador-pago-tarjeta-credito"
-                  className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                >
-                  Usar simulador
-                </a>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-border bg-card p-7 sm:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <FileText className="w-8 h-8 text-primary" />
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">Guías relacionadas</h2>
               </div>
-            </div>
-
-            <div className="mt-8 grid md:grid-cols-4 gap-4">
-              <a href="/simulador-pago-tarjeta-credito" className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
-                <p className="text-sm font-bold text-primary mb-2">Herramienta</p>
-                <h3 className="font-extrabold text-foreground">Simulador de pago de tarjeta</h3>
-              </a>
-              <a href="/cuanto-recibo-por-mi-cupo-en-dolares" className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
-                <p className="text-sm font-bold text-primary mb-2">Guía relacionada</p>
-                <h3 className="font-extrabold text-foreground">Cuánto recibo por mi cupo en dólares</h3>
-              </a>
-              <a href="/es-seguro-cambiar-cupo-en-dolares-a-pesos" className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
-                <p className="text-sm font-bold text-primary mb-2">Guía relacionada</p>
-                <h3 className="font-extrabold text-foreground">¿Es seguro cambiar cupo en dólares?</h3>
-              </a>
-              <a href="/avance-cupo-en-dolares-online" className="rounded-2xl border border-border bg-card p-5 hover:border-primary/40 transition-colors">
-                <p className="text-sm font-bold text-primary mb-2">Guía relacionada</p>
-                <h3 className="font-extrabold text-foreground">Avance cupo en dólares online</h3>
-              </a>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {relatedLinks.map((link) => (
+                  <a key={link.href} href={link.href} className="rounded-2xl border border-border bg-background p-5 hover:border-primary/40 hover:bg-primary-light transition-colors">
+                    <p className="font-extrabold text-foreground">{link.label}</p>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>

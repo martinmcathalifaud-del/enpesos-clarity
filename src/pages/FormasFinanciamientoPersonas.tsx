@@ -5,6 +5,7 @@ import {
   Calculator,
   CheckCircle2,
   CreditCard,
+  FileText,
   HelpCircle,
   Landmark,
   MessageCircle,
@@ -22,90 +23,73 @@ const CANONICAL_URL = 'https://www.enpesos.cl/formas-de-financiamiento-para-pers
 const options = [
   {
     title: 'Crédito de consumo',
-    description: 'Puede servir para ordenar una necesidad mayor con cuotas fijas, evaluación bancaria y plazo definido.',
-    bestFor: 'Gastos grandes o necesidades que puedes pagar en cuotas durante varios meses.',
-    watch: 'Costo total del crédito, tasa, seguros, plazo y efecto en tu carga mensual.',
+    description: 'Es un crédito que entrega un banco u otra entidad, normalmente con evaluación, monto aprobado, cuotas, intereses y plazo definido.',
+    compare: 'Costo total, cuota mensual, plazo, seguros, intereses y capacidad de pago.',
   },
   {
     title: 'Avance en efectivo',
-    description: 'Permite usar la tarjeta de crédito para obtener dinero, normalmente con intereses y comisiones asociadas.',
-    bestFor: 'Urgencias puntuales cuando entiendes bien el costo y la forma de pago posterior.',
-    watch: 'Puede salir caro si se usa sin comparar costo total, cuotas e intereses.',
-  },
-  {
-    title: 'Línea de crédito',
-    description: 'Es una alternativa bancaria flexible para cubrir desfases de caja personal, pero debe usarse con control.',
-    bestFor: 'Desfases muy cortos entre ingresos y pagos.',
-    watch: 'Si se vuelve permanente, puede transformarse en deuda cara y difícil de cerrar.',
+    description: 'Es un producto de la tarjeta o banco para obtener dinero usando una línea disponible, con comisiones, intereses y condiciones del emisor.',
+    compare: 'Comisión, interés, facturación, costo total y qué pasa si pagas solo una parte.',
   },
   {
     title: 'Tarjeta de crédito en cuotas',
-    description: 'Sirve para financiar compras o pagos directamente con la tarjeta, según cupo y condiciones del emisor.',
-    bestFor: 'Compras específicas que puedes pagar en cuotas sin desordenar tu presupuesto.',
-    watch: 'No confundas cupo disponible con plata disponible. Igual tendrás que pagarlo después.',
+    description: 'Permite pagar compras o servicios con la tarjeta, según cupo nacional, cupo internacional y reglas del banco o emisor.',
+    compare: 'Cantidad de cuotas, interés, carga mensual y deuda posterior.',
   },
   {
-    title: 'Refinanciamiento o consolidación',
-    description: 'Puede ayudar cuando tienes varias deudas y buscas ordenar pagos en una sola cuota.',
-    bestFor: 'Personas que necesitan bajar carga mensual o simplificar varias deudas.',
-    watch: 'Puede extender plazo y aumentar costo total si no revisas bien las condiciones.',
-  },
-  {
-    title: 'Venta de activos o ingresos extraordinarios',
-    description: 'Vender algo, adelantar un ingreso o liquidar un activo puede evitar pedir deuda nueva.',
-    bestFor: 'Cuando necesitas liquidez y prefieres no aumentar tu endeudamiento.',
-    watch: 'Puede implicar vender apurado o bajo precio si la urgencia es alta.',
-  },
-  {
-    title: 'Apoyo familiar o red cercana',
-    description: 'Puede ser más simple y barato, pero requiere claridad para evitar problemas personales.',
-    bestFor: 'Emergencias chicas o necesidades de muy corto plazo.',
-    watch: 'Deja claro monto, fecha de pago y condiciones para no tensionar relaciones.',
-  },
-  {
-    title: 'Cupo en dólares o cupo internacional',
-    description: 'Si ya tienes tarjeta de crédito con cupo internacional disponible, puedes cotizar una alternativa para recibir pesos chilenos.',
-    bestFor: 'Personas con cupo internacional disponible que quieren evaluar pesos antes de pedir un crédito nuevo.',
-    watch: 'Debe cotizarse antes de avanzar, sin entregar claves bancarias ni aceptar condiciones poco claras.',
+    title: 'Cupo internacional disponible',
+    description: 'Si tu tarjeta tiene cupo en dólares disponible, puedes cotizar cuántos pesos chilenos podrías recibir usando ese cupo.',
+    compare: 'Monto neto estimado, costo, condiciones, cargo/deuda posterior y capacidad de pago.',
   },
 ];
 
-const quickNeeds = [
-  'Pagar una urgencia puntual.',
-  'Cubrir un desfase antes del próximo ingreso.',
-  'Ordenar una deuda chica o mediana.',
-  'Financiar una compra necesaria.',
-  'Evitar pedir un crédito nuevo sin comparar alternativas.',
+const comparisonChecklist = [
+  'Cuántos pesos chilenos necesitas realmente.',
+  'Cuánto recibirías neto después de costos y condiciones.',
+  'Cuánto pagarás después y en qué plazo.',
+  'Qué condiciones dependen de tu banco o emisor.',
+  'Si tienes capacidad de pago para la deuda o cargo posterior.',
+  'Si entiendes el proceso antes de aceptar.',
 ];
 
 const enpesosFit = [
   'Tienes tarjeta de crédito con cupo internacional disponible.',
-  'Necesitas pesos chilenos y quieres cotizar antes de decidir.',
-  'No quieres pedir un préstamo nuevo sin mirar alternativas.',
-  'Quieres atención humana por WhatsApp y condiciones claras.',
-  'No quieres entregar claves bancarias, token ni acceso a tus cuentas.',
+  'Quieres cotizar cuántos pesos chilenos podrías recibir antes de decidir.',
+  'Quieres comparar con un crédito de consumo o avance en efectivo.',
+  'Quieres costo y condiciones claras antes de avanzar.',
+  'No quieres entregar claves bancarias, token, CVV por WhatsApp ni acceso remoto.',
+];
+
+const internalLinks = [
+  { label: 'Avance cupo en dólares online', href: '/avance-cupo-en-dolares-online', description: 'Diferencia entre avance bancario y cupo internacional.' },
+  { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares', description: 'Factores que influyen en el monto neto.' },
+  { label: 'Deuda en dólares de la tarjeta', href: '/como-pagar-deuda-en-dolares-tarjeta-credito', description: 'Qué revisar después con el banco o emisor.' },
+  { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito', description: 'Mira escenarios referenciales de pago posterior.' },
+  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos', description: 'Guía principal para cotizar cupo internacional.' },
+  { label: 'Cómo funciona EnPesos', href: '/como-funciona', description: 'Proceso paso a paso antes de decidir.' },
+  { label: 'Seguridad', href: '/seguridad', description: 'Datos que no pedimos y señales de cuidado.' },
 ];
 
 const faqs = [
   {
-    question: '¿Cuál es la mejor forma de financiamiento para una persona?',
-    answer: 'Depende de la urgencia, monto, capacidad de pago, plazo y costo total. Para algunas personas conviene crédito de consumo; para otras, ordenar deuda; y para quienes ya tienen cupo internacional disponible, puede hacer sentido cotizar cupo en dólares a pesos antes de pedir un crédito nuevo.',
+    question: '¿Qué debo comparar antes de pedir un crédito o usar mi tarjeta?',
+    answer: 'Compara costo total, plazo, cuota o pago mensual, condiciones del banco o emisor, capacidad de pago y qué deuda quedará después. No mires solo cuánto dinero recibes hoy.',
   },
   {
-    question: '¿Qué alternativa sirve para una necesidad de corto plazo?',
-    answer: 'Para necesidades cortas suelen evaluarse línea de crédito, tarjeta, avance, apoyo familiar, venta de activos o una cotización usando cupo internacional disponible. Lo importante es comparar costo, rapidez y forma de pago posterior.',
+    question: '¿Usar cupo internacional es lo mismo que pedir un crédito de consumo?',
+    answer: 'No. Un crédito de consumo es un producto financiero nuevo. EnPesos no entrega créditos ni préstamos; ayuda a cotizar cuántos pesos podrías recibir usando cupo internacional disponible de tu tarjeta.',
   },
   {
-    question: '¿Cupo en dólares es lo mismo que crédito de consumo?',
-    answer: 'No. EnPesos no entrega créditos ni préstamos. La cotización se evalúa usando cupo internacional ya disponible en una tarjeta de crédito.',
+    question: '¿Usar cupo internacional siempre conviene más que un avance?',
+    answer: 'No necesariamente. Puede ser una alternativa a evaluar, pero depende del monto, banco o emisor, costos, condiciones y capacidad de pago. Conviene comparar antes de decidir.',
   },
   {
-    question: '¿Cotizar en EnPesos me obliga a operar?',
-    answer: 'No. Cotizar sirve para conocer monto estimado, costos y condiciones antes de tomar una decisión. Si no te conviene, no tienes obligación de avanzar.',
+    question: '¿Queda una deuda en la tarjeta?',
+    answer: 'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor. Debes revisar cómo se facturará y cómo lo pagarás después.',
   },
   {
-    question: '¿Qué debo revisar antes de financiarme?',
-    answer: 'Revisa cuánto necesitas, cuánto recibirías realmente, cuánto pagarás después, en qué plazo, qué pasa si te atrasas y si estás tomando deuda nueva o usando cupo ya disponible.',
+    question: '¿Cotizar con EnPesos me obliga a avanzar?',
+    answer: 'No. Cotizar sirve para revisar monto estimado, costo y condiciones antes de decidir. Si no te hace sentido, no tienes obligación de continuar.',
   },
 ];
 
@@ -123,7 +107,7 @@ export default function FormasFinanciamientoPersonas() {
   useEffect(() => {
     document.title = 'Formas de financiamiento para personas en Chile | EnPesos.cl';
 
-    const description = 'Guía comercial para comparar formas de financiamiento para personas en Chile: crédito de consumo, avance, línea de crédito, tarjeta y cupo en dólares a pesos.';
+    const description = 'Compara crédito de consumo, avance en efectivo, tarjeta de crédito y cupo internacional disponible antes de decidir. Revisa costo total, plazo, condiciones y deuda posterior.';
 
     upsertMeta('meta[name="description"]', { name: 'description', content: description });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: 'Formas de financiamiento para personas en Chile' });
@@ -184,43 +168,40 @@ export default function FormasFinanciamientoPersonas() {
             <div>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-light px-4 py-2 text-sm font-bold text-primary">
                 <WalletCards className="h-4 w-4" />
-                Guía para personas
+                Guía para comparar antes de decidir
               </div>
 
               <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Formas de financiamiento para personas en Chile: crédito, avance, tarjeta y cupo en dólares.
+                Formas de financiamiento para personas: crédito, avance, tarjeta y cupo en dólares
               </h1>
 
               <p className="mb-8 max-w-3xl text-lg leading-relaxed text-secondary-foreground sm:text-xl">
-                Si necesitas plata para una urgencia o una necesidad de corto plazo, no todas las alternativas son iguales. Compara opciones antes de decidir y revisa si tu cupo internacional disponible puede ser una alternativa para cotizar pesos.
+                Si necesitas pesos chilenos, conviene comparar antes de decidir. Un crédito de consumo, un avance en efectivo, usar la tarjeta o cotizar cupo internacional disponible tienen costos, plazos y consecuencias distintas.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button
                   size="lg"
                   className="h-12 rounded-xl px-7 text-base font-bold button-shadow"
-                  onClick={() => openWhatsApp('financiamiento_personas_hero', 'Hola, estoy revisando formas de financiamiento y quiero cotizar mi cupo internacional disponible.')}
+                  onClick={() => openWhatsApp('financiamiento_personas_hero', 'Hola, estoy comparando alternativas y quiero cotizar mi cupo internacional disponible.')}
                 >
-                  Cotizar cupo disponible
+                  Solicitar cotización
                   <MessageCircle className="h-5 w-5" />
                 </Button>
-                <a
-                  href="#comparativa"
-                  className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-                >
-                  Ver alternativas
+                <a href="#comparativa" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground transition-colors hover:border-primary/40 hover:text-primary">
+                  Ver comparativa
                 </a>
               </div>
             </div>
 
             <aside className="rounded-[2rem] border border-border bg-background p-6 shadow-xl lg:p-8">
               <CreditCard className="mb-5 h-10 w-10 text-primary" />
-              <h2 className="mb-4 text-3xl font-black tracking-tight text-foreground">Primero define la necesidad.</h2>
+              <h2 className="mb-4 text-3xl font-black tracking-tight text-foreground">La pregunta no es solo cuánto recibes hoy</h2>
               <p className="mb-5 leading-relaxed text-secondary-foreground">
-                No es lo mismo financiar una emergencia, ordenar deudas, cubrir un desfase o comprar algo. La mejor alternativa depende del monto, plazo, costo y capacidad de pago.
+                También importa cuánto pagarás después, en qué plazo, bajo qué condiciones y si tu presupuesto puede asumir ese cargo o deuda.
               </p>
               <div className="space-y-3">
-                {quickNeeds.map((item) => (
+                {comparisonChecklist.slice(0, 4).map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl bg-secondary p-4">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <p className="text-sm font-semibold text-secondary-foreground">{item}</p>
@@ -235,11 +216,9 @@ export default function FormasFinanciamientoPersonas() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 max-w-3xl">
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Comparativa</p>
-              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
-                Alternativas de financiamiento personal y cuándo mirarlas.
-              </h2>
+              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">Qué significa cada alternativa y qué revisar</h2>
               <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
-                La idea no es elegir la opción más rápida, sino la que entiendes mejor: cuánto recibes, cuánto pagas después y qué riesgo asumes.
+                No hay una opción que siempre convenga más. La decisión depende del costo total, plazo, banco o emisor, capacidad de pago y condiciones del caso.
               </p>
             </div>
 
@@ -251,10 +230,7 @@ export default function FormasFinanciamientoPersonas() {
                   </div>
                   <h3 className="mb-3 text-xl font-black text-foreground">{option.title}</h3>
                   <p className="mb-4 text-sm leading-relaxed text-secondary-foreground">{option.description}</p>
-                  <div className="space-y-3 text-sm leading-relaxed">
-                    <p><span className="font-black text-foreground">Puede servir para:</span> {option.bestFor}</p>
-                    <p><span className="font-black text-foreground">Ojo con:</span> {option.watch}</p>
-                  </div>
+                  <p className="text-sm leading-relaxed"><span className="font-black text-foreground">Compara:</span> {option.compare}</p>
                 </article>
               ))}
             </div>
@@ -268,16 +244,14 @@ export default function FormasFinanciamientoPersonas() {
                 <Calculator className="h-7 w-7" />
               </div>
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Dónde entra EnPesos</p>
-              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
-                Cupo en dólares: una alternativa si ya tienes cupo internacional disponible.
-              </h2>
+              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">Cupo internacional: puede ser una alternativa a evaluar</h2>
               <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
-                EnPesos no es un préstamo ni un crédito de consumo. Es una forma de cotizar una operación usando cupo internacional ya disponible, para saber cuánto podrías recibir en pesos antes de decidir.
+                EnPesos no es banco, préstamo ni crédito. Si ya tienes cupo internacional disponible, te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo, con costo y condiciones claras antes de decidir.
               </p>
-              <a
-                href="/cupo-en-dolares-a-pesos-chilenos"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline"
-              >
+              <p className="mt-4 text-lg leading-relaxed text-secondary-foreground">
+                Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.
+              </p>
+              <a href="/cupo-en-dolares-a-pesos-chilenos" className="mt-6 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline">
                 Ver guía de cupo en dólares a pesos
                 <ArrowRight className="h-4 w-4" />
               </a>
@@ -295,27 +269,55 @@ export default function FormasFinanciamientoPersonas() {
         </section>
 
         <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-8 max-w-3xl">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Antes de decidir</p>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Checklist simple para comparar opciones</h2>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {comparisonChecklist.map((item) => (
+                <div key={item} className="rounded-[2rem] border border-border bg-background p-6 shadow-sm">
+                  <CheckCircle2 className="mb-4 h-6 w-6 text-primary" />
+                  <p className="font-bold leading-relaxed text-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-secondary px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 text-center">
+              <FileText className="mx-auto mb-4 h-9 w-9 text-primary" />
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Guías para seguir comparando</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {internalLinks.map((link) => (
+                <a key={link.href} href={link.href} className="rounded-3xl border border-border bg-background p-5 transition-colors hover:border-primary/40 hover:bg-primary-light">
+                  <p className="mb-2 font-black text-foreground">{link.label}</p>
+                  <p className="text-sm leading-relaxed text-secondary-foreground">{link.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
             <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
               <AlertTriangle className="mb-5 h-8 w-8 text-amber-500" />
               <h3 className="mb-3 text-2xl font-black text-foreground">No mires solo la rapidez</h3>
-              <p className="leading-relaxed text-secondary-foreground">
-                Una alternativa rápida puede ser mala si no entiendes el costo total, las cuotas o lo que pasará después con tu tarjeta o banco.
-              </p>
+              <p className="leading-relaxed text-secondary-foreground">Una alternativa rápida puede ser mala si no entiendes costo total, plazo o deuda posterior.</p>
             </div>
             <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
               <ShieldCheck className="mb-5 h-8 w-8 text-primary" />
-              <h3 className="mb-3 text-2xl font-black text-foreground">Nunca entregues claves</h3>
-              <p className="leading-relaxed text-secondary-foreground">
-                Para cotizar cupo internacional no deberías entregar clave bancaria, token, coordenadas, acceso remoto ni control de tus cuentas.
-              </p>
+              <h3 className="mb-3 text-2xl font-black text-foreground">No entregues claves</h3>
+              <p className="leading-relaxed text-secondary-foreground">No entregues clave bancaria, token, CVV por WhatsApp, coordenadas, acceso remoto ni control de tus cuentas.</p>
             </div>
             <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
               <WalletCards className="mb-5 h-8 w-8 text-primary" />
               <h3 className="mb-3 text-2xl font-black text-foreground">Cotiza antes de decidir</h3>
-              <p className="leading-relaxed text-secondary-foreground">
-                La decisión mejora cuando sabes cuánto recibirías, qué costos aplican y qué condiciones estás aceptando.
-              </p>
+              <p className="leading-relaxed text-secondary-foreground">La decisión mejora cuando sabes cuánto recibirías, qué costos aplican y qué condiciones estás aceptando.</p>
             </div>
           </div>
         </section>
@@ -327,15 +329,13 @@ export default function FormasFinanciamientoPersonas() {
                 <HelpCircle className="h-7 w-7" />
               </div>
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Preguntas frecuentes</p>
-              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Financiamiento personal y cupo en dólares.</h2>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Financiamiento personal y cupo en dólares</h2>
             </div>
 
             <div className="space-y-4">
               {faqs.map((faq) => (
                 <details key={faq.question} className="group rounded-3xl border border-border bg-background p-6 shadow-sm">
-                  <summary className="cursor-pointer list-none text-lg font-black text-foreground">
-                    {faq.question}
-                  </summary>
+                  <summary className="cursor-pointer list-none text-lg font-black text-foreground">{faq.question}</summary>
                   <p className="mt-4 leading-relaxed text-secondary-foreground">{faq.answer}</p>
                 </details>
               ))}
@@ -347,16 +347,14 @@ export default function FormasFinanciamientoPersonas() {
           <div className="mx-auto max-w-5xl rounded-[2rem] bg-primary p-8 text-center text-primary-foreground lg:p-12">
             <WalletCards className="mx-auto mb-5 h-10 w-10" />
             <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-5xl">¿Tienes cupo internacional y quieres comparar opciones?</h2>
-            <p className="mx-auto mb-7 max-w-2xl text-primary-foreground/85">
-              Escríbenos por WhatsApp, cotizamos tu caso y ves si tiene sentido antes de pedir un crédito nuevo o usar otra alternativa.
-            </p>
+            <p className="mx-auto mb-7 max-w-2xl text-primary-foreground/85">Cotiza primero, revisa costo y condiciones, y decide después con más información.</p>
             <Button
               size="lg"
               variant="secondary"
               className="h-12 rounded-xl px-7 text-base font-black"
-              onClick={() => openWhatsApp('financiamiento_personas_final', 'Hola, quiero comparar alternativas de financiamiento y cotizar mi cupo internacional disponible.')}
+              onClick={() => openWhatsApp('financiamiento_personas_final', 'Hola, quiero comparar alternativas y cotizar mi cupo internacional disponible.')}
             >
-              Cotizar por WhatsApp
+              Solicitar cotización
               <MessageCircle className="h-5 w-5" />
             </Button>
           </div>
