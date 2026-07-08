@@ -5,6 +5,7 @@ import {
   Calculator,
   CheckCircle2,
   CreditCard,
+  FileText,
   HelpCircle,
   Landmark,
   MessageCircle,
@@ -23,22 +24,22 @@ const options = [
   {
     title: 'Crédito de consumo',
     description: 'Es un crédito que entrega un banco u otra entidad, normalmente con evaluación, monto aprobado, cuotas, intereses y plazo definido.',
-    compare: 'Costo total del crédito, cuota mensual, plazo, seguros, intereses y si tu presupuesto puede sostener el pago.',
+    compare: 'Costo total, cuota mensual, plazo, seguros, intereses y capacidad de pago.',
   },
   {
     title: 'Avance en efectivo',
-    description: 'Es un producto de la tarjeta o banco para obtener dinero usando la línea disponible, con comisiones, intereses y condiciones del emisor.',
-    compare: 'Comisión, interés, fecha de facturación, costo total y qué pasa si pagas solo una parte del estado de cuenta.',
+    description: 'Es un producto de la tarjeta o banco para obtener dinero usando una línea disponible, con comisiones, intereses y condiciones del emisor.',
+    compare: 'Comisión, interés, facturación, costo total y qué pasa si pagas solo una parte.',
   },
   {
     title: 'Tarjeta de crédito en cuotas',
     description: 'Permite pagar compras o servicios con la tarjeta, según cupo nacional, cupo internacional y reglas del banco o emisor.',
-    compare: 'Cantidad de cuotas, interés, carga mensual y si estás usando cupo que después tendrás que pagar.',
+    compare: 'Cantidad de cuotas, interés, carga mensual y deuda posterior.',
   },
   {
     title: 'Cupo internacional disponible',
     description: 'Si tu tarjeta tiene cupo en dólares disponible, puedes cotizar cuántos pesos chilenos podrías recibir usando ese cupo.',
-    compare: 'Monto neto estimado, costo, condiciones, cargo/deuda posterior en la tarjeta y capacidad de pago.',
+    compare: 'Monto neto estimado, costo, condiciones, cargo/deuda posterior y capacidad de pago.',
   },
 ];
 
@@ -187,10 +188,7 @@ export default function FormasFinanciamientoPersonas() {
                   Solicitar cotización
                   <MessageCircle className="h-5 w-5" />
                 </Button>
-                <a
-                  href="#comparativa"
-                  className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-                >
+                <a href="#comparativa" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground transition-colors hover:border-primary/40 hover:text-primary">
                   Ver comparativa
                 </a>
               </div>
@@ -218,9 +216,7 @@ export default function FormasFinanciamientoPersonas() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 max-w-3xl">
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Comparativa</p>
-              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
-                Qué significa cada alternativa y qué revisar
-              </h2>
+              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">Qué significa cada alternativa y qué revisar</h2>
               <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
                 No hay una opción que siempre convenga más. La decisión depende del costo total, plazo, banco o emisor, capacidad de pago y condiciones del caso.
               </p>
@@ -248,19 +244,14 @@ export default function FormasFinanciamientoPersonas() {
                 <Calculator className="h-7 w-7" />
               </div>
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Dónde entra EnPesos</p>
-              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
-                Cupo internacional: puede ser una alternativa a evaluar
-              </h2>
+              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">Cupo internacional: puede ser una alternativa a evaluar</h2>
               <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
                 EnPesos no es banco, préstamo ni crédito. Si ya tienes cupo internacional disponible, te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo, con costo y condiciones claras antes de decidir.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-secondary-foreground">
                 Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.
               </p>
-              <a
-                href="/cupo-en-dolares-a-pesos-chilenos"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline"
-              >
+              <a href="/cupo-en-dolares-a-pesos-chilenos" className="mt-6 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline">
                 Ver guía de cupo en dólares a pesos
                 <ArrowRight className="h-4 w-4" />
               </a>
