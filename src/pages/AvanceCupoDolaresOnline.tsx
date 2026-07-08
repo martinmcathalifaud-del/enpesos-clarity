@@ -6,22 +6,49 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
+const comparisonRows = [
+  { label: 'Quién lo entrega', cashAdvance: 'El banco o emisor de la tarjeta.', dollarLimit: 'EnPesos no entrega avance; ayuda a cotizar usando cupo internacional disponible.' },
+  { label: 'Qué debes comparar', cashAdvance: 'Comisión, interés, cuotas, facturación y costo total.', dollarLimit: 'Monto neto en pesos, costo, condiciones y cargo/deuda posterior en tarjeta.' },
+  { label: 'Deuda posterior', cashAdvance: 'Depende del producto del banco o emisor.', dollarLimit: 'Puede generarse un cargo o deuda en tu tarjeta, según tu banco o emisor.' },
+  { label: 'Decisión', cashAdvance: 'Revisa condiciones antes de pedirlo.', dollarLimit: 'Cotizas primero, ves cuánto recibirías y decides después.' },
+];
+
+const processItems = [
+  'Indicas que tienes cupo internacional disponible y el monto que quieres cotizar.',
+  'Se revisan datos básicos del caso sin pedir claves bancarias, token, acceso remoto ni CVV por WhatsApp.',
+  'Recibes una cotización previa con monto neto estimado, costo y condiciones.',
+  'Comparas con otras alternativas, como avance en efectivo o crédito de consumo, antes de decidir.',
+];
+
+const relatedLinks = [
+  { label: 'Formas de financiamiento para personas', href: '/formas-de-financiamiento-para-personas-chile' },
+  { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares' },
+  { label: 'Deuda en dólares de tarjeta', href: '/como-pagar-deuda-en-dolares-tarjeta-credito' },
+  { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Seguridad', href: '/seguridad' },
+  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
+];
+
 const faqs = [
   {
     question: '¿Qué significa avance cupo en dólares online?',
-    answer: 'Es una forma en que muchas personas buscan información para usar su cupo internacional disponible y recibir una cotización en pesos chilenos. EnPesos no ofrece un avance bancario; ayuda a cotizar una operación con cupo en dólares disponible.',
+    answer: 'Es una búsqueda que muchas personas usan cuando quieren recibir pesos usando el cupo internacional de su tarjeta. EnPesos no ofrece un avance bancario tradicional; ayuda a cotizar una operación con cupo en dólares disponible.',
   },
   {
-    question: '¿Es lo mismo que un avance en efectivo del banco?',
-    answer: 'No. Un avance en efectivo es un producto del banco. EnPesos no entrega créditos ni financiamiento bancario. La cotización se basa en evaluar un cupo internacional ya disponible.',
+    question: '¿Es lo mismo que un avance en efectivo?',
+    answer: 'No. Un avance en efectivo es un producto del banco o emisor. EnPesos no es banco, no entrega préstamos ni créditos, y no define las condiciones bancarias posteriores.',
   },
   {
-    question: '¿Cuánto puedo recibir?',
-    answer: 'Depende del monto, el valor del dólar del día, costos de procesamiento, comisión del servicio y condiciones del caso. Por eso se informa un monto neto estimado antes de avanzar.',
+    question: '¿Qué debo comparar antes de decidir?',
+    answer: 'Compara monto neto en pesos, costo total, plazo, condiciones del banco o emisor, capacidad de pago y qué cargo o deuda quedará después en la tarjeta.',
+  },
+  {
+    question: '¿Puede generarse deuda en mi tarjeta?',
+    answer: 'Sí. Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.',
   },
   {
     question: '¿Cotizar me obliga a operar?',
-    answer: 'No. Cotizar sirve para saber cuánto recibirías aproximadamente en pesos. Si no te conviene o prefieres no avanzar, no tienes obligación.',
+    answer: 'No. Cotizar sirve para revisar cuánto podrías recibir en pesos, costo y condiciones antes de decidir. Si no te hace sentido, no tienes obligación de avanzar.',
   },
 ];
 
@@ -29,7 +56,7 @@ export default function AvanceCupoDolaresOnline() {
   useEffect(() => {
     document.title = 'Avance cupo en dólares online: qué significa | EnPesos.cl';
 
-    const metaDescription = 'Guía sobre avance cupo en dólares online: qué significa, diferencia con un avance bancario y cómo cotizar tu cupo internacional a pesos chilenos por WhatsApp.';
+    const metaDescription = 'Compara avance en efectivo, avance bancario y cupo en dólares disponible. EnPesos no es préstamo ni crédito; cotiza primero y revisa condiciones.';
     const canonicalUrl = 'https://www.enpesos.cl/avance-cupo-en-dolares-online';
 
     const upsertMeta = (selector: string, attributes: Record<string, string>) => {
@@ -82,94 +109,75 @@ export default function AvanceCupoDolaresOnline() {
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-light px-4 py-2 text-sm font-bold text-primary mb-5">
                   <WalletCards className="w-4 h-4" />
-                  Guía EnPesos sobre cupo internacional
+                  Guía EnPesos sobre alternativas con tarjeta
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-tight mb-6">
-                  Avance cupo en dólares online: qué significa y cómo cotizar
+                  Avance cupo en dólares online: avance en efectivo vs cupo en dólares
                 </h1>
 
                 <p className="text-lg sm:text-xl text-secondary-foreground leading-relaxed max-w-2xl mb-7">
-                  Muchas personas buscan “avance cupo en dólares online” cuando quieren usar el cupo internacional de su tarjeta. En esta guía explicamos la diferencia entre un avance bancario y una cotización con cupo en dólares disponible.
+                  Si buscas un avance, primero distingue las opciones. Un avance en efectivo es un producto bancario. Usar cupo internacional disponible es distinto: puedes cotizar cuánto recibirías en pesos, revisar costo y decidir después.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 mb-8">
                   <Button className="h-12 rounded-xl px-7 text-base font-bold button-shadow" onClick={() => openWhatsApp('seo_avance_cupo_hero')}>
-                    Cotizar mi cupo por WhatsApp
-                    <ArrowRight className="w-5 h-5" />
+                    Solicitar cotización
+                    <MessageCircle className="w-5 h-5" />
                   </Button>
-                  <a href="#diferencia" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">
-                    Ver diferencias
+                  <a href="#comparativa" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">
+                    Comparar alternativas
                   </a>
                 </div>
 
                 <div className="rounded-2xl border border-border bg-background/85 p-4 max-w-2xl">
                   <p className="text-sm font-bold text-foreground mb-1">Importante</p>
                   <p className="text-sm text-secondary-foreground leading-relaxed">
-                    EnPesos no ofrece avances bancarios ni préstamos. Ayudamos a cotizar una operación con cupo internacional disponible y mostramos el monto neto estimado antes de que decidas avanzar.
+                    EnPesos no es un avance bancario tradicional, no es préstamo y no es crédito. WhatsApp es solo el canal de atención para resolver dudas y pedir una cotización.
                   </p>
                 </div>
               </div>
 
               <aside className="rounded-3xl border border-border bg-background p-6 sm:p-8 card-shadow">
-                <div className="rounded-3xl bg-secondary p-5 mb-6">
-                  <div className="flex items-center justify-between mb-5">
-                    <div>
-                      <p className="text-sm font-bold text-foreground">WhatsApp EnPesos</p>
-                      <p className="text-xs text-muted-foreground">Cotización online asistida</p>
-                    </div>
-                    <MessageCircle className="w-7 h-7 text-primary" />
-                  </div>
-                  <div className="space-y-3">
-                    <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-primary px-4 py-3 text-primary-foreground text-sm font-medium">
-                      Hola, tengo cupo en dólares y quiero saber cuánto recibiría en pesos.
-                    </div>
-                    <div className="max-w-[90%] rounded-2xl rounded-tl-sm bg-background border border-border px-4 py-3 text-sm text-foreground">
-                      Te ayudamos a cotizar el monto neto estimado antes de decidir.
-                    </div>
-                  </div>
-                </div>
-
-                <h2 className="text-2xl font-extrabold text-foreground mb-3">La pregunta correcta</h2>
+                <ShieldCheck className="w-10 h-10 text-primary mb-5" />
+                <h2 className="text-2xl font-extrabold text-foreground mb-3">Antes de elegir, mira el costo completo</h2>
                 <p className="text-secondary-foreground leading-relaxed mb-5">
-                  No basta con preguntar si se puede hacer online. Lo importante es saber cuánto recibirías finalmente en tu cuenta y qué costos están considerados.
+                  Compara monto neto, comisiones, intereses, fecha de facturación, plazo y capacidad de pago. La alternativa más clara es la que entiendes antes de aceptar.
                 </p>
-                <Button className="w-full h-12 rounded-xl font-bold button-shadow" onClick={() => openWhatsApp('seo_avance_cupo_card')}>
-                  Preguntar por mi caso
-                </Button>
+                <a href="/formas-de-financiamiento-para-personas-chile" className="inline-flex items-center gap-2 font-bold text-primary hover:underline">
+                  Ver formas de financiamiento
+                  <ArrowRight className="w-4 h-4" />
+                </a>
               </aside>
             </div>
           </div>
         </section>
 
-        <section id="diferencia" className="py-14 sm:py-18 bg-background">
+        <section id="comparativa" className="py-14 sm:py-18 bg-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-10">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Diferencia clave</p>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Comparativa</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                “Avance cupo en dólares” no siempre significa lo mismo
+                Avance en efectivo vs cupo en dólares: qué comparar
               </h2>
               <p className="text-lg text-secondary-foreground leading-relaxed">
-                En Google muchas personas usan la palabra avance para buscar liquidez. Pero un avance bancario y una cotización con cupo internacional son cosas distintas.
+                No se trata de elegir por nombre. Mira quién entrega el producto, qué costo tiene, cómo se paga después y qué condiciones dependen del banco o emisor.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-5">
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <CreditCard className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-extrabold text-foreground mb-2">Avance bancario</h3>
-                <p className="text-secondary-foreground leading-relaxed">Es un producto del banco, con condiciones, costos e intereses definidos por esa institución.</p>
+            <div className="overflow-hidden rounded-3xl border border-border bg-card">
+              <div className="grid grid-cols-3 bg-secondary px-4 py-3 text-sm font-extrabold text-foreground">
+                <span>Aspecto</span>
+                <span>Avance en efectivo</span>
+                <span>Cupo en dólares</span>
               </div>
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <WalletCards className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-extrabold text-foreground mb-2">Cupo internacional</h3>
-                <p className="text-secondary-foreground leading-relaxed">Es el cupo en dólares disponible en tu tarjeta, que puede evaluarse caso a caso para una cotización.</p>
-              </div>
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <HelpCircle className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-extrabold text-foreground mb-2">Neto final</h3>
-                <p className="text-secondary-foreground leading-relaxed">La comparación útil no es solo la comisión, sino cuánto recibirías en pesos después de costos y tipo de cambio.</p>
-              </div>
+              {comparisonRows.map((row) => (
+                <div key={row.label} className="grid grid-cols-1 gap-3 border-t border-border px-4 py-4 text-sm md:grid-cols-3">
+                  <p className="font-extrabold text-foreground">{row.label}</p>
+                  <p className="text-secondary-foreground">{row.cashAdvance}</p>
+                  <p className="text-secondary-foreground">{row.dollarLimit}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -183,17 +191,12 @@ export default function AvanceCupoDolaresOnline() {
                   Cómo evaluar tu cupo en dólares online
                 </h2>
                 <p className="text-lg text-secondary-foreground leading-relaxed">
-                  La cotización se hace caso a caso. El monto final puede variar por el valor del dólar del día, costos de procesamiento, comisión del servicio, monto cotizado y condiciones de tu tarjeta.
+                  La cotización se hace caso a caso. Antes de avanzar debes entender cuánto recibirías en pesos, qué costos hay y qué puede pasar después con tu tarjeta.
                 </p>
               </div>
 
               <div className="grid gap-4">
-                {[
-                  'Indicas el monto que quieres evaluar, por ejemplo USD 500, USD 1.000 o USD 2.000.',
-                  'Se revisa si tiene sentido cotizar según tu cupo internacional disponible.',
-                  'Te informamos el monto neto estimado en pesos chilenos antes de avanzar.',
-                  'Si aceptas, se coordina el proceso de forma asistida por WhatsApp.',
-                ].map((step, index) => (
+                {processItems.map((step, index) => (
                   <div key={step} className="rounded-2xl border border-border bg-background p-5 flex gap-4">
                     <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center font-extrabold shrink-0">{index + 1}</div>
                     <p className="text-foreground font-medium leading-relaxed">{step}</p>
@@ -206,27 +209,14 @@ export default function AvanceCupoDolaresOnline() {
 
         <section className="py-14 sm:py-18 bg-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-border bg-card p-7 sm:p-10">
-              <ShieldCheck className="w-9 h-9 text-primary mb-4" />
+            <div className="rounded-3xl border border-amber-200 bg-amber-50 p-7 sm:p-10">
+              <CreditCard className="w-9 h-9 text-amber-600 mb-4" />
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
-                Antes de avanzar, entiende el costo total
+                Puede generarse un cargo o deuda posterior en tu tarjeta
               </h2>
-              <p className="text-lg text-secondary-foreground leading-relaxed mb-6">
-                En una cotización responsable deberías saber cuánto recibirías neto en pesos, qué costos están considerados y si la operación te conviene frente a otras alternativas.
+              <p className="text-lg text-secondary-foreground leading-relaxed">
+                Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor. El pago posterior, intereses, tipo de cambio y fechas dependen de esas condiciones.
               </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                {[
-                  'No mires solo la palabra comisión: mira el monto neto final.',
-                  'No avances si no entiendes el cálculo o prefieres comparar.',
-                  'Cotizar no te obliga a operar.',
-                  'El proceso debe realizarse con el titular de la tarjeta y cuenta bancaria.',
-                ].map((item) => (
-                  <div key={item} className="flex gap-3 rounded-2xl bg-background border border-border p-4">
-                    <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <p className="text-foreground font-semibold leading-relaxed">{item}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -235,7 +225,7 @@ export default function AvanceCupoDolaresOnline() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Dudas sobre avance de cupo en dólares online</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Dudas sobre avance y cupo en dólares</h2>
             </div>
 
             <div className="space-y-4">
@@ -260,18 +250,12 @@ export default function AvanceCupoDolaresOnline() {
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">Guías relacionadas</h2>
               </div>
               <div className="grid md:grid-cols-3 gap-4">
-                <a href="/cuanto-recibo-por-mi-cupo-en-dolares" className="rounded-2xl border border-border p-5 hover:border-primary/40 hover:bg-primary-light transition-colors">
-                  <p className="font-extrabold text-foreground mb-2">¿Cuánto recibo por mi cupo?</p>
-                  <p className="text-sm text-secondary-foreground">Dólar del día, costos, comisión y neto final.</p>
-                </a>
-                <a href="/es-seguro-cambiar-cupo-en-dolares-a-pesos" className="rounded-2xl border border-border p-5 hover:border-primary/40 hover:bg-primary-light transition-colors">
-                  <p className="font-extrabold text-foreground mb-2">¿Es seguro cambiar cupo?</p>
-                  <p className="text-sm text-secondary-foreground">Señales de confianza y alertas antes de operar.</p>
-                </a>
-                <a href="/vender-cupo-en-dolares-chile" className="rounded-2xl border border-border p-5 hover:border-primary/40 hover:bg-primary-light transition-colors">
-                  <p className="font-extrabold text-foreground mb-2">Vender cupo en dólares</p>
-                  <p className="text-sm text-secondary-foreground">Qué significa realmente y cómo funciona en Chile.</p>
-                </a>
+                {relatedLinks.map((link) => (
+                  <a key={link.href} href={link.href} className="rounded-2xl border border-border p-5 hover:border-primary/40 hover:bg-primary-light transition-colors">
+                    <p className="font-extrabold text-foreground mb-2">{link.label}</p>
+                    <p className="text-sm text-secondary-foreground">Revisa esta guía antes de decidir.</p>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
