@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import QuoteCalculator from '@/components/QuoteCalculator';
+import LeadCaptureForm from '@/components/LeadCaptureForm';
 import TrustSection from '@/components/TrustSection';
 import HowItWorks from '@/components/HowItWorks';
 import CompatibleBanks from '@/components/CompatibleBanks';
@@ -87,7 +87,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <Hero />
-            <QuoteCalculator />
+            <LeadCaptureForm
+              origen="home_calculadora_lead"
+              title="¿Cuánto cupo quieres evaluar?"
+              description="Cada caso es distinto según tu tarjeta, banco y condiciones. Completa estos datos y te contactamos con una cotización clara para que decidas con toda la información."
+            />
           </div>
         </div>
       </section>

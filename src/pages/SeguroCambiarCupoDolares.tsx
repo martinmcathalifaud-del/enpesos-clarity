@@ -5,57 +5,52 @@ import {
   CheckCircle2,
   FileCheck,
   HelpCircle,
+  Info,
   LockKeyhole,
   MessageCircle,
   ShieldCheck,
   UserCheck,
-  XCircle,
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadCaptureForm from '@/components/LeadCaptureForm';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
 const CANONICAL_URL = 'https://www.enpesos.cl/es-seguro-cambiar-cupo-en-dolares-a-pesos';
 
-const safeSignals = [
+const howItWorks = [
+  'Evaluamos tu caso antes de pedirte cualquier dato sensible',
+  'Te damos una cotización clara antes de que decidas avanzar',
+  'Verificamos tu identidad con métodos estándar de la industria',
+  'Un asesor humano te acompaña en cada paso',
+];
+
+const trustPillars = [
   {
-    title: 'Cotización antes de decidir',
-    description: 'Primero debes conocer el monto estimado que recibirías en pesos, los costos y las condiciones generales. Cotizar no te obliga a operar.',
+    icon: UserCheck,
+    title: 'Titularidad',
+    description:
+      'El proceso debe calzar con el titular de la tarjeta y la cuenta bancaria. Eso reduce riesgo operativo y evita confusiones con terceros.',
   },
   {
-    title: 'Sin claves bancarias',
-    description: 'No se piden claves del banco, token, coordenadas, acceso remoto ni permisos para entrar a tus cuentas.',
+    icon: FileCheck,
+    title: 'Cotización clara',
+    description:
+      'Antes de avanzar tienes que entender cuánto recibirías, qué costos aplican y qué condiciones se están aceptando.',
   },
   {
-    title: 'Titularidad clara',
-    description: 'La operación debe estar asociada al titular de la tarjeta y de la cuenta bancaria donde se recibirían los pesos.',
-  },
-  {
-    title: 'Monto neto explicado',
-    description: 'Lo relevante no es solo el costo: es entender cuánto recibirías finalmente en pesos y de qué depende ese monto.',
-  },
-  {
-    title: 'Comunicación trazable',
-    description: 'La cotización, aceptación, costos y condiciones deben quedar explicados por escrito antes de avanzar.',
-  },
-  {
-    title: 'Sin presión comercial',
-    description: 'Un proceso serio permite preguntar, comparar y decidir. La urgencia excesiva es una mala señal.',
+    icon: LockKeyhole,
+    title: 'Datos protegidos',
+    description:
+      'No se necesitan claves bancarias ni acceso a cuentas para cotizar. Esa línea roja debe mantenerse siempre.',
   },
 ];
 
-const neverShare = [
-  'Clave bancaria, clave de internet o contraseña de tu banco.',
-  'Token, coordenadas o códigos para iniciar sesión en tus cuentas.',
-  'Acceso remoto a tu celular o computador.',
-  'Fotos completas de tu tarjeta por ambos lados.',
-  'Códigos de verificación que no entiendes para qué se usarán.',
-  'Tarjeta o cuenta bancaria de una tercera persona sin validación del titular.',
-];
+const neverAsk = ['Claves bancarias', 'PIN de tu tarjeta', 'Código CVV por WhatsApp o mensaje', 'Acceso remoto a tu computador o celular'];
 
-const warningSigns = [
+const fraudSigns = [
   'Te prometen un monto exacto sin revisar tu caso.',
   'Te piden claves, token, coordenadas o acceso remoto.',
   'No explican costos, plazos ni condiciones antes de avanzar.',
@@ -88,9 +83,9 @@ const faqs = [
       'No. Cotizar sirve para conocer el monto estimado, costos y condiciones. Si no te conviene, no tienes obligación de continuar.',
   },
   {
-    question: '¿Es préstamo, crédito o avance?',
+    question: '¿Es lo mismo que un avance en efectivo?',
     answer:
-      'No. EnPesos no entrega préstamos, créditos ni avances bancarios. La evaluación se realiza usando cupo internacional ya disponible en una tarjeta de crédito.',
+      'No lo comunicamos como un préstamo nuevo ni como avance. Estás usando parte de un cupo internacional que tu banco ya te aprobó. El proceso incluye cotización previa, así que sabes el monto y condiciones antes de decidir.',
   },
   {
     question: '¿Qué hago si algo me genera desconfianza?',
@@ -178,19 +173,15 @@ export default function SeguroCambiarCupoDolares() {
             <div>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-light px-4 py-2 text-sm font-bold text-primary">
                 <ShieldCheck className="h-4 w-4" />
-                Guía de seguridad EnPesos
+                Seguridad y transparencia
               </div>
 
               <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                ¿Es seguro cambiar cupo en dólares a pesos?
+                Es seguro cambiar tu cupo en dólares a pesos: así protegemos tu información
               </h1>
 
-              <p className="mb-5 max-w-2xl text-xl font-bold leading-relaxed text-foreground">
-                Sí, es seguro cuando se hace por canales oficiales, con cotización previa, titularidad validada, costos claros y sin compartir claves bancarias.
-              </p>
-
-              <p className="mb-8 max-w-2xl text-lg leading-relaxed text-secondary-foreground">
-                La seguridad no depende de una promesa genérica. Depende de cómo se ejecuta el proceso: qué datos te piden, qué tan clara es la cotización y si entiendes el monto neto antes de decidir.
+              <p className="mb-8 max-w-2xl text-xl font-bold leading-relaxed text-foreground">
+                Sí, es seguro si usas un servicio confiable. Antes de avanzar, es importante que sepas exactamente qué datos pedimos, cuáles nunca pedimos, y cómo funciona el proceso de principio a fin.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -204,7 +195,7 @@ export default function SeguroCambiarCupoDolares() {
                     )
                   }
                 >
-                  Cotizar por WhatsApp
+                  Evaluar mi cupo
                   <MessageCircle className="h-5 w-5" />
                 </Button>
                 <a
@@ -216,26 +207,23 @@ export default function SeguroCambiarCupoDolares() {
               </div>
 
               <a
-                href="#checklist"
+                href="#datos"
                 className="mt-5 inline-flex items-center gap-2 text-sm font-black text-primary hover:underline"
               >
-                Revisar checklist de seguridad
+                Ver qué datos nunca te pedimos
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
 
             <div className="rounded-[2rem] border border-border bg-background p-6 shadow-xl lg:p-8">
               <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
-                <LockKeyhole className="h-7 w-7" />
+                <ShieldCheck className="h-7 w-7" />
               </div>
-              <h2 className="mb-4 text-3xl font-black tracking-tight text-foreground">Regla simple</h2>
-              <p className="mb-6 text-lg leading-relaxed text-secondary-foreground">
-                Para cotizar tu cupo en dólares no deberías entregar claves bancarias, token, coordenadas, acceso remoto ni fotos completas de tu tarjeta.
-              </p>
+              <h2 className="mb-4 text-3xl font-black tracking-tight text-foreground">Cómo funciona el proceso</h2>
               <div className="space-y-3">
-                {neverShare.slice(0, 4).map((item) => (
+                {howItWorks.map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-2xl bg-secondary p-4">
-                    <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <p className="text-sm font-semibold leading-relaxed text-secondary-foreground">{item}</p>
                   </div>
                 ))}
@@ -244,23 +232,66 @@ export default function SeguroCambiarCupoDolares() {
           </div>
         </section>
 
-        <section id="checklist" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <div className="mb-10 max-w-3xl">
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Checklist</p>
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Cómo funciona</p>
               <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
-                Señales de que el proceso está bien armado.
+                Tres cosas que siempre se cumplen.
               </h2>
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {safeSignals.map((signal) => (
-                <div key={signal.title} className="rounded-3xl border border-border bg-background p-6 shadow-sm">
-                  <CheckCircle2 className="mb-4 h-7 w-7 text-primary" />
-                  <h3 className="mb-3 text-xl font-black text-foreground">{signal.title}</h3>
-                  <p className="text-sm leading-relaxed text-secondary-foreground">{signal.description}</p>
+            <div className="grid gap-5 md:grid-cols-3">
+              {trustPillars.map((pillar) => (
+                <div key={pillar.title} className="rounded-3xl border border-border bg-background p-6 shadow-sm">
+                  <pillar.icon className="mb-4 h-7 w-7 text-primary" />
+                  <h3 className="mb-3 text-xl font-black text-foreground">{pillar.title}</h3>
+                  <p className="text-sm leading-relaxed text-secondary-foreground">{pillar.description}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="datos" className="bg-secondary px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Referencia</p>
+              <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
+                Datos que nunca te vamos a pedir.
+              </h2>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {neverAsk.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-3xl border border-border bg-background p-5 shadow-sm">
+                  <Info className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                  <p className="text-sm font-semibold leading-relaxed text-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2 lg:items-center">
+            <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
+              <ShieldCheck className="mb-5 h-9 w-9 text-primary" />
+              <h2 className="mb-4 text-2xl font-black text-foreground">Canales oficiales</h2>
+              <p className="mb-5 leading-relaxed text-secondary-foreground">
+                Usa únicamente los canales enlazados desde enpesos.cl y nuestras redes oficiales.
+              </p>
+              <p className="rounded-2xl bg-secondary p-4 text-sm font-semibold text-secondary-foreground">
+                Si algo no queda claro, detente y pregunta antes de avanzar.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
+              <HelpCircle className="mb-5 h-9 w-9 text-primary" />
+              <h2 className="mb-4 text-2xl font-black text-foreground">¿Es un préstamo nuevo?</h2>
+              <p className="leading-relaxed text-secondary-foreground">
+                No lo comunicamos como un préstamo nuevo. Estás evaluando usar parte del cupo internacional que ya tienes aprobado por tu banco, no pidiendo algo adicional. Antes de avanzar, recibes una cotización clara y decides con esa información a la vista.
+              </p>
             </div>
           </div>
         </section>
@@ -271,17 +302,17 @@ export default function SeguroCambiarCupoDolares() {
               <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
                 <AlertTriangle className="h-7 w-7" />
               </div>
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Alertas</p>
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">Educación</p>
               <h2 className="text-3xl font-black leading-tight tracking-tight text-foreground sm:text-5xl">
-                Cuándo no deberías avanzar.
+                Cómo identificar intentos de fraude.
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-secondary-foreground">
-                Si una operación exige datos sensibles, no explica condiciones o te presiona para decidir sin entender el monto neto, el riesgo ya no está en el cupo: está en el proceso.
+                Estas señales aplican a cualquier servicio que te ayude a cotizar o mover dinero, no solo a EnPesos. Conócelas para protegerte en cualquier contexto.
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {warningSigns.map((item) => (
+              {fraudSigns.map((item) => (
                 <div key={item} className="rounded-3xl border border-border bg-background p-5 shadow-sm">
                   <AlertTriangle className="mb-4 h-6 w-6 text-amber-500" />
                   <p className="font-bold leading-relaxed text-foreground">{item}</p>
@@ -292,32 +323,6 @@ export default function SeguroCambiarCupoDolares() {
         </section>
 
         <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
-            <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
-              <UserCheck className="mb-5 h-8 w-8 text-primary" />
-              <h3 className="mb-3 text-2xl font-black text-foreground">Titularidad</h3>
-              <p className="leading-relaxed text-secondary-foreground">
-                El proceso debe calzar con el titular de la tarjeta y la cuenta bancaria. Eso reduce riesgo operativo y evita confusiones con terceros.
-              </p>
-            </div>
-            <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
-              <FileCheck className="mb-5 h-8 w-8 text-primary" />
-              <h3 className="mb-3 text-2xl font-black text-foreground">Cotización clara</h3>
-              <p className="leading-relaxed text-secondary-foreground">
-                Antes de avanzar tienes que entender cuánto recibirías, qué costos aplican y qué condiciones se están aceptando.
-              </p>
-            </div>
-            <div className="rounded-[2rem] border border-border bg-background p-7 shadow-sm">
-              <LockKeyhole className="mb-5 h-8 w-8 text-primary" />
-              <h3 className="mb-3 text-2xl font-black text-foreground">Datos protegidos</h3>
-              <p className="leading-relaxed text-secondary-foreground">
-                No se necesitan claves bancarias ni acceso a cuentas para cotizar. Esa línea roja debe mantenerse siempre.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-secondary px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-4xl">
             <div className="mb-10 text-center">
               <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
@@ -343,32 +348,21 @@ export default function SeguroCambiarCupoDolares() {
         <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-5xl rounded-[2rem] bg-primary p-8 text-center text-primary-foreground lg:p-12">
             <ShieldCheck className="mx-auto mb-5 h-10 w-10" />
-            <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-5xl">Cotiza con un proceso claro.</h2>
+            <h2 className="mb-4 text-3xl font-black tracking-tight sm:text-5xl">¿Quieres evaluar tu cupo con información clara?</h2>
             <p className="mx-auto mb-7 max-w-2xl text-primary-foreground/85">
-              Te explicamos el monto estimado, los costos y las condiciones antes de que decidas avanzar.
+              Escríbenos y te contactamos con una cotización clara. Un asesor te acompaña por WhatsApp para resolver dudas y guiarte en el proceso.
             </p>
-            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="h-12 rounded-xl px-7 text-base font-black"
-                onClick={() =>
-                  openWhatsApp(
-                    'seo_seguridad_final',
-                    'Hola, quiero cotizar mi cupo en dólares de forma segura con EnPesos.',
-                  )
-                }
-              >
-                Hablar por WhatsApp
-                <MessageCircle className="h-5 w-5" />
-              </Button>
-              <a
-                href="/cupo-en-dolares-a-pesos-chilenos"
-                className="inline-flex h-12 items-center justify-center rounded-xl border border-primary-foreground/30 px-7 text-base font-black text-primary-foreground transition-colors hover:bg-primary-foreground/10"
-              >
-                Ver cupo en dólares a pesos
-              </a>
+
+            <div className="mx-auto max-w-md text-left">
+              <LeadCaptureForm origen="seguridad_cta_final" />
             </div>
+
+            <a
+              href="/cupo-en-dolares-a-pesos-chilenos"
+              className="mt-6 inline-flex h-12 items-center justify-center rounded-xl border border-primary-foreground/30 px-7 text-base font-black text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+            >
+              Ver cupo en dólares a pesos
+            </a>
           </div>
         </section>
       </main>
