@@ -52,9 +52,9 @@ function upsertMeta(selector: string, attributes: Record<string, string>) {
 
 export default function Nosotros() {
   useEffect(() => {
-    document.title = 'Nosotros | EnPesos.cl';
+    document.title = 'Quiénes somos | Proceso asistido y transparente | EnPesos.cl';
     upsertMeta('meta[name="description"]', { name: 'description', content: metaDescription });
-    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: 'Nosotros | EnPesos.cl' });
+    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: 'Quiénes somos | Proceso asistido y transparente | EnPesos.cl' });
     upsertMeta('meta[property="og:description"]', { property: 'og:description', content: metaDescription });
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: CANONICAL_URL });
@@ -63,7 +63,7 @@ export default function Nosotros() {
     const structuredData = {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'AboutPage', '@id': `${CANONICAL_URL}#webpage`, url: CANONICAL_URL, name: 'Nosotros | EnPesos.cl', description: metaDescription, isPartOf: { '@type': 'WebSite', name: 'EnPesos.cl', url: 'https://www.enpesos.cl' } },
+        { '@type': 'AboutPage', '@id': `${CANONICAL_URL}#webpage`, url: CANONICAL_URL, name: 'Quiénes somos | Proceso asistido y transparente | EnPesos.cl', description: metaDescription, isPartOf: { '@type': 'WebSite', name: 'EnPesos.cl', url: 'https://www.enpesos.cl' } },
         { '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) },
       ],
     };

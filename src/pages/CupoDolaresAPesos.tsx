@@ -91,7 +91,7 @@ export default function CupoDolaresAPesos() {
   const [dollarAmount, setDollarAmount] = useState(1000);
 
   useEffect(() => {
-    document.title = 'Cupo en dólares a pesos chilenos | Cotiza por WhatsApp | EnPesos.cl';
+    document.title = 'Cupo en dólares a pesos chilenos | EnPesos.cl';
 
     const metaDescription =
       'Convierte cupo en dólares o cupo internacional disponible a pesos chilenos con cotización previa, atención humana por WhatsApp y sin claves bancarias.';

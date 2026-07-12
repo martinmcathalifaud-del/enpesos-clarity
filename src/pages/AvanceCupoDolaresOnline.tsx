@@ -20,6 +20,51 @@ const processItems = [
   'Comparas con otras alternativas, como avance en efectivo o crédito de consumo, antes de decidir.',
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Qué diferencia hay entre un avance en efectivo y el cupo en dólares',
+    paragraphs: [
+      "Cuando alguien busca 'avance cupo en dólares online', muchas veces está comparando dos cosas distintas. Un avance en efectivo es un producto que entrega directamente el banco o emisor de la tarjeta, con sus propias condiciones de comisión, interés y facturación.",
+      'Usar el cupo internacional disponible es diferente: EnPesos no entrega ese avance ni define sus condiciones; ayuda a cotizar una operación asistida para recibir pesos chilenos usando el cupo que ya está aprobado en tu tarjeta, mostrando antes el monto estimado, el costo y las condiciones del caso.',
+    ],
+  },
+  {
+    heading: 'Qué deberías comparar antes de decidir',
+    paragraphs: [
+      'Antes de elegir cualquier alternativa conviene comparar el monto neto que recibirías, el costo total asociado, el plazo, la facturación y, sobre todo, qué cargo o deuda quedará después en tu tarjeta.',
+      'Comparar solo por el nombre del producto no es suficiente: dos operaciones pueden verse parecidas pero tener condiciones distintas según el banco o emisor. Revisar esta información con calma, antes de aceptar, es lo que permite decidir si te conviene avanzar o si prefieres evaluar otra alternativa.',
+    ],
+  },
+  {
+    heading: 'Qué información se revisa antes de cotizar',
+    paragraphs: [
+      'Para orientar una cotización se revisan datos básicos, como el banco o tipo de tarjeta, el monto aproximado que quieres evaluar y el cupo internacional disponible en ese momento.',
+      'No se solicitan claves bancarias, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco se pide el CVV por WhatsApp. Si alguien te solicita esos datos a nombre de EnPesos, no los entregues y confirma que estás usando un canal oficial.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con tu tarjeta después',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito. Ese cargo se factura según las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total.',
+      'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de revisión o aprobación para cada caso, porque dependen del banco o emisor y de la información propia de tu tarjeta.',
+    ],
+  },
+  {
+    heading: 'Cotizar no obliga a avanzar',
+    paragraphs: [
+      'Pedir una cotización sirve para revisar información, no para comprometerte a continuar. Puedes preguntar, comparar el monto estimado con otras alternativas y desistir en cualquier momento si no te hace sentido.',
+      'La atención se entrega por WhatsApp, que funciona como canal de contacto para resolver dudas y coordinar la revisión de tu caso, no como una promesa de aprobación, tasa o plazo exacto.',
+    ],
+  },
+  {
+    heading: 'Qué considerar según tu situación',
+    paragraphs: [
+      'No todas las personas tienen el mismo cupo internacional disponible, y no todas las tarjetas tienen las mismas condiciones. Antes de cotizar, revisa el estado actual de tu tarjeta, cuánto cupo internacional aparece disponible y si ya tienes cargos pendientes que podrían afectar tu capacidad de pago.',
+      'Si no tienes claridad sobre estos puntos, lo responsable es revisarlos primero con tu banco o emisor antes de solicitar una cotización, para que la información que recibas de EnPesos tenga sentido con tu situación real.',
+    ],
+  },
+];
+
 const relatedLinks = [
   { label: 'Formas de financiamiento para personas', href: '/formas-de-financiamiento-para-personas-chile' },
   { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares' },
@@ -217,6 +262,27 @@ export default function AvanceCupoDolaresOnline() {
               <p className="text-lg text-secondary-foreground leading-relaxed">
                 Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor. El pago posterior, intereses, tipo de cambio y fechas dependen de esas condiciones.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Lo que conviene entender antes de buscar un avance</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
         </section>

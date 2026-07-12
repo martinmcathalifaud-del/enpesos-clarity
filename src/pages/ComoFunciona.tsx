@@ -52,6 +52,51 @@ const neverData = [
   'Fotos completas de tu tarjeta por ambos lados.',
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Antes de cotizar: qué necesitas tener',
+    paragraphs: [
+      'Para pedir una cotización necesitas tener una tarjeta de crédito con cupo internacional disponible y saber, de forma aproximada, cuánto quieres evaluar en dólares. No necesitas viajar ni tener compras previas en el extranjero: el cupo internacional suele estar aprobado igual, aunque lo uses poco.',
+      'Antes de escribir por WhatsApp, revisa tu estado de cuenta para confirmar que el cupo aparece disponible y si ya existen cargos pendientes que podrían afectar tu capacidad de pago más adelante.',
+    ],
+  },
+  {
+    heading: 'Qué pasa durante la revisión de tu caso',
+    paragraphs: [
+      'Una vez que escribes por WhatsApp, se revisan los datos básicos necesarios para orientar la cotización: banco o tipo de tarjeta, monto aproximado y confirmación de cupo internacional disponible.',
+      'Cada caso se evalúa de forma individual porque el monto final depende del tipo de tarjeta, el banco o emisor, el dólar de referencia y los costos de procesamiento del momento. No se promete un resultado ni un tiempo exacto antes de revisar esta información, porque cada caso puede tomar un curso distinto.',
+    ],
+  },
+  {
+    heading: 'Qué información se pide y qué nunca se pide',
+    paragraphs: [
+      'Normalmente se solicitan datos como nombre, contacto, banco o tipo de tarjeta, monto aproximado y, si decides avanzar, una cuenta bancaria chilena a nombre del titular validado.',
+      'EnPesos nunca pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación, acceso remoto a tu celular o computador, ni el CVV por WhatsApp, y tampoco pide fotos completas de tu tarjeta por ambos lados. Si alguien te solicita esos datos a nombre de EnPesos, no se los entregues.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con tu tarjeta si decides avanzar',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito. Ese cargo depende de las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total facturado.',
+      'EnPesos no define esas condiciones y tampoco puede anticipar un tiempo exacto para cada revisión, porque depende de la información de tu banco o emisor y del propio caso.',
+    ],
+  },
+  {
+    heading: 'Si una operación no puede completarse',
+    paragraphs: [
+      'No todos los casos avanzan hasta el final. Si una operación no puede completarse por algún motivo, el proceso se detiene y se revisa el caso antes de cualquier siguiente paso, sin presionarte a continuar.',
+      'Cotizar tampoco te obliga a avanzar: puedes preguntar, comparar y desistir en cualquier momento si la información no te hace sentido. WhatsApp funciona como canal de contacto para resolver dudas, no como una promesa de aprobación.',
+    ],
+  },
+  {
+    heading: 'Qué revisar en tu estado de cuenta',
+    paragraphs: [
+      'Antes de aceptar una cotización, revisa en tu estado de cuenta cuánto cupo internacional aparece disponible, si tienes cargos pendientes y qué condiciones informa tu banco o emisor sobre compras o cargos en dólares.',
+      'Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real y a que entiendas con más claridad qué puede pasar después con tu tarjeta.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Cotizar me obliga a avanzar?',
@@ -223,6 +268,27 @@ export default function ComoFunciona() {
               <ul className="grid gap-3 text-secondary-foreground">
                 {neverData.map((item) => <li key={item} className="flex gap-3"><LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-primary" />{item}</li>)}
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">A fondo</p>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Lo que conviene entender antes de cotizar</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-7">
+                  <h3 className="mb-3 text-xl font-black text-foreground">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="mb-3 leading-relaxed text-secondary-foreground last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
         </section>

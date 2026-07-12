@@ -133,6 +133,56 @@ const pageConfigs: Record<PageKey, PageConfig> = {
 
 const pageList = Object.values(pageConfigs);
 
+const hubDeepDiveSections = [
+  {
+    heading: 'Por qué el banco o la marca de tarjeta influye en la cotización',
+    paragraphs: [
+      'El banco, el emisor o la marca de la tarjeta —Visa, Mastercard u otra— ayudan a entender el caso, porque cada uno puede definir sus propias reglas de cupo internacional, límites, facturación y tipo de cambio. Por eso una misma solicitud puede verse distinta según la tarjeta involucrada.',
+      'EnPesos revisa cada caso de forma individual y no asume automáticamente que dos tarjetas del mismo banco o de la misma marca tendrán las mismas condiciones, porque también influyen el cupo disponible en el momento, el monto que quieres cotizar y el estado de la tarjeta.',
+    ],
+  },
+  {
+    heading: 'Bancos, emisores y marcas que puedes consultar',
+    paragraphs: [
+      'En esta página puedes revisar información orientativa si tienes una tarjeta de BancoEstado, Santander, Banco de Chile, BCI, Scotiabank, Itaú o CMR Falabella, o si tu tarjeta es de marca Visa o Mastercard.',
+      'La lista no significa que todas las tarjetas de ese banco o marca sean compatibles automáticamente: cada solicitud se revisa según el cupo internacional disponible, el monto y las condiciones informadas en el momento de cotizar.',
+    ],
+  },
+  {
+    heading: 'EnPesos no representa a bancos ni marcas',
+    paragraphs: [
+      'EnPesos no es un banco, no es emisor de tarjetas y no tiene relación oficial, convenio ni representación con BancoEstado, Santander, Banco de Chile, BCI, Scotiabank, Itaú, CMR Falabella, Visa ni Mastercard. Mencionar estos nombres es solo referencial, para ayudarte a ubicar tu caso más rápido.',
+      'Las condiciones de tu tarjeta, como intereses, facturación, tipo de cambio y pago mínimo, siempre las define tu banco o emisor, no EnPesos.',
+    ],
+  },
+  {
+    heading: 'Qué revisar antes de cotizar según tu banco o tarjeta',
+    paragraphs: [
+      'Antes de escribir por WhatsApp, revisa cuánto cupo internacional aparece disponible en tu tarjeta, si tienes cargos pendientes que podrían afectar tu capacidad de pago y qué condiciones informa tu banco o emisor sobre compras o cargos en dólares.',
+      'Esta información ayuda a que la cotización que recibas tenga sentido con tu situación real. EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación, acceso remoto ni el CVV por WhatsApp en ningún momento del proceso.',
+    ],
+  },
+  {
+    heading: 'Cotizar no garantiza compatibilidad',
+    paragraphs: [
+      'Solicitar una cotización te permite revisar información sobre tu caso, pero no asegura que tu tarjeta sea compatible ni garantiza un resultado. La decisión de avanzar se toma solo después de conocer el monto estimado, el costo y las condiciones, y siempre puede generarse un cargo o deuda posterior en tu tarjeta según las condiciones de tu banco o emisor.',
+      'WhatsApp es el canal para resolver dudas y coordinar esta revisión, no una promesa de aprobación ni de tiempo exacto.',
+    ],
+  },
+  {
+    heading: 'Si tu banco o tarjeta no aparece en la lista',
+    paragraphs: [
+      'Si tu tarjeta es de un banco, emisor o marca que no aparece mencionado en esta página, igualmente puedes escribir por WhatsApp e indicar tu caso. La revisión no depende únicamente de que el nombre esté listado aquí, sino del cupo internacional disponible, el monto que quieres evaluar y las condiciones vigentes de tu tarjeta en ese momento.',
+    ],
+  },
+  {
+    heading: 'Qué hacer si dudas de un contacto',
+    paragraphs: [
+      'Si recibes un mensaje que dice representar a EnPesos junto a un banco, emisor o marca de tarjeta y te pide información sensible, no respondas y verifica usando los canales oficiales enlazados desde este sitio. EnPesos no solicita claves bancarias, token, coordenadas ni acceso remoto por ningún canal, incluido WhatsApp.',
+    ],
+  },
+];
+
 const hubFaqs = [
   {
     question: '¿Qué bancos o tarjetas se pueden cotizar?',
@@ -390,6 +440,27 @@ function HubView({ faqItems }: { faqItems: typeof hubFaqs }) {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Lo que conviene entender antes de cotizar por banco o tarjeta</h2>
+            </div>
+            <div className="grid gap-5">
+              {hubDeepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
         </section>
