@@ -460,7 +460,132 @@ const cityRoutes = [
     description: 'Desde Rancagua, cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Con costo claro antes de decidir.',
     h1: 'Cupo en dólares a pesos chilenos desde Rancagua',
   },
+  {
+    slug: 'puente-alto',
+    city: 'Puente Alto',
+    region: 'Región Metropolitana',
+    title: 'Cupo en dólares desde Puente Alto | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Puente Alto cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Puente Alto',
+  },
+  {
+    slug: 'vitacura',
+    city: 'Vitacura',
+    region: 'Región Metropolitana',
+    title: 'Cupo en dólares desde Vitacura | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Vitacura cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Vitacura',
+  },
+  {
+    slug: 'quillota',
+    city: 'Quillota',
+    region: 'Región de Valparaíso',
+    title: 'Cupo en dólares desde Quillota | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Quillota cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Quillota',
+  },
+  {
+    slug: 'lo-barnechea',
+    city: 'Lo Barnechea',
+    region: 'Región Metropolitana',
+    title: 'Cupo en dólares desde Lo Barnechea | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Lo Barnechea cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Lo Barnechea',
+  },
+  {
+    slug: 'iquique',
+    city: 'Iquique',
+    region: 'Región de Tarapacá',
+    title: 'Cupo en dólares desde Iquique | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Iquique cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. No somos casa de cambio ni pedimos claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Iquique',
+  },
+  {
+    slug: 'la-serena',
+    city: 'La Serena',
+    region: 'Región de Coquimbo',
+    title: 'Cupo en dólares desde La Serena | Cotiza a pesos chilenos',
+    description: 'Cotiza desde La Serena cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde La Serena',
+  },
+  {
+    slug: 'arica',
+    city: 'Arica',
+    region: 'Región de Arica y Parinacota',
+    title: 'Cupo en dólares desde Arica | Cotiza a pesos chilenos',
+    description: 'Desde Arica, cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Con costo claro antes de decidir.',
+    h1: 'Cupo en dólares a pesos chilenos desde Arica',
+  },
 ];
+
+function buildCityDeepDive(cityName) {
+  return [
+    {
+      heading: `Qué es el cupo internacional que puedes cotizar desde ${cityName}`,
+      paragraphs: [
+        'El cupo internacional es un monto en dólares que muchos bancos y emisores aprueban dentro de la misma tarjeta de crédito, pensado originalmente para compras en el extranjero o en sitios que facturan en dólares.',
+        `Si vives en ${cityName} y no usas ese cupo con frecuencia, puede quedar disponible sin utilizarse. EnPesos te ayuda a evaluar una operación asistida para que, si decides avanzar y la operación se confirma, ese cupo se traduzca en una transferencia en pesos en tu cuenta bancaria validada, revisando primero tu caso antes de avanzar.`,
+      ],
+    },
+    {
+      heading: 'Cómo se revisa tu caso antes de dar una cotización',
+      paragraphs: [
+        `Cada solicitud se evalúa de forma individual, sin importar si escribes desde ${cityName} u otra ciudad, porque el monto final depende del tipo de tarjeta, el banco o emisor, el cupo internacional disponible en el momento y los costos de procesamiento asociados.`,
+        'Por eso no se entrega un monto neto automático ni una tasa fija en esta página: lo responsable es pedir una cotización real para tu caso y revisarla con calma antes de decidir.',
+      ],
+    },
+    {
+      heading: 'Qué información se pide y qué no se pide',
+      paragraphs: [
+        'Para orientar una cotización normalmente se piden datos básicos, como nombre, un medio de contacto, el banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+        'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp. Si alguien te pide esa información a nombre de EnPesos, no se la entregues y verifica que estás usando un canal oficial enlazado desde este sitio.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con tu tarjeta después de una operación',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito. Ese cargo depende de las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total facturado.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de revisión, porque cada caso y cada tarjeta son distintos.',
+      ],
+    },
+    {
+      heading: 'Antes de decidir, compara con calma',
+      paragraphs: [
+        'Antes de aceptar una cotización, tiene sentido comparar el monto estimado con otras alternativas que puedas tener, revisar tu capacidad de pago y confirmar que entiendes cómo se reflejará el cargo en tu próximo estado de cuenta.',
+        `Vivas en ${cityName} o en otra ciudad, la información que recibes es la misma: cotización previa, costo claro y una decisión que no te obliga a avanzar. Si en algún momento una operación no puede completarse, se detiene el proceso y se revisa el caso antes de cualquier paso siguiente.`,
+      ],
+    },
+  ];
+}
+
+function buildCityFaqs(cityName) {
+  return [
+    {
+      question: `¿Puedo cotizar mi cupo en dólares desde ${cityName}?`,
+      answer: `Sí. Si estás en ${cityName} y tienes cupo internacional disponible en tu tarjeta, puedes solicitar una cotización para revisar cuántos pesos chilenos podrías recibir en tu cuenta. La revisión depende del banco, emisor, monto, cupo disponible y condiciones del caso.`,
+    },
+    {
+      question: '¿EnPesos tiene oficina local?',
+      answer: 'No declaramos oficina física local si no está documentada. La cotización se realiza por los canales oficiales enlazados desde enpesos.cl, con atención humana y explicación previa antes de decidir.',
+    },
+    {
+      question: '¿EnPesos es una casa de cambio?',
+      answer: 'No. EnPesos no es una casa de cambio, no compra ni vende divisas como actividad cambiaria y no entrega dinero físico. Ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible de tu tarjeta.',
+    },
+    {
+      question: '¿Recibo transferencia en pesos chilenos?',
+      answer: 'Si decides avanzar y la operación se confirma, el objetivo es que recibas una transferencia en pesos en tu cuenta bancaria validada. Primero revisas la cotización y decides si te hace sentido.',
+    },
+    {
+      question: '¿Queda un cargo o deuda en mi tarjeta?',
+      answer: 'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor. El pago posterior, facturación, intereses o comisiones dependen de esas condiciones.',
+    },
+    {
+      question: '¿Qué datos no debo entregar?',
+      answer: 'No entregues claves bancarias, token, coordenadas, contraseñas, CVV por WhatsApp ni acceso remoto a tus dispositivos. Si alguien te pide esos datos, detente y usa solo canales oficiales enlazados desde enpesos.cl.',
+    },
+  ];
+}
 
 for (const route of cityRoutes) {
   routes.push({
@@ -478,6 +603,8 @@ for (const route of cityRoutes) {
       'Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta',
     ],
     city: route.city,
+    extraSections: buildCityDeepDive(route.city),
+    faqs: buildCityFaqs(route.city),
   });
 }
 
@@ -541,6 +668,19 @@ function buildStaticContent(route) {
     )
     .join('\n');
 
+  const faqContent = route.faqs
+    ? `
+        <section>
+          <h2>Preguntas frecuentes</h2>
+          ${route.faqs
+            .map(
+              (faq) => `<h3>${escapeHtml(faq.question)}</h3>
+          <p>${escapeHtml(faq.answer)}</p>`,
+            )
+            .join('\n          ')}
+        </section>`
+    : '';
+
   return `
     <main class="seo-prerender-content" data-seo-prerender="true">
       <article>
@@ -556,6 +696,7 @@ function buildStaticContent(route) {
         </section>
         ${cityContent}
         ${extraSectionsContent}
+        ${faqContent}
         <section>
           <h2>Información importante sobre EnPesos</h2>
           <p>EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando cupo internacional disponible o cupo en dólares de tu tarjeta. Cotizar no obliga a avanzar.</p>
@@ -578,6 +719,22 @@ function injectHead(html, route) {
   output = output.replace(/<meta\s+property="og:[\s\S]*?>\s*/gi, '');
   output = output.replace(/<meta\s+name="twitter:[\s\S]*?>\s*/gi, '');
 
+  const faqSchema = route.faqs
+    ? `
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: route.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    })}</script>`
+    : '';
+
   const extraHead = `
     <link rel="canonical" href="${canonical}" />
     <meta property="og:title" content="${title}" />
@@ -599,7 +756,7 @@ function injectHead(html, route) {
         name: 'EnPesos.cl',
         url: siteUrl,
       },
-    })}</script>`;
+    })}</script>${faqSchema}`;
 
   return output.replace('</head>', `${extraHead}\n  </head>`);
 }

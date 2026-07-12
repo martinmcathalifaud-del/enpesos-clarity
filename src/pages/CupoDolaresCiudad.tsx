@@ -14,7 +14,21 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
-type CityKey = 'santiago' | 'las-condes' | 'providencia' | 'concepcion' | 'antofagasta' | 'valparaiso' | 'rancagua';
+type CityKey =
+  | 'santiago'
+  | 'las-condes'
+  | 'providencia'
+  | 'concepcion'
+  | 'antofagasta'
+  | 'valparaiso'
+  | 'rancagua'
+  | 'puente-alto'
+  | 'vitacura'
+  | 'quillota'
+  | 'lo-barnechea'
+  | 'iquique'
+  | 'la-serena'
+  | 'arica';
 
 type CityConfig = {
   key: CityKey;
@@ -114,6 +128,90 @@ const cities: Record<CityKey, CityConfig> = {
     intro: 'Si estás en Rancagua y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
     localContext: 'Desde Rancagua puedes revisar monto estimado, costo y condiciones antes de decidir si quieres avanzar con una operación asistida.',
   },
+  'puente-alto': {
+    key: 'puente-alto',
+    name: 'Puente Alto',
+    region: 'Región Metropolitana',
+    slug: 'cupo-en-dolares-puente-alto',
+    searchName: 'Puente Alto',
+    title: 'Cupo en dólares desde Puente Alto | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Puente Alto cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Puente Alto',
+    intro: 'Si estás en Puente Alto y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo. Primero ves monto estimado, costo y condiciones antes de decidir.',
+    localContext: 'Desde Puente Alto puedes solicitar una cotización remota para revisar tu cupo en dólares de la tarjeta, con costo y condiciones explicadas antes de decidir si avanzar.',
+  },
+  vitacura: {
+    key: 'vitacura',
+    name: 'Vitacura',
+    region: 'Región Metropolitana',
+    slug: 'cupo-en-dolares-vitacura',
+    searchName: 'Vitacura',
+    title: 'Cupo en dólares desde Vitacura | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Vitacura cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Vitacura',
+    intro: 'Si estás en Vitacura y tienes cupo internacional disponible en tu tarjeta, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
+    localContext: 'Desde Vitacura puedes revisar una cotización previa con monto estimado, costo y condiciones antes de decidir si te conviene avanzar.',
+  },
+  quillota: {
+    key: 'quillota',
+    name: 'Quillota',
+    region: 'Región de Valparaíso',
+    slug: 'cupo-en-dolares-quillota',
+    searchName: 'Quillota',
+    title: 'Cupo en dólares desde Quillota | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Quillota cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Quillota',
+    intro: 'Si estás en Quillota y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo.',
+    localContext: 'Desde Quillota puedes cotizar de forma remota, revisar el monto estimado y decidir con más información antes de avanzar.',
+  },
+  'lo-barnechea': {
+    key: 'lo-barnechea',
+    name: 'Lo Barnechea',
+    region: 'Región Metropolitana',
+    slug: 'cupo-en-dolares-lo-barnechea',
+    searchName: 'Lo Barnechea',
+    title: 'Cupo en dólares desde Lo Barnechea | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Lo Barnechea cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Lo Barnechea',
+    intro: 'Si estás en Lo Barnechea y tienes cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta usando ese cupo.',
+    localContext: 'Desde Lo Barnechea puedes revisar una cotización clara antes de decidir, con explicación de costos, condiciones y cargo posterior en la tarjeta.',
+  },
+  iquique: {
+    key: 'iquique',
+    name: 'Iquique',
+    region: 'Región de Tarapacá',
+    slug: 'cupo-en-dolares-iquique',
+    searchName: 'Iquique',
+    title: 'Cupo en dólares desde Iquique | Cotiza a pesos chilenos',
+    description: 'Cotiza desde Iquique cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. No somos casa de cambio ni pedimos claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde Iquique',
+    intro: 'Si estás en Iquique y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir usando ese cupo. Primero ves monto estimado, costo y condiciones antes de decidir.',
+    localContext: 'Desde Iquique puedes solicitar una cotización previa para saber cuántos pesos chilenos podrías recibir en tu cuenta usando el cupo en dólares de tu tarjeta.',
+  },
+  'la-serena': {
+    key: 'la-serena',
+    name: 'La Serena',
+    region: 'Región de Coquimbo',
+    slug: 'cupo-en-dolares-la-serena',
+    searchName: 'La Serena',
+    title: 'Cupo en dólares desde La Serena | Cotiza a pesos chilenos',
+    description: 'Cotiza desde La Serena cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Proceso asistido, sin claves bancarias.',
+    h1: 'Cupo en dólares a pesos chilenos desde La Serena',
+    intro: 'Si estás en La Serena y tienes cupo en dólares disponible en tu tarjeta, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
+    localContext: 'Desde La Serena puedes revisar una cotización previa con monto estimado, costo y condiciones antes de decidir si avanzar.',
+  },
+  arica: {
+    key: 'arica',
+    name: 'Arica',
+    region: 'Región de Arica y Parinacota',
+    slug: 'cupo-en-dolares-arica',
+    searchName: 'Arica',
+    title: 'Cupo en dólares desde Arica | Cotiza a pesos chilenos',
+    description: 'Desde Arica, cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta. Con costo claro antes de decidir.',
+    h1: 'Cupo en dólares a pesos chilenos desde Arica',
+    intro: 'Si estás en Arica y tu tarjeta tiene cupo internacional disponible, EnPesos te ayuda a cotizar cuántos pesos chilenos podrías recibir en tu cuenta.',
+    localContext: 'Desde Arica puedes revisar monto estimado, costo y condiciones antes de decidir si quieres avanzar con una operación asistida.',
+  },
 };
 
 const cityList = Object.values(cities);
@@ -172,6 +270,44 @@ const buildFaqs = (city: CityConfig) => [
   },
 ];
 
+const buildDeepDive = (city: CityConfig) => [
+  {
+    heading: `Qué es el cupo internacional que puedes cotizar desde ${city.name}`,
+    paragraphs: [
+      'El cupo internacional es un monto en dólares que muchos bancos y emisores aprueban dentro de la misma tarjeta de crédito, pensado originalmente para compras en el extranjero o en sitios que facturan en dólares.',
+      `Si vives en ${city.name} y no usas ese cupo con frecuencia, puede quedar disponible sin utilizarse. EnPesos te ayuda a evaluar una operación asistida para que, si decides avanzar y la operación se confirma, ese cupo se traduzca en una transferencia en pesos en tu cuenta bancaria validada, revisando primero tu caso antes de avanzar.`,
+    ],
+  },
+  {
+    heading: 'Cómo se revisa tu caso antes de dar una cotización',
+    paragraphs: [
+      `Cada solicitud se evalúa de forma individual, sin importar si escribes desde ${city.name} u otra ciudad, porque el monto final depende del tipo de tarjeta, el banco o emisor, el cupo internacional disponible en el momento y los costos de procesamiento asociados.`,
+      'Por eso no se entrega un monto neto automático ni una tasa fija en esta página: lo responsable es pedir una cotización real para tu caso y revisarla con calma antes de decidir.',
+    ],
+  },
+  {
+    heading: 'Qué información se pide y qué no se pide',
+    paragraphs: [
+      'Para orientar una cotización normalmente se piden datos básicos, como nombre, un medio de contacto, el banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+      'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp. Si alguien te pide esa información a nombre de EnPesos, no se la entregues y verifica que estás usando un canal oficial enlazado desde este sitio.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con tu tarjeta después de una operación',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito. Ese cargo depende de las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total facturado.',
+      'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de revisión, porque cada caso y cada tarjeta son distintos.',
+    ],
+  },
+  {
+    heading: 'Antes de decidir, compara con calma',
+    paragraphs: [
+      'Antes de aceptar una cotización, tiene sentido comparar el monto estimado con otras alternativas que puedas tener, revisar tu capacidad de pago y confirmar que entiendes cómo se reflejará el cargo en tu próximo estado de cuenta.',
+      `Vivas en ${city.name} o en otra ciudad, la información que recibes es la misma: cotización previa, costo claro y una decisión que no te obliga a avanzar. Si en algún momento una operación no puede completarse, se detiene el proceso y se revisa el caso antes de cualquier paso siguiente.`,
+    ],
+  },
+];
+
 interface CupoDolaresCiudadProps {
   cityKey: CityKey;
 }
@@ -179,6 +315,7 @@ interface CupoDolaresCiudadProps {
 export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
   const city = cities[cityKey];
   const faqs = buildFaqs(city);
+  const deepDiveSections = buildDeepDive(city);
   const canonicalUrl = `https://www.enpesos.cl/${city.slug}`;
   const title = city.title;
   const description = city.description;
@@ -379,6 +516,29 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
         </section>
 
         <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                Lo que conviene entender antes de cotizar
+              </h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
               <div>
@@ -421,7 +581,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-secondary">
+        <section className="py-14 sm:py-18 bg-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl border border-amber-200 bg-amber-50 p-7 sm:p-10">
               <div className="flex flex-col sm:flex-row gap-5 items-start">
@@ -443,7 +603,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-background">
+        <section className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Enlaces útiles</p>
@@ -461,7 +621,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-secondary">
+        <section className="py-14 sm:py-18 bg-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Otras ciudades</p>
@@ -487,7 +647,7 @@ export default function CupoDolaresCiudad({ cityKey }: CupoDolaresCiudadProps) {
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-background">
+        <section className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>

@@ -60,6 +60,13 @@ const App = () => (
           <Route path="/cupo-en-dolares-antofagasta" element={<CupoDolaresCiudad cityKey="antofagasta" />} />
           <Route path="/cupo-en-dolares-valparaiso" element={<CupoDolaresCiudad cityKey="valparaiso" />} />
           <Route path="/cupo-en-dolares-rancagua" element={<CupoDolaresCiudad cityKey="rancagua" />} />
+          <Route path="/cupo-en-dolares-puente-alto" element={<CupoDolaresCiudad cityKey="puente-alto" />} />
+          <Route path="/cupo-en-dolares-vitacura" element={<CupoDolaresCiudad cityKey="vitacura" />} />
+          <Route path="/cupo-en-dolares-quillota" element={<CupoDolaresCiudad cityKey="quillota" />} />
+          <Route path="/cupo-en-dolares-lo-barnechea" element={<CupoDolaresCiudad cityKey="lo-barnechea" />} />
+          <Route path="/cupo-en-dolares-iquique" element={<CupoDolaresCiudad cityKey="iquique" />} />
+          <Route path="/cupo-en-dolares-la-serena" element={<CupoDolaresCiudad cityKey="la-serena" />} />
+          <Route path="/cupo-en-dolares-arica" element={<CupoDolaresCiudad cityKey="arica" />} />
           <Route path="/bancos-y-tarjetas-cupo-en-dolares" element={<CupoDolaresBancoTarjeta />} />
           <Route path="/cupo-en-dolares-banco-estado" element={<CupoDolaresBancoTarjeta pageKey="banco-estado" />} />
           <Route path="/cupo-en-dolares-santander" element={<CupoDolaresBancoTarjeta pageKey="santander" />} />
