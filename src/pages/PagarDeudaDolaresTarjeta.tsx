@@ -46,6 +46,57 @@ const relatedLinks = [
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Por qué puede generarse un cargo o deuda',
+    paragraphs: [
+      'Cuando se confirma una operación usando el cupo internacional disponible de tu tarjeta, el banco o emisor puede registrar un cargo o deuda en tu próximo estado de cuenta, de forma similar a otras operaciones realizadas con ese cupo.',
+      'Este cargo no depende de EnPesos, sino de las condiciones propias de tu tarjeta. Por eso, antes de aceptar una cotización, conviene revisar no solo cuánto podrías recibir en pesos, sino también qué quedará pendiente de pagar después.',
+    ],
+  },
+  {
+    heading: 'Qué revisar en la facturación de tu tarjeta',
+    paragraphs: [
+      'Cada banco o emisor tiene sus propias reglas para registrar y facturar cargos asociados al cupo internacional. Es importante revisar en qué fecha se registra el cargo, cuándo vence el pago y de qué forma aparece reflejado en tu estado de cuenta, ya sea como un monto único o distribuido según las condiciones de tu tarjeta.',
+      'Esta información la entrega directamente tu banco o emisor, no EnPesos, por lo que conviene consultarla antes de decidir.',
+    ],
+  },
+  {
+    heading: 'Tipo de cambio, pago mínimo e intereses',
+    paragraphs: [
+      'El tipo de cambio que se use para convertir o facturar el cargo depende de las reglas internas de tu banco o emisor, y puede ser distinto al que se usó para calcular tu cotización en pesos.',
+      'Si no pagas el total facturado, pueden aplicarse pago mínimo, intereses u otros cargos definidos en el contrato de tu tarjeta. Revisar estas condiciones con tu banco o emisor antes de avanzar ayuda a entender el costo real de la operación en el tiempo.',
+    ],
+  },
+  {
+    heading: 'Qué define EnPesos y qué no define',
+    paragraphs: [
+      'EnPesos puede ayudarte a cotizar y a entender el monto estimado que podrías recibir en pesos antes de decidir, pero no define condiciones bancarias como fecha de facturación, tipo de cambio, pago mínimo o intereses: esas condiciones dependen exclusivamente de tu banco o emisor.',
+      'Tampoco es posible prometer un tiempo exacto de revisión o de facturación para cada caso, porque varía según la tarjeta y el momento.',
+    ],
+  },
+  {
+    heading: 'Qué hacer si no tienes claro cómo vas a pagar',
+    paragraphs: [
+      'Si no tienes claridad sobre cómo se reflejará el cargo o cómo lo pagarás después, lo responsable es revisar primero la información de tu banco o emisor antes de aceptar una cotización.',
+      'Puedes usar el simulador de pago de tarjeta como apoyo referencial, y escribir por WhatsApp para resolver dudas puntuales sobre el proceso de cotización, sin que eso te obligue a avanzar.',
+    ],
+  },
+  {
+    heading: 'Antes de aceptar, compara ambas partes de la operación',
+    paragraphs: [
+      'Lo que podrías recibir en pesos hoy y lo que tendrás que pagar después en tu tarjeta son dos partes distintas de la misma operación. Revisar solo una de ellas no es suficiente para decidir con criterio.',
+      'Antes de aceptar una cotización, compara el monto neto estimado con el cargo o deuda que podría generarse, considerando tu capacidad de pago actual y las condiciones informadas por tu banco o emisor.',
+    ],
+  },
+  {
+    heading: 'Revisa tu situación antes de avanzar',
+    paragraphs: [
+      'Cada tarjeta y cada banco o emisor puede tener reglas distintas, por lo que no existe una respuesta única válida para todos los casos. Si tienes dudas específicas sobre tu tarjeta, tu primera consulta debería ser con tu banco o emisor, y luego puedes usar la cotización de EnPesos como información adicional antes de decidir.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Después de usar mi cupo en dólares tengo que pagarle al banco?',
@@ -238,6 +289,27 @@ export default function PagarDeudaDolaresTarjeta() {
                   <div className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-accent mt-0.5 shrink-0" /><p className="text-secondary-foreground">No ofrece préstamos, créditos, avances bancarios ni asesoría financiera personalizada.</p></div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-secondary">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Lo que conviene entender sobre la deuda posterior</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
         </section>
