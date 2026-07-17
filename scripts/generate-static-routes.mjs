@@ -323,6 +323,32 @@ const routes = [
         ],
       },
     ],
+    faqs: [
+      {
+        question: '¿Qué significa avance cupo en dólares online?',
+        answer: 'Es una búsqueda que muchas personas usan cuando quieren recibir pesos usando el cupo internacional de su tarjeta. EnPesos no ofrece un avance bancario tradicional; ayuda a cotizar una operación con cupo en dólares disponible.',
+      },
+      {
+        question: '¿Es lo mismo que un avance en efectivo?',
+        answer: 'No. Un avance en efectivo es un producto del banco o emisor. EnPesos no es banco, no entrega préstamos ni créditos, y no define las condiciones bancarias posteriores.',
+      },
+      {
+        question: '¿Es lo mismo un avance con tarjeta de crédito que usar el cupo en dólares?',
+        answer: 'No son lo mismo. Un avance con tarjeta de crédito es una operación que ofrece directamente tu banco, generalmente con comisiones e intereses definidos por ellos. Usar el cupo en dólares disponible en tu tarjeta es distinto: no es un avance bancario tradicional, no es un préstamo ni un crédito. Es una operación asistida donde cotizas cuántos pesos chilenos podrías recibir usando el cupo internacional que ya tienes disponible. Antes de avanzar, ves el monto estimado, el costo y las condiciones. Si la operación se confirma, puede generarse un cargo o deuda en tu tarjeta según tu banco o emisor.',
+      },
+      {
+        question: '¿Qué debo comparar antes de decidir?',
+        answer: 'Compara monto neto en pesos, costo total, plazo, condiciones del banco o emisor, capacidad de pago y qué cargo o deuda quedará después en la tarjeta.',
+      },
+      {
+        question: '¿Puede generarse deuda en mi tarjeta?',
+        answer: 'Sí. Al usar el cupo internacional, puede generarse un cargo o deuda en tu tarjeta de crédito, según las condiciones de tu banco o emisor.',
+      },
+      {
+        question: '¿Cotizar me obliga a operar?',
+        answer: 'No. Cotizar sirve para revisar cuánto podrías recibir en pesos, costo y condiciones antes de decidir. Si no te hace sentido, no tienes obligación de avanzar.',
+      },
+    ],
   },
   {
     path: '/como-pagar-deuda-en-dolares-tarjeta-credito',

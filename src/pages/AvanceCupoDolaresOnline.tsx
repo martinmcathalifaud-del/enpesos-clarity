@@ -84,6 +84,10 @@ const faqs = [
     answer: 'No. Un avance en efectivo es un producto del banco o emisor. EnPesos no es banco, no entrega préstamos ni créditos, y no define las condiciones bancarias posteriores.',
   },
   {
+    question: '¿Es lo mismo un avance con tarjeta de crédito que usar el cupo en dólares?',
+    answer: 'No son lo mismo. Un avance con tarjeta de crédito es una operación que ofrece directamente tu banco, generalmente con comisiones e intereses definidos por ellos. Usar el cupo en dólares disponible en tu tarjeta es distinto: no es un avance bancario tradicional, no es un préstamo ni un crédito. Es una operación asistida donde cotizas cuántos pesos chilenos podrías recibir usando el cupo internacional que ya tienes disponible. Antes de avanzar, ves el monto estimado, el costo y las condiciones. Si la operación se confirma, puede generarse un cargo o deuda en tu tarjeta según tu banco o emisor.',
+  },
+  {
     question: '¿Qué debo comparar antes de decidir?',
     answer: 'Compara monto neto en pesos, costo total, plazo, condiciones del banco o emisor, capacidad de pago y qué cargo o deuda quedará después en la tarjeta.',
   },
