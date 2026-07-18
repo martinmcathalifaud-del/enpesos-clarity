@@ -87,6 +87,44 @@ const enpesosFit = [
   'Quieres atención humana por WhatsApp, sin claves bancarias ni acceso remoto.',
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Si necesitas liquidez para tu negocio, puede que no conozcas esta alternativa',
+    paragraphs: [
+      'Si tu negocio o pyme necesita liquidez rápida y no cuenta con una tarjeta de crédito con cupo internacional disponible, esta alternativa puede no aplicar a tu caso. Pero si el dueño o la empresa sí tiene cupo internacional disponible, puede haber una opción que no conocías: cotizar cuántos pesos chilenos podrías recibir usando ese cupo antes de solicitar un crédito comercial nuevo.',
+      'Esta alternativa no reemplaza un crédito PyME, factoring o línea bancaria cuando esos productos calzan mejor con tu necesidad. Sirve principalmente para evaluar caja puntual, no para financiar crecimiento de largo plazo.',
+    ],
+  },
+  {
+    heading: 'Crédito comercial, línea de crédito y cupo internacional: qué revisar en cada uno',
+    paragraphs: [
+      'Un crédito comercial suele requerir evaluación, garantías y antecedentes del negocio, con tasa, plazo y carga financiera definidos por el banco. Una línea de crédito empresa ayuda a cubrir desfases de caja, pero puede volverse cara si se usa como caja permanente. Cotizar cupo internacional disponible es distinto: no es un crédito nuevo, es una operación asistida sobre un cupo que la tarjeta ya tiene aprobado.',
+      'En cualquiera de las tres alternativas, lo importante es comparar costo total, plazo, capacidad de pago y qué carga quedará para el negocio después de recibir el dinero.',
+    ],
+  },
+  {
+    heading: 'Por qué no siempre conviene usar el cupo internacional para el negocio',
+    paragraphs: [
+      'Cotizar cupo internacional puede servir para una necesidad puntual de caja, pero no siempre es la alternativa más conveniente frente a un crédito comercial, factoring o proveedores a plazo. Depende del monto, el banco o emisor de la tarjeta, los costos de la operación y la capacidad del negocio para pagar el cargo posterior.',
+      'Si tu negocio tiene una necesidad recurrente o de monto grande, probablemente te convenga más evaluar un producto financiero formal para empresas antes de usar el cupo internacional de una tarjeta.',
+    ],
+  },
+  {
+    heading: 'Qué información se pide y qué no se pide para cotizar',
+    paragraphs: [
+      'Para orientar una cotización normalmente se piden datos básicos del negocio o del titular de la tarjeta, como nombre, contacto, banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+      'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con la tarjeta del negocio si decides avanzar',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en la tarjeta de crédito usada, según las condiciones del banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no se paga el total.',
+      'EnPesos no define esas condiciones ni puede prometer un tiempo exacto de revisión o aprobación para cada caso. WhatsApp es el canal para resolver dudas del negocio y coordinar la cotización, no una promesa de tasa o aprobación.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Qué financiamiento conviene para un negocio o pyme?',
@@ -326,6 +364,27 @@ export default function FinanciamientoNegociosPymes() {
               <p className="leading-relaxed text-secondary-foreground">
                 La mejor alternativa no siempre es la más rápida. Evalúa cuánto recibes, cuánto pagas y qué impacto tendrá en la caja.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">A fondo</p>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Lo que conviene entender antes de comparar</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-7">
+                  <h3 className="mb-3 text-xl font-black text-foreground">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="mb-3 leading-relaxed text-secondary-foreground last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
         </section>

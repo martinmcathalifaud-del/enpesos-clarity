@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, ArrowRight, Calculator, CreditCard, Info, MessageCircle, Pencil, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Calculator, CreditCard, HelpCircle, Info, MessageCircle, Pencil, ShieldCheck } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -48,6 +48,67 @@ const paymentModes: Array<{ id: PaymentMode; title: string; description: string 
     id: 'full',
     title: 'Pagar total facturado',
     description: 'Simula pagar todo en el primer vencimiento.',
+  },
+];
+
+const deepDiveSections = [
+  {
+    heading: 'Qué simula exactamente esta herramienta',
+    paragraphs: [
+      'El simulador calcula, a partir de supuestos que tú defines, cuántos meses podrías tardar en pagar un monto de tarjeta si mantienes un pago mensual parecido al primero, defines un pago fijo o eliges un plazo objetivo. Usa un monto inicial en dólares convertido a pesos, un dólar de referencia y una tasa mensual, todos editables.',
+      'No es una cotización ni un cálculo oficial de tu banco o emisor. Es una herramienta referencial para que veas el escenario completo de pago antes de decidir, no solo cuánto podrías recibir hoy.',
+    ],
+  },
+  {
+    heading: 'Para qué sirve entender los escenarios de pago posterior',
+    paragraphs: [
+      'Muchas personas miran solo el monto que podrían recibir hoy y no revisan cuánto tiempo o cuánto interés total podría tomar pagar después. Los distintos escenarios del simulador —pago referencial, pago fijo, plazo objetivo o pago total— muestran cómo cambia el tiempo y el costo total según la decisión de pago que tomes.',
+      'Comparar escenarios antes de decidir ayuda a entender si tu presupuesto puede asumir el pago mensual estimado, sin comprometerte a un plazo que después no puedas cumplir.',
+    ],
+  },
+  {
+    heading: 'Cómo se relaciona esto con la deuda que puede generarse al usar cupo internacional',
+    paragraphs: [
+      'Si decides avanzar y cotizas una operación usando el cupo internacional disponible de tu tarjeta, y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. El simulador te ayuda a estimar cómo podría verse ese pago en el tiempo, con distintos supuestos de tasa y pago mensual.',
+      'El simulador no reemplaza la información oficial de tu banco o emisor sobre fecha de facturación, tipo de cambio, pago mínimo o intereses reales aplicados a tu tarjeta. Esos datos siempre debes confirmarlos directamente con tu banco o emisor.',
+    ],
+  },
+  {
+    heading: 'Qué supuestos puedes ajustar',
+    paragraphs: [
+      'Puedes cambiar el monto en dólares a simular, el dólar de referencia, el porcentaje de pago referencial y la tasa mensual estimada. Cada ajuste cambia el resultado, por lo que conviene probar más de un escenario antes de sacar conclusiones.',
+      'El resultado siempre es una estimación con los supuestos que tú ingresaste, no una proyección exacta de lo que facturará tu banco o emisor.',
+    ],
+  },
+  {
+    heading: 'Qué hacer después de simular',
+    paragraphs: [
+      'Si el escenario simulado te ayuda a entender que podrías asumir el pago posterior, puedes solicitar una cotización real por WhatsApp para revisar cuánto podrías recibir en pesos, el costo y las condiciones antes de decidir. Cotizar no te obliga a avanzar.',
+      'Si el escenario simulado muestra un pago que no podrías asumir, lo responsable es no avanzar con la operación y revisar otras alternativas.',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: '¿Esta simulación es una cotización real?',
+    answer: 'No. La simulación usa supuestos que tú defines, como dólar referencial y tasa mensual estimada. No reemplaza la información oficial de tu banco o emisor ni una cotización real de EnPesos.',
+  },
+  {
+    question: '¿Qué escenarios puedo simular?',
+    answer: 'Puedes simular mantener un pago mensual referencial, definir un pago fijo mensual, elegir un plazo objetivo en meses o pagar el total facturado de una vez.',
+  },
+  {
+    question: '¿El simulador me dice cuánto voy a pagar de verdad?',
+    answer: 'No exactamente. El resultado depende de los supuestos que ingreses. El pago, la tasa, el tipo de cambio y la fecha de facturación reales dependen de las condiciones de tu banco o emisor.',
+  },
+  {
+    question: '¿Simular me obliga a cotizar con EnPesos?',
+    answer: 'No. Puedes usar el simulador solo para entender escenarios de pago, sin que eso te obligue a pedir una cotización ni a avanzar con una operación.',
+  },
+  {
+    question: '¿Qué pasa si uso mi cupo internacional y no pago el total facturado?',
+    answer: 'Si no pagas el total facturado, pueden aplicarse pago mínimo, intereses u otros cargos definidos por tu banco o emisor, según las condiciones de tu tarjeta.',
   },
 ];
 
@@ -161,6 +222,46 @@ export default function SimuladorPagoTarjeta() {
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
     upsertMeta('link[rel="canonical"]', { rel: 'canonical', href: canonicalUrl });
+
+    const structuredData = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Simulador de pago de tarjeta de crédito',
+        description: metaDescription,
+        url: canonicalUrl,
+        isPartOf: {
+          '@type': 'WebSite',
+          name: 'EnPesos.cl',
+          url: 'https://www.enpesos.cl',
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      },
+    ];
+
+    let script = document.getElementById('ld-json-simulador-pago-tarjeta') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'ld-json-simulador-pago-tarjeta';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(structuredData);
+
+    return () => {
+      document.getElementById('ld-json-simulador-pago-tarjeta')?.remove();
+    };
   }, []);
 
   const monthlyRate = Math.max(monthlyRatePercent, 0) / 100;
@@ -468,6 +569,48 @@ export default function SimuladorPagoTarjeta() {
             </div>
           </section>
         )}
+
+        <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Cómo usar el simulador antes de cotizar</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-secondary">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <HelpCircle className="mx-auto mb-4 h-9 w-9 text-primary" />
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Dudas sobre el simulador de pago</h2>
+            </div>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <details key={faq.question} className="group rounded-2xl border border-border bg-card p-5 open:card-shadow">
+                  <summary className="cursor-pointer list-none text-lg font-extrabold text-foreground flex items-start justify-between gap-4">
+                    {faq.question}
+                    <span className="text-primary group-open:rotate-90 transition-transform">›</span>
+                  </summary>
+                  <p className="text-secondary-foreground leading-relaxed mt-3">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="py-14 sm:py-18 bg-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

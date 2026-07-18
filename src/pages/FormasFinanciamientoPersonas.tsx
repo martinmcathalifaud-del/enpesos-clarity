@@ -70,6 +70,44 @@ const internalLinks = [
   { label: 'Seguridad', href: '/seguridad', description: 'Datos que no pedimos y señales de cuidado.' },
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Si buscas financiamiento, puede que no conozcas esta alternativa',
+    paragraphs: [
+      'Si estás buscando financiamiento y no tienes una tarjeta de crédito con cupo internacional disponible, esta alternativa puede no aplicar a tu caso. Pero si sí tienes cupo internacional disponible, puede haber una opción que no conocías: cotizar cuántos pesos chilenos podrías recibir usando ese cupo, antes de pedir un crédito de consumo nuevo o un avance en efectivo.',
+      'El cupo internacional suele estar aprobado para compras en el extranjero o en dólares, y muchas personas no lo usan porque no viajan seguido. EnPesos ayuda a evaluar si cotizar una operación con ese cupo tiene sentido para tu necesidad de pesos, siempre revisando tu caso antes de avanzar.',
+    ],
+  },
+  {
+    heading: 'Crédito de consumo, avance en efectivo y cupo internacional: qué mirar en cada uno',
+    paragraphs: [
+      'Un crédito de consumo es un producto financiero nuevo, con evaluación, monto aprobado, cuotas e intereses definidos por el banco o entidad que lo entrega. Un avance en efectivo usa una línea de tu tarjeta o banco, con comisiones e intereses propios del emisor. Usar el cupo internacional disponible es distinto a ambos: no es un crédito nuevo ni un avance bancario tradicional, es una cotización sobre un cupo que ya tienes aprobado en tu tarjeta.',
+      'En los tres casos conviene mirar lo mismo: costo total, plazo, cuota o cargo mensual, y qué deuda quedará después. El nombre del producto importa menos que entender esas condiciones antes de aceptar.',
+    ],
+  },
+  {
+    heading: 'Por qué usar el cupo internacional no siempre es la mejor opción',
+    paragraphs: [
+      'Cotizar cupo internacional puede ser una alternativa a evaluar, pero no siempre conviene más que un crédito de consumo o un avance en efectivo. Depende del monto que necesitas, el banco o emisor de tu tarjeta, los costos de la operación y tu capacidad de pago para el cargo posterior.',
+      'Lo responsable es comparar antes de decidir, revisando el costo total de cada alternativa y no solo cuánto dinero recibirías hoy. Si otra opción te conviene más, esta página no busca convencerte de lo contrario.',
+    ],
+  },
+  {
+    heading: 'Qué información se pide y qué no se pide para cotizar',
+    paragraphs: [
+      'Para orientar una cotización normalmente se piden datos básicos, como nombre, un medio de contacto, el banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+      'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp. Si alguien te pide esa información a nombre de EnPesos, no se la entregues.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con tu tarjeta si decides avanzar',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total.',
+      'EnPesos no define esas condiciones ni puede prometer un tiempo exacto de revisión o aprobación para cada caso. WhatsApp es el canal para resolver dudas y coordinar la cotización, no una promesa de tasa o aprobación.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Qué debo comparar antes de pedir un crédito o usar mi tarjeta?',
@@ -318,6 +356,27 @@ export default function FormasFinanciamientoPersonas() {
               <WalletCards className="mb-5 h-8 w-8 text-primary" />
               <h3 className="mb-3 text-2xl font-black text-foreground">Cotiza antes de decidir</h3>
               <p className="leading-relaxed text-secondary-foreground">La decisión mejora cuando sabes cuánto recibirías, qué costos aplican y qué condiciones estás aceptando.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-primary">A fondo</p>
+              <h2 className="text-3xl font-black tracking-tight text-foreground sm:text-5xl">Lo que conviene entender antes de comparar</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-7">
+                  <h3 className="mb-3 text-xl font-black text-foreground">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="mb-3 leading-relaxed text-secondary-foreground last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
             </div>
           </div>
         </section>

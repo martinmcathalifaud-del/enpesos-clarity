@@ -27,6 +27,11 @@ type PageKey =
   | 'tarjeta-visa'
   | 'tarjeta-mastercard';
 
+type DeepDiveSection = {
+  heading: string;
+  paragraphs: string[];
+};
+
 type PageConfig = {
   key: PageKey;
   name: string;
@@ -36,6 +41,7 @@ type PageConfig = {
   intro: string;
   consideration: string;
   whatsappMessage: string;
+  bankDeepDive?: DeepDiveSection[];
 };
 
 const pageConfigs: Record<PageKey, PageConfig> = {
@@ -48,6 +54,36 @@ const pageConfigs: Record<PageKey, PageConfig> = {
     intro: 'Si tienes una tarjeta de crédito BancoEstado con cupo internacional disponible, puedes solicitar una cotización asistida por WhatsApp para evaluar cuánto podrías recibir en pesos chilenos antes de decidir.',
     consideration: 'La revisión depende del cupo internacional disponible, configuración de la tarjeta, monto a evaluar, marca de tarjeta y condiciones vigentes del caso.',
     whatsappMessage: 'Hola, tengo una tarjeta BancoEstado y quiero cotizar mi cupo internacional disponible a pesos chilenos.',
+    bankDeepDive: [
+      {
+        heading: 'Cómo verificar tu cupo internacional disponible en BancoEstado',
+        paragraphs: [
+          'Si tienes una tarjeta de crédito BancoEstado, normalmente puedes revisar el cupo internacional disponible en tu banca en línea, en la aplicación del banco o en tu estado de cuenta, dentro de la información asociada a la tarjeta. Si no encuentras esa información con claridad, lo más seguro es consultarla directamente con BancoEstado antes de cotizar.',
+          'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega tu banco.',
+        ],
+      },
+      {
+        heading: 'Cómo funciona el proceso si tu tarjeta es BancoEstado',
+        paragraphs: [
+          'El proceso de cotización es el mismo que para otras tarjetas: nos indicas que tienes una tarjeta BancoEstado con cupo internacional disponible y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+          'EnPesos no tiene convenio ni representación oficial con BancoEstado; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+        ],
+      },
+      {
+        heading: 'Qué pasa con la deuda posterior si tu tarjeta es BancoEstado',
+        paragraphs: [
+          'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe BancoEstado para tu tarjeta.',
+          'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con BancoEstado.',
+        ],
+      },
+      {
+        heading: 'Antes de escribir por WhatsApp si tu tarjeta es BancoEstado',
+        paragraphs: [
+          'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+          'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta BancoEstado, la fuente más confiable siempre es el propio banco, no un tercero.',
+        ],
+      },
+    ],
   },
   santander: {
     key: 'santander',
@@ -58,6 +94,36 @@ const pageConfigs: Record<PageKey, PageConfig> = {
     intro: 'Si tu tarjeta de crédito es Santander y tiene cupo internacional disponible, puedes cotizar por WhatsApp una estimación en pesos chilenos con información clara antes de avanzar.',
     consideration: 'El resultado depende del banco emisor, cupo disponible, marca de tarjeta, monto solicitado, validaciones y condiciones del momento.',
     whatsappMessage: 'Hola, tengo una tarjeta Santander y quiero cotizar mi cupo en dólares a pesos chilenos.',
+    bankDeepDive: [
+      {
+        heading: 'Cómo verificar tu cupo internacional disponible en Santander',
+        paragraphs: [
+          'Si tienes una tarjeta de crédito Santander, normalmente puedes revisar el cupo internacional disponible en la banca en línea de Santander, en su aplicación o en tu estado de cuenta, dentro de la información asociada a la tarjeta. Si no logras identificarlo con claridad, lo más seguro es consultarlo directamente con Santander antes de cotizar.',
+          'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega tu banco.',
+        ],
+      },
+      {
+        heading: 'Cómo funciona el proceso si tu tarjeta es Santander',
+        paragraphs: [
+          'El proceso de cotización es el mismo que para otras tarjetas: nos indicas que tienes una tarjeta Santander con cupo internacional disponible y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+          'EnPesos no tiene convenio ni representación oficial con Santander; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+        ],
+      },
+      {
+        heading: 'Qué pasa con la deuda posterior si tu tarjeta es Santander',
+        paragraphs: [
+          'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe Santander para tu tarjeta.',
+          'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con Santander.',
+        ],
+      },
+      {
+        heading: 'Antes de escribir por WhatsApp si tu tarjeta es Santander',
+        paragraphs: [
+          'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+          'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta Santander, la fuente más confiable siempre es el propio banco, no un tercero.',
+        ],
+      },
+    ],
   },
   'banco-de-chile': {
     key: 'banco-de-chile',
@@ -652,7 +718,36 @@ function SpecificView({ page, faqItems }: { page: PageConfig; faqItems: ReturnTy
           </div>
         </section>
 
-        <FaqSection title={`Preguntas frecuentes sobre cupo en dólares ${page.shortName}`} faqItems={faqItems} />
+        {page.bankDeepDive && (
+          <section className="py-14 sm:py-18 bg-background">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-3xl mb-10">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                  Lo que conviene entender si tu tarjeta es {page.shortName}
+                </h2>
+              </div>
+              <div className="grid gap-5">
+                {page.bankDeepDive.map((item) => (
+                  <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                    <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                    {item.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <FaqSection
+          title={`Preguntas frecuentes sobre cupo en dólares ${page.shortName}`}
+          faqItems={faqItems}
+          background={page.bankDeepDive ? 'bg-secondary' : 'bg-background'}
+        />
 
         <section className="py-14 sm:py-18 bg-primary">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-primary-foreground">
@@ -680,9 +775,17 @@ function SpecificView({ page, faqItems }: { page: PageConfig; faqItems: ReturnTy
   );
 }
 
-function FaqSection({ title, faqItems }: { title: string; faqItems: { question: string; answer: string }[] }) {
+function FaqSection({
+  title,
+  faqItems,
+  background = 'bg-background',
+}: {
+  title: string;
+  faqItems: { question: string; answer: string }[];
+  background?: string;
+}) {
   return (
-    <section className="py-14 sm:py-18 bg-background">
+    <section className={`py-14 sm:py-18 ${background}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
