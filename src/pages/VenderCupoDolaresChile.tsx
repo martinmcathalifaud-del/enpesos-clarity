@@ -39,6 +39,37 @@ const badFit = [
   'Tu banco o tarjeta no permite completar la operación evaluada.',
 ];
 
+const deepDiveSections = [
+  {
+    heading: "Por qué se usa la expresión 'vender cupo en dólares'",
+    paragraphs: [
+      "La expresión 'vender cupo en dólares' es una forma coloquial que muchas personas usan para buscar esta alternativa en internet, aunque técnicamente no se vende ninguna tarjeta ni línea de crédito. Lo que ocurre es que se cotiza una operación usando el cupo internacional disponible de tu tarjeta, para recibir un monto estimado en pesos chilenos.",
+      'EnPesos no compra tu cupo ni tu tarjeta, y tampoco aumenta el cupo internacional que el banco o emisor ya te aprobó. Solo ayuda a cotizar una operación asistida caso a caso.',
+    ],
+  },
+  {
+    heading: 'Qué revisar antes de cotizar',
+    paragraphs: [
+      'Antes de pedir una cotización, conviene revisar cuánto cupo internacional aparece disponible en tu tarjeta, si eres el titular de la tarjeta y de la cuenta bancaria donde recibirías los pesos, y si tienes claridad sobre cómo pagarás después el cargo que puede generarse.',
+      'También conviene comparar el monto neto estimado con otras alternativas, en vez de fijarte solo en el porcentaje de comisión que menciona cada servicio.',
+    ],
+  },
+  {
+    heading: 'Qué información se pide y qué no se pide',
+    paragraphs: [
+      'Para orientar una cotización normalmente se piden datos básicos, como nombre, un medio de contacto, el banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+      'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con tu tarjeta después de la operación',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total.',
+      'EnPesos no define esas condiciones ni puede prometer un tiempo exacto de confirmación para cada caso. WhatsApp es el canal para resolver dudas y coordinar la cotización, no una promesa de tasa o aprobación.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Qué significa vender cupo en dólares?',
@@ -329,7 +360,30 @@ export default function VenderCupoDolaresChile() {
           </div>
         </section>
 
-        <section id="preguntas-frecuentes" className="py-14 sm:py-18 bg-background">
+        <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                Lo que conviene entender antes de cotizar
+              </h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="preguntas-frecuentes" className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
@@ -352,9 +406,9 @@ export default function VenderCupoDolaresChile() {
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-secondary">
+        <section className="py-14 sm:py-18 bg-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-border bg-background p-7 sm:p-10 text-center card-shadow">
+            <div className="rounded-3xl border border-border bg-secondary p-7 sm:p-10 text-center card-shadow">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Guía relacionada</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-4">
                 También puedes revisar cómo convertir cupo en dólares a pesos chilenos

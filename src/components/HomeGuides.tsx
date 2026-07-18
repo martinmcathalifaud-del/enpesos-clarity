@@ -66,6 +66,13 @@ const cityLinks = [
   { label: 'Antofagasta', href: '/cupo-en-dolares-antofagasta' },
   { label: 'Valparaíso', href: '/cupo-en-dolares-valparaiso' },
   { label: 'Rancagua', href: '/cupo-en-dolares-rancagua' },
+  { label: 'Puente Alto', href: '/cupo-en-dolares-puente-alto' },
+  { label: 'Vitacura', href: '/cupo-en-dolares-vitacura' },
+  { label: 'Quillota', href: '/cupo-en-dolares-quillota' },
+  { label: 'Lo Barnechea', href: '/cupo-en-dolares-lo-barnechea' },
+  { label: 'Iquique', href: '/cupo-en-dolares-iquique' },
+  { label: 'La Serena', href: '/cupo-en-dolares-la-serena' },
+  { label: 'Arica', href: '/cupo-en-dolares-arica' },
 ];
 
 export default function HomeGuides() {

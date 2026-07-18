@@ -137,6 +137,30 @@ const comparisonRows = [
   },
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Qué revisar antes de usar el cupo internacional de tu negocio',
+    paragraphs: [
+      'Antes de cotizar, conviene tener claro cuánto cupo internacional aparece disponible en la tarjeta que planeas usar, si ya existen cargos pendientes que podrían afectar la capacidad de pago del negocio, y si la necesidad de caja es puntual o corresponde a un problema más estructural.',
+      'Esta alternativa está pensada para desfases puntuales, no para financiar pérdidas permanentes del negocio. Si el problema es recurrente, probablemente convenga revisar otras alternativas antes de operar.',
+    ],
+  },
+  {
+    heading: 'Quién suele tener sentido para cotizar',
+    paragraphs: [
+      'Suele tener sentido para dueños de negocios, empresas pequeñas o emprendimientos que ya cuentan con cupo internacional disponible en una tarjeta de crédito y necesitan resolver una necesidad puntual de caja, como pagar un proveedor, reponer inventario o cubrir un desfase de corto plazo.',
+      'No está pensado para reemplazar un crédito PyME formal, factoring o una línea bancaria empresa cuando esos productos calzan mejor con el monto o el plazo que necesita el negocio.',
+    ],
+  },
+  {
+    heading: 'Qué pasa con la tarjeta del negocio después',
+    paragraphs: [
+      'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en la tarjeta de crédito usada, según las condiciones del banco o emisor. El pago posterior, la facturación, el tipo de cambio y los intereses dependen de esas condiciones, no de EnPesos.',
+      'Antes de aceptar una cotización, conviene revisar si el negocio tiene capacidad de pago para ese cargo posterior, además del monto que recibirías hoy en pesos.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Esto es para PyMEs o para cualquier negocio?',
@@ -605,6 +629,29 @@ export default function LiquidezNegociosCupoInternacional() {
         </section>
 
         <section className="py-14 sm:py-18 bg-background">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+                Lo que conviene entender antes de cotizar para tu negocio
+              </h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-card p-6 sm:p-7">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-3 gap-5 mb-12">
               {trustItems.map((item) => {

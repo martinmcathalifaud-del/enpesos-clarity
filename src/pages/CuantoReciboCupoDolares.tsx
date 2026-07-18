@@ -44,6 +44,37 @@ const relatedLinks = [
   { label: 'Seguridad', href: '/seguridad', description: 'Datos que no pedimos y canales oficiales.' },
 ];
 
+const deepDiveSections = [
+  {
+    heading: 'Por qué no existe una tasa fija publicada',
+    paragraphs: [
+      'El monto neto que podrías recibir en pesos depende de variables que cambian caso a caso: el monto en dólares que quieres cotizar, el dólar de referencia del momento, los costos de procesamiento, el banco o emisor de tu tarjeta y las condiciones vigentes al momento de confirmar. Por eso EnPesos no publica una tasa fija ni promete un porcentaje exacto para todos los casos.',
+      'Publicar un número genérico sin conocer estas variables podría generar una expectativa que después no se cumple. Lo responsable es cotizar tu caso específico antes de decidir.',
+    ],
+  },
+  {
+    heading: 'Qué mirar además del monto que recibirías hoy',
+    paragraphs: [
+      'El monto neto en pesos es solo una parte de la operación. También conviene revisar qué cargo o deuda podría quedar después en tu tarjeta, según las condiciones de tu banco o emisor, y si tienes capacidad de pago para asumir ese cargo cuando llegue la facturación.',
+      'Comparar solo el monto que recibirías hoy, sin mirar el costo posterior, puede llevar a una decisión que no te convenga en el tiempo.',
+    ],
+  },
+  {
+    heading: 'Cómo se calcula una cotización real',
+    paragraphs: [
+      'Una cotización real considera el monto que quieres evaluar, el dólar de referencia del momento, los costos de procesamiento aplicables y las condiciones específicas de tu banco o emisor. Por eso el resultado puede variar entre dos personas que cotizan un monto similar, si sus tarjetas o condiciones son distintas.',
+      'El simulador de pago de tarjeta puede ayudarte a estimar el escenario de pago posterior, pero no reemplaza una cotización real para saber cuánto podrías recibir hoy.',
+    ],
+  },
+  {
+    heading: 'Qué información se pide y qué no se pide',
+    paragraphs: [
+      'Para orientar una cotización normalmente se piden datos básicos, como nombre, un medio de contacto, el banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+      'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp.',
+    ],
+  },
+];
+
 const faqs = [
   {
     question: '¿Cuánto recibo por vender mi cupo en dólares?',
@@ -230,7 +261,28 @@ export default function CuantoReciboCupoDolares() {
           </div>
         </section>
 
-        <section id="preguntas-frecuentes" className="py-14 sm:py-18 bg-secondary">
+        <section className="py-14 sm:py-18 bg-secondary">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">A fondo</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">Lo que conviene entender sobre el monto neto</h2>
+            </div>
+            <div className="grid gap-5">
+              {deepDiveSections.map((item) => (
+                <article key={item.heading} className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow">
+                  <h3 className="text-xl font-extrabold text-foreground mb-3">{item.heading}</h3>
+                  {item.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-secondary-foreground leading-relaxed mb-3 last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="preguntas-frecuentes" className="py-14 sm:py-18 bg-background">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary mb-3">Preguntas frecuentes</p>
@@ -251,7 +303,7 @@ export default function CuantoReciboCupoDolares() {
           </div>
         </section>
 
-        <section className="py-14 sm:py-18 bg-background">
+        <section className="py-14 sm:py-18 bg-secondary">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl border border-border bg-card p-7 sm:p-10">
               <div className="flex items-center gap-3 mb-6">

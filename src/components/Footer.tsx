@@ -25,6 +25,13 @@ const coverageLinks: FooterLink[] = [
   { label: 'Cupo en dólares Antofagasta', href: '/cupo-en-dolares-antofagasta' },
   { label: 'Cupo en dólares Valparaíso', href: '/cupo-en-dolares-valparaiso' },
   { label: 'Cupo en dólares Rancagua', href: '/cupo-en-dolares-rancagua' },
+  { label: 'Cupo en dólares Puente Alto', href: '/cupo-en-dolares-puente-alto' },
+  { label: 'Cupo en dólares Vitacura', href: '/cupo-en-dolares-vitacura' },
+  { label: 'Cupo en dólares Quillota', href: '/cupo-en-dolares-quillota' },
+  { label: 'Cupo en dólares Lo Barnechea', href: '/cupo-en-dolares-lo-barnechea' },
+  { label: 'Cupo en dólares Iquique', href: '/cupo-en-dolares-iquique' },
+  { label: 'Cupo en dólares La Serena', href: '/cupo-en-dolares-la-serena' },
+  { label: 'Cupo en dólares Arica', href: '/cupo-en-dolares-arica' },
 ];
 
 const resourceLinks: FooterLink[] = [
