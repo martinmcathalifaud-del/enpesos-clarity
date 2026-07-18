@@ -1094,6 +1094,186 @@ const bankDeepDiveMap = {
       ],
     },
   ],
+  bci: [
+    {
+      heading: 'Cómo verificar tu cupo internacional disponible en BCI',
+      paragraphs: [
+        'Si tienes una tarjeta de crédito BCI, normalmente puedes revisar el cupo internacional disponible en tu banca en línea, en la aplicación del banco o en tu estado de cuenta, dentro de la información asociada a la tarjeta. Si no encuentras esa información con claridad, lo más seguro es consultarla directamente con BCI antes de cotizar.',
+        'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega tu banco.',
+      ],
+    },
+    {
+      heading: 'Cómo funciona el proceso si tu tarjeta es BCI',
+      paragraphs: [
+        'El proceso de cotización es el mismo que para otras tarjetas: nos indicas que tienes una tarjeta BCI con cupo internacional disponible y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+        'EnPesos no tiene convenio ni representación oficial con BCI; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con la deuda posterior si tu tarjeta es BCI',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe BCI para tu tarjeta.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con BCI.',
+      ],
+    },
+    {
+      heading: 'Antes de escribir por WhatsApp si tu tarjeta es BCI',
+      paragraphs: [
+        'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+        'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta BCI, la fuente más confiable siempre es el propio banco, no un tercero.',
+      ],
+    },
+  ],
+  scotiabank: [
+    {
+      heading: 'Cómo verificar tu cupo internacional disponible en Scotiabank',
+      paragraphs: [
+        'Si tienes una tarjeta de crédito Scotiabank, normalmente puedes revisar el cupo internacional disponible en tu banca en línea, en la aplicación del banco o en tu estado de cuenta, dentro de la información asociada a la tarjeta. Si no encuentras esa información con claridad, lo más seguro es consultarla directamente con Scotiabank antes de cotizar.',
+        'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega tu banco.',
+      ],
+    },
+    {
+      heading: 'Cómo funciona el proceso si tu tarjeta es Scotiabank',
+      paragraphs: [
+        'El proceso de cotización es el mismo que para otras tarjetas: nos indicas que tienes una tarjeta Scotiabank con cupo internacional disponible y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+        'EnPesos no tiene convenio ni representación oficial con Scotiabank; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con la deuda posterior si tu tarjeta es Scotiabank',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe Scotiabank para tu tarjeta.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con Scotiabank.',
+      ],
+    },
+    {
+      heading: 'Antes de escribir por WhatsApp si tu tarjeta es Scotiabank',
+      paragraphs: [
+        'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+        'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta Scotiabank, la fuente más confiable siempre es el propio banco, no un tercero.',
+      ],
+    },
+  ],
+  itau: [
+    {
+      heading: 'Cómo verificar tu cupo internacional disponible en Itaú',
+      paragraphs: [
+        'Si tienes una tarjeta de crédito Itaú, normalmente puedes revisar el cupo internacional disponible en tu banca en línea, en la aplicación del banco o en tu estado de cuenta, dentro de la información asociada a la tarjeta. Si no encuentras esa información con claridad, lo más seguro es consultarla directamente con Itaú antes de cotizar.',
+        'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega tu banco.',
+      ],
+    },
+    {
+      heading: 'Cómo funciona el proceso si tu tarjeta es Itaú',
+      paragraphs: [
+        'El proceso de cotización es el mismo que para otras tarjetas: nos indicas que tienes una tarjeta Itaú con cupo internacional disponible y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+        'EnPesos no tiene convenio ni representación oficial con Itaú; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con la deuda posterior si tu tarjeta es Itaú',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe Itaú para tu tarjeta.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con Itaú.',
+      ],
+    },
+    {
+      heading: 'Antes de escribir por WhatsApp si tu tarjeta es Itaú',
+      paragraphs: [
+        'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+        'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta Itaú, la fuente más confiable siempre es el propio banco, no un tercero.',
+      ],
+    },
+  ],
+  'cmr-falabella': [
+    {
+      heading: 'Cómo verificar tu cupo internacional disponible en CMR Falabella',
+      paragraphs: [
+        'Si tienes una tarjeta CMR Falabella con cupo internacional disponible, normalmente puedes revisarlo en la aplicación de CMR, en tu banca en línea o en tu estado de cuenta, dentro de la información asociada a la tarjeta. Si no encuentras esa información con claridad, lo más seguro es consultarla directamente con CMR Falabella antes de cotizar.',
+        'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega tu emisor.',
+      ],
+    },
+    {
+      heading: 'Cómo funciona el proceso si tu tarjeta es CMR Falabella',
+      paragraphs: [
+        'El proceso de cotización es el mismo que para otras tarjetas: nos indicas que tienes una tarjeta CMR Falabella con cupo internacional disponible y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+        'EnPesos no tiene convenio ni representación oficial con CMR Falabella; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con la deuda posterior si tu tarjeta es CMR Falabella',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe CMR Falabella para tu tarjeta.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con CMR Falabella.',
+      ],
+    },
+    {
+      heading: 'Antes de escribir por WhatsApp si tu tarjeta es CMR Falabella',
+      paragraphs: [
+        'Antes de cotizar, revisa tu estado de cuenta o app para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+        'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta CMR Falabella, la fuente más confiable siempre es el propio emisor, no un tercero.',
+      ],
+    },
+  ],
+  'tarjeta-visa': [
+    {
+      heading: 'Cómo verificar el cupo internacional disponible en tu tarjeta Visa',
+      paragraphs: [
+        'Visa es una marca de tarjeta, no un banco ni un emisor: quien aprueba y administra el cupo internacional es el banco o emisor que emitió tu tarjeta, no Visa directamente. Por eso, para revisar cuánto cupo internacional tienes disponible, debes consultarlo en la banca en línea, la aplicación o el estado de cuenta de tu banco o emisor.',
+        'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega el banco o emisor que emitió tu tarjeta Visa.',
+      ],
+    },
+    {
+      heading: 'Cómo funciona el proceso si tu tarjeta es Visa',
+      paragraphs: [
+        'El proceso de cotización es el mismo sin importar el banco o emisor: nos indicas que tienes una tarjeta Visa con cupo internacional disponible, el banco o emisor que la emitió cuando corresponda, y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+        'EnPesos no tiene convenio ni representación oficial con Visa ni con el banco o emisor de tu tarjeta; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con la deuda posterior en tu tarjeta Visa',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe el banco o emisor que emitió tu tarjeta, no de Visa como marca.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con tu banco o emisor.',
+      ],
+    },
+    {
+      heading: 'Antes de escribir por WhatsApp si tu tarjeta es Visa',
+      paragraphs: [
+        'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+        'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta Visa, la fuente más confiable siempre es el banco o emisor que la emitió, no Visa como marca ni un tercero.',
+      ],
+    },
+  ],
+  'tarjeta-mastercard': [
+    {
+      heading: 'Cómo verificar el cupo internacional disponible en tu tarjeta Mastercard',
+      paragraphs: [
+        'Mastercard es una marca de tarjeta, no un banco ni un emisor: quien aprueba y administra el cupo internacional es el banco o emisor que emitió tu tarjeta, no Mastercard directamente. Por eso, para revisar cuánto cupo internacional tienes disponible, debes consultarlo en la banca en línea, la aplicación o el estado de cuenta de tu banco o emisor.',
+        'EnPesos no tiene acceso a tu cuenta ni puede confirmar por ti cuánto cupo internacional aparece disponible; esa información siempre la entrega el banco o emisor que emitió tu tarjeta Mastercard.',
+      ],
+    },
+    {
+      heading: 'Cómo funciona el proceso si tu tarjeta es Mastercard',
+      paragraphs: [
+        'El proceso de cotización es el mismo sin importar el banco o emisor: nos indicas que tienes una tarjeta Mastercard con cupo internacional disponible, el banco o emisor que la emitió cuando corresponda, y el monto aproximado que quieres evaluar. Revisamos información básica del caso y te entregamos una cotización previa con el monto estimado en pesos, antes de que decidas avanzar.',
+        'EnPesos no tiene convenio ni representación oficial con Mastercard ni con el banco o emisor de tu tarjeta; la revisión depende del caso, el cupo disponible y las condiciones informadas al momento de cotizar.',
+      ],
+    },
+    {
+      heading: 'Qué pasa con la deuda posterior en tu tarjeta Mastercard',
+      paragraphs: [
+        'Si decides avanzar y la operación se confirma, puede generarse un cargo o deuda posterior en tu tarjeta de crédito, según las condiciones de tu banco o emisor. La fecha de facturación, el tipo de cambio aplicado, el pago mínimo y los intereses en caso de no pagar el total dependen de las condiciones que informe el banco o emisor que emitió tu tarjeta, no de Mastercard como marca.',
+        'EnPesos no define esas condiciones ni puede anticipar un tiempo exacto de facturación o revisión. Esa información siempre debes confirmarla directamente con tu banco o emisor.',
+      ],
+    },
+    {
+      heading: 'Antes de escribir por WhatsApp si tu tarjeta es Mastercard',
+      paragraphs: [
+        'Antes de cotizar, revisa tu estado de cuenta o banca en línea para confirmar el cupo internacional disponible y si tienes cargos pendientes que podrían afectar tu capacidad de pago. Esta revisión previa ayuda a que la cotización que recibas tenga sentido con tu situación real.',
+        'Si tienes dudas específicas sobre condiciones, límites o restricciones de tu tarjeta Mastercard, la fuente más confiable siempre es el banco o emisor que la emitió, no Mastercard como marca ni un tercero.',
+      ],
+    },
+  ],
 };
 
 for (const [slug, name, category] of bankRoutes) {
