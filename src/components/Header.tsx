@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
-import logo from '@/assets/logo-enpesos-header.png';
+import logo from '@/assets/logo-enpesos-header.webp';
 
 const primaryLinks = [
   { label: 'Cupo en dólares', href: '/cupo-en-dolares-a-pesos-chilenos' },

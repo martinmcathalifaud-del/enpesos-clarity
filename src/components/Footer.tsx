@@ -1,7 +1,7 @@
 import { CheckCircle2, CreditCard, Mail, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
-import logo from '@/assets/logo-enpesos-completo.png';
+import logo from '@/assets/logo-enpesos-completo.webp';
 
 type FooterLink = {
   label: string;
@@ -99,7 +99,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-10">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_2.35fr] lg:gap-10 xl:gap-12">
           <section className="rounded-3xl border border-border bg-background p-6 sm:p-7 card-shadow lg:self-start">
-            <img src={logo} alt="EnPesos.cl" className="h-12 w-auto object-contain object-left mb-4" />
+            <img src={logo} alt="EnPesos.cl" width={768} height={512} className="h-12 w-auto object-contain object-left mb-4" loading="lazy" decoding="async" />
             <p className="text-2xl font-extrabold text-foreground tracking-tight">Más pesos en tu cuenta</p>
             <p className="mt-3 text-sm text-secondary-foreground leading-relaxed">
               Cotiza cuántos pesos chilenos podrías recibir usando el cupo en dólares de tu tarjeta, con costo claro antes de decidir.
