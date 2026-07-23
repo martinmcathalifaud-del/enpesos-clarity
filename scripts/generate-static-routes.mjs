@@ -781,6 +781,90 @@ const routes = [
     ],
   },
   {
+    path: '/calculadora-credito',
+    title: 'Calculadora de Crédito y Liquidez Chile | Compara opciones | EnPesos',
+    description: 'Calcula cuánto recibirías con un crédito de consumo, avance en efectivo o usando tu cupo en dólares. Compara costos reales antes de decidir.',
+    h1: 'Calculadora de crédito y liquidez — compara tus opciones',
+    category: 'Calculadora',
+    intro: 'Ingresa cuánto necesitas en pesos chilenos y compara qué podrías recibir usando tu cupo en dólares frente a un crédito de consumo o un avance en efectivo. Los tres resultados son estimaciones referenciales, no una promesa de tasa, aprobación ni tiempo exacto.',
+    points: [
+      'Rango estimado usando tu cupo internacional en dólares',
+      'Comparación con crédito de consumo y avance en efectivo',
+      'Costos y contras de cada alternativa antes de decidir',
+      'Puede generarse un cargo en tu tarjeta según tu banco o emisor',
+    ],
+    extraSections: [
+      {
+        heading: 'Cómo se calcula el rango con tu cupo en dólares',
+        paragraphs: [
+          'El monto que podrías recibir usando el cupo internacional de tu tarjeta se calcula sobre el monto en pesos que ingresas, aplicando un spread estimado de entre 18% y 25% según el caso. Esto significa que el rango que ves —un mínimo y un máximo— es una estimación referencial y no un número fijo, porque el resultado final depende de tu cupo disponible, tu banco o emisor y el tipo de cambio del día en que cotizas.',
+          'La calculadora también usa un dólar de referencia obtenido en el momento en que visitas la página. Si ese valor no está disponible, se muestra un valor referencial de respaldo con una nota visible, para que igual puedas tener una estimación aproximada.',
+        ],
+      },
+      {
+        heading: 'Cómo se calcula el crédito de consumo estimado',
+        paragraphs: [
+          'Para el crédito de consumo, la calculadora proyecta una cuota mensual y un costo total usando una tasa anual referencial cercana al promedio que informa la Comisión para el Mercado Financiero (CMF) para este tipo de producto, asumiendo un plazo de doce meses. Este cálculo es una simulación con supuestos fijos, no una oferta ni una aprobación de ningún banco o entidad financiera.',
+          'El monto que recibirías con un crédito de consumo real, la tasa que te ofrezcan y el plazo disponible dependen de una evaluación crediticia que realiza cada institución, considerando tu historial de pago, tus ingresos y tu situación en registros como DICOM.',
+        ],
+      },
+      {
+        heading: 'Cómo se calcula el avance en efectivo estimado',
+        paragraphs: [
+          'Para el avance en efectivo, la calculadora descuenta una comisión promedio de mercado cercana al 5% del monto solicitado, para mostrar el monto neto que normalmente recibirías. El avance en efectivo suele considerarse una de las alternativas más caras del mercado, con una tasa de interés cercana a la tasa máxima convencional y sin período de gracia: el interés corre desde el primer día.',
+          'Este cálculo también es referencial. La comisión, la tasa y las condiciones exactas de un avance en efectivo dependen de tu banco o emisor y del cupo disponible en tu tarjeta de crédito nacional al momento de solicitarlo.',
+        ],
+      },
+      {
+        heading: 'Por qué comparar antes de decidir',
+        paragraphs: [
+          'Cada una de las tres alternativas —cupo en dólares, crédito de consumo y avance en efectivo— tiene un perfil distinto de monto, costo, tiempo y requisitos. Un crédito de consumo puede tomar entre uno y tres días hábiles y requiere evaluación crediticia, presentar liquidaciones de sueldo o declaración de renta, y no estar en DICOM. Un avance en efectivo es prácticamente inmediato, pero suele ser la opción más cara. Usar tu cupo internacional en dólares puede tomar minutos en horario laboral, pero requiere tener ese cupo disponible en tu tarjeta.',
+          'No existe una alternativa que convenga siempre más que las otras: depende del monto que necesitas, la urgencia, tu capacidad de pago y las condiciones específicas de tu banco o emisor. Esta calculadora busca ayudarte a comparar con información clara, no a convencerte de una sola opción.',
+        ],
+      },
+      {
+        heading: 'Qué pasa con tu tarjeta después de usar el cupo en dólares',
+        paragraphs: [
+          'Si decides avanzar con una cotización de EnPesos y la operación se confirma, puede generarse un cargo en tu tarjeta en dólares, según las condiciones de tu banco o emisor: fecha de facturación, tipo de cambio aplicado, pago mínimo e intereses si no pagas el total facturado. EnPesos no define esas condiciones ni puede prometer una tasa, una aprobación o un tiempo exacto para tu caso.',
+          'Antes de aceptar cualquier cotización, revisa tu estado de cuenta, confirma cuánto cupo internacional tienes disponible y evalúa tu capacidad de pago para el cargo posterior. Cotizar con EnPesos no te obliga a avanzar: puedes comparar, preguntar y decidir con calma.',
+        ],
+      },
+      {
+        heading: 'Qué información se pide y qué no se pide',
+        paragraphs: [
+          'Si decides cotizar por WhatsApp después de usar esta calculadora, normalmente se piden datos básicos: nombre, un medio de contacto, el banco o tipo de tarjeta y el monto aproximado que quieres evaluar.',
+          'EnPesos no pide clave bancaria, clave de internet, token, coordenadas, códigos de verificación ni acceso remoto a tu celular o computador, y tampoco solicita el CVV por WhatsApp. Si alguien te pide esa información a nombre de EnPesos, no se la entregues.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: '¿Por qué EnPesos muestra un rango y no un número exacto?',
+        answer: 'Porque el monto final depende de tu cupo internacional disponible, el banco o emisor de tu tarjeta y el tipo de cambio del día en que cotizas. La forma responsable de conocer tu monto exacto es pedir una cotización real por WhatsApp.',
+      },
+      {
+        question: '¿Qué es el cupo internacional de mi tarjeta?',
+        answer: 'Es un monto en dólares que muchos bancos y emisores aprueban dentro de la misma tarjeta de crédito, pensado originalmente para compras en el extranjero o en sitios que facturan en dólares. Muchas personas lo usan poco y queda disponible sin utilizarse.',
+      },
+      {
+        question: '¿Necesito tener buen historial crediticio para usar EnPesos?',
+        answer: 'EnPesos no realiza una evaluación crediticia como la de un crédito de consumo nuevo. Se revisa tu cupo internacional disponible en la tarjeta que ya tienes. Aun así, cada caso se evalúa individualmente y no se garantiza un resultado.',
+      },
+      {
+        question: '¿Qué pasa con mi tarjeta después de usar EnPesos?',
+        answer: 'Si decides avanzar y la operación se confirma, puede generarse un cargo en tu tarjeta en dólares, según las condiciones de tu banco o emisor. EnPesos no define esas condiciones.',
+      },
+      {
+        question: '¿Es lo mismo que un avance en efectivo?',
+        answer: 'No. Un avance en efectivo es un producto que entrega directamente tu banco, con comisión y una de las tasas más altas del mercado desde el primer día. EnPesos ayuda a cotizar una operación distinta, sobre el cupo internacional en dólares que ya tienes aprobado.',
+      },
+      {
+        question: '¿Puedo usar EnPesos si estoy en DICOM?',
+        answer: 'A diferencia de un crédito de consumo, EnPesos no exige estar fuera de DICOM como requisito para cotizar, porque no es una evaluación crediticia nueva. Aun así, cada caso se revisa individualmente según tu cupo internacional disponible y tu banco o emisor.',
+      },
+    ],
+  },
+  {
     path: '/programa-de-colaboradores',
     title: 'Programa de colaboradores EnPesos | Referidos y alianzas',
     description: 'Conoce el programa de colaboradores de EnPesos para referidores, creadoras, asesoras y aliados que quieran derivar personas con cupo internacional disponible.',

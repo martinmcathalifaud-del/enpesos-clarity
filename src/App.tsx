@@ -19,6 +19,7 @@ const SeguroCambiarCupoDolares = lazy(() => import("./pages/SeguroCambiarCupoDol
 const AvanceCupoDolaresOnline = lazy(() => import("./pages/AvanceCupoDolaresOnline"));
 const PagarDeudaDolaresTarjeta = lazy(() => import("./pages/PagarDeudaDolaresTarjeta"));
 const SimuladorPagoTarjeta = lazy(() => import("./pages/SimuladorPagoTarjeta"));
+const CalculadoraCredito = lazy(() => import("./pages/CalculadoraCredito"));
 const LiquidezNegociosCupoInternacional = lazy(() => import("./pages/LiquidezNegociosCupoInternacional"));
 const FormasFinanciamientoPersonas = lazy(() => import("./pages/FormasFinanciamientoPersonas"));
 const FinanciamientoNegociosPymes = lazy(() => import("./pages/FinanciamientoNegociosPymes"));
@@ -51,6 +52,7 @@ const App = () => (
             <Route path="/avance-cupo-en-dolares-online" element={<AvanceCupoDolaresOnline />} />
             <Route path="/como-pagar-deuda-en-dolares-tarjeta-credito" element={<PagarDeudaDolaresTarjeta />} />
             <Route path="/simulador-pago-tarjeta-credito" element={<SimuladorPagoTarjeta />} />
+            <Route path="/calculadora-credito" element={<CalculadoraCredito />} />
             <Route path="/liquidez-para-negocios-cupo-internacional" element={<LiquidezNegociosCupoInternacional />} />
             <Route path="/formas-de-financiamiento-para-personas-chile" element={<FormasFinanciamientoPersonas />} />
             <Route path="/financiamiento-para-negocios-y-pymes-chile" element={<FinanciamientoNegociosPymes />} />
