@@ -39,6 +39,7 @@ const checklist = [
 
 const relatedLinks = [
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Calculadora de crédito y liquidez', href: '/calculadora-credito' },
   { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares' },
   { label: 'Formas de financiamiento', href: '/formas-de-financiamiento-para-personas-chile' },
   { label: 'Seguridad', href: '/seguridad' },

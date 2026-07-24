@@ -70,6 +70,7 @@ const relatedLinks = [
   { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares' },
   { label: 'Deuda en dólares de tarjeta', href: '/como-pagar-deuda-en-dolares-tarjeta-credito' },
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Calculadora de crédito y liquidez', href: '/calculadora-credito' },
   { label: 'Seguridad', href: '/seguridad' },
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
 ];

@@ -65,6 +65,7 @@ const internalLinks = [
   { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares', description: 'Factores que influyen en el monto neto.' },
   { label: 'Deuda en dólares de la tarjeta', href: '/como-pagar-deuda-en-dolares-tarjeta-credito', description: 'Qué revisar después con el banco o emisor.' },
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito', description: 'Mira escenarios referenciales de pago posterior.' },
+  { label: 'Calculadora de crédito y liquidez', href: '/calculadora-credito', description: 'Compara crédito de consumo, avance en efectivo y cupo en dólares.' },
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos', description: 'Guía principal para cotizar cupo internacional.' },
   { label: 'Cómo funciona EnPesos', href: '/como-funciona', description: 'Proceso paso a paso antes de decidir.' },
   { label: 'Seguridad', href: '/seguridad', description: 'Datos que no pedimos y señales de cuidado.' },

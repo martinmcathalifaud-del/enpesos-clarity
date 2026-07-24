@@ -624,6 +624,7 @@ export default function SimuladorPagoTarjeta() {
                   <MessageCircle className="w-5 h-5" />
                 </Button>
                 <a href="/como-pagar-deuda-en-dolares-tarjeta-credito" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Leer guía de pago posterior</a>
+                <a href="/calculadora-credito" className="inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-7 text-base font-bold text-foreground hover:border-primary/40 hover:text-primary transition-colors">Comparar con crédito de consumo y avance</a>
               </div>
             </div>
           </div>
