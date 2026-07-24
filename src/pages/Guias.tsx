@@ -8,6 +8,13 @@ import { openWhatsApp } from '@/lib/whatsapp';
 
 const guides = [
   {
+    category: 'Herramienta',
+    title: 'Calculadora de crédito y liquidez',
+    description: 'Compara qué podrías recibir usando tu cupo en dólares frente a un crédito de consumo o un avance en efectivo.',
+    href: '/calculadora-credito',
+    icon: Calculator,
+  },
+  {
     category: 'Funcionamiento',
     title: 'Cupo en dólares a pesos chilenos',
     description: 'Qué significa cotizar tu cupo internacional y cómo funciona una conversión a pesos chilenos.',
@@ -69,6 +76,7 @@ const extraResourceLinks = [
   { label: 'Financiamiento para personas', href: '/formas-de-financiamiento-para-personas-chile' },
   { label: 'Financiamiento para negocios', href: '/financiamiento-para-negocios-y-pymes-chile' },
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Calculadora de crédito y liquidez', href: '/calculadora-credito' },
   { label: 'Avance cupo en dólares online', href: '/avance-cupo-en-dolares-online' },
   { label: 'Pagar deuda en dólares', href: '/como-pagar-deuda-en-dolares-tarjeta-credito' },
 ];

@@ -38,6 +38,7 @@ const referenceLimits = [
 
 const relatedLinks = [
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito', description: 'Revisa escenarios de pago posterior con supuestos editables.' },
+  { label: 'Calculadora de crédito y liquidez', href: '/calculadora-credito', description: 'Compara el rango estimado con crédito de consumo y avance en efectivo.' },
   { label: 'Deuda en dólares de tarjeta', href: '/como-pagar-deuda-en-dolares-tarjeta-credito', description: 'Entiende qué pasa después con el cargo en tu tarjeta.' },
   { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos', description: 'Guía principal para cotizar cupo internacional disponible.' },
   { label: 'Cómo funciona EnPesos', href: '/como-funciona', description: 'Proceso paso a paso antes de decidir.' },

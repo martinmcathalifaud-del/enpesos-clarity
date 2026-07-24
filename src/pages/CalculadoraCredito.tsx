@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, Info, MessageCircle } from 'lucide-react';
+import { AlertTriangle, FileText, Info, MessageCircle } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { openWhatsApp } from '@/lib/whatsapp';
 
@@ -30,6 +33,15 @@ function upsertMeta(name: string, content: string, attr: 'name' | 'property' = '
   }
   element.setAttribute('content', content);
 }
+
+const relatedLinks = [
+  { label: 'Cupo en dólares a pesos', href: '/cupo-en-dolares-a-pesos-chilenos' },
+  { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Formas de financiamiento para personas', href: '/formas-de-financiamiento-para-personas-chile' },
+  { label: 'Cuánto recibo por mi cupo', href: '/cuanto-recibo-por-mi-cupo-en-dolares' },
+  { label: 'Deuda en dólares de la tarjeta', href: '/como-pagar-deuda-en-dolares-tarjeta-credito' },
+  { label: 'Preguntas frecuentes', href: '/preguntas-frecuentes' },
+];
 
 const faqs = [
   {
@@ -188,6 +200,8 @@ export default function CalculadoraCredito() {
 
   return (
     <>
+      <Header />
+
       <section className="hero-gradient border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20 text-center">
           <span className="inline-flex items-center rounded-full bg-primary-light px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.14em] text-primary">
@@ -418,6 +432,27 @@ export default function CalculadoraCredito() {
           </div>
         </div>
       </section>
+
+      <section className="py-14 sm:py-18 bg-secondary">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-border bg-card p-7 sm:p-10">
+            <div className="flex items-center gap-3 mb-6">
+              <FileText className="w-8 h-8 text-primary" />
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground">Guías relacionadas</h2>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedLinks.map((link) => (
+                <a key={link.href} href={link.href} className="rounded-2xl border border-border bg-background p-5 hover:border-primary/40 hover:bg-primary-light transition-colors">
+                  <p className="font-extrabold text-foreground">{link.label}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
     </>
   );
 }

@@ -39,6 +39,7 @@ const resourceLinks: FooterLink[] = [
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Qué es EnPesos', href: '/que-es-enpesos' },
   { label: 'Simulador de pago de tarjeta', href: '/simulador-pago-tarjeta-credito' },
+  { label: 'Calculadora de crédito y liquidez', href: '/calculadora-credito' },
   { label: 'Bancos compatibles', href: '/#bancos' },
 ];
 
